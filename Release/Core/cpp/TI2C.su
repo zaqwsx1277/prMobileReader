@@ -1,0 +1,7 @@
+TI2C.hpp:26:7:virtual void unit::TI2C::init()	0	static
+TI2C.hpp:27:7:virtual void unit::TI2C::sleep()	0	static
+TI2C.hpp:28:7:virtual void unit::TI2C::wakeup()	0	static
+TI2C.hpp:29:7:virtual bool unit::TI2C::process()	0	static
+TI2C.hpp:22:10:unit::TI2C::~TI2C()	0	static
+TI2C.cpp:19:6:virtual bool unit::TI2C::check()	8	static
+TI2C.hpp:22:10:virtual unit::TI2C::~TI2C()	8	static

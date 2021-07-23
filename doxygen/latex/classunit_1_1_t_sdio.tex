@@ -1,0 +1,77 @@
+\hypertarget{classunit_1_1_t_sdio}{}\section{Класс unit\+:\+:T\+Sdio}
+\label{classunit_1_1_t_sdio}\index{unit\+::\+T\+Sdio@{unit\+::\+T\+Sdio}}
+
+
+Граф наследования\+:unit\+:\+:T\+Sdio\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=146pt]{classunit_1_1_t_sdio__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Граф связей класса unit\+:\+:T\+Sdio\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=146pt]{classunit_1_1_t_sdio__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Открытые члены}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classunit_1_1_t_sdio_ab772a88df605f6d22e9352d281bc7e08}{T\+Sdio} ()
+\item 
+bool \hyperlink{classunit_1_1_t_sdio_a01d0b69d4bf6735a74efc1a4661289e7}{check} ()
+\begin{DoxyCompactList}\small\item\em Проверка работоспособности S\+D\+IO. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classunit_1_1_t_sdio_a003c079fd0ca2cf186b17e51fd2c8c56}\label{classunit_1_1_t_sdio_a003c079fd0ca2cf186b17e51fd2c8c56}} 
+void \hyperlink{classunit_1_1_t_sdio_a003c079fd0ca2cf186b17e51fd2c8c56}{init} ()
+\begin{DoxyCompactList}\small\item\em Инициализация устройства \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classunit_1_1_t_sdio_ac903a19ed873242ad2da15224b3925fa}\label{classunit_1_1_t_sdio_ac903a19ed873242ad2da15224b3925fa}} 
+void \hyperlink{classunit_1_1_t_sdio_ac903a19ed873242ad2da15224b3925fa}{sleep} ()
+\begin{DoxyCompactList}\small\item\em Перевод в режим энергосбережения \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classunit_1_1_t_sdio_ae2af97f7a50c9bcc53132ab379fd5c25}\label{classunit_1_1_t_sdio_ae2af97f7a50c9bcc53132ab379fd5c25}} 
+void \hyperlink{classunit_1_1_t_sdio_ae2af97f7a50c9bcc53132ab379fd5c25}{wakeup} ()
+\begin{DoxyCompactList}\small\item\em Выход из режима энергосбережения \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classunit_1_1_t_sdio_a0ae751c5761bfbafdfa977617a43283b}\label{classunit_1_1_t_sdio_a0ae751c5761bfbafdfa977617a43283b}} 
+bool \hyperlink{classunit_1_1_t_sdio_a0ae751c5761bfbafdfa977617a43283b}{process} ()
+\begin{DoxyCompactList}\small\item\em Получение данных \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Конструктор(ы)}
+\mbox{\Hypertarget{classunit_1_1_t_sdio_ab772a88df605f6d22e9352d281bc7e08}\label{classunit_1_1_t_sdio_ab772a88df605f6d22e9352d281bc7e08}} 
+\index{unit\+::\+T\+Sdio@{unit\+::\+T\+Sdio}!T\+Sdio@{T\+Sdio}}
+\index{T\+Sdio@{T\+Sdio}!unit\+::\+T\+Sdio@{unit\+::\+T\+Sdio}}
+\subsubsection{\texorpdfstring{T\+Sdio()}{TSdio()}}
+{\footnotesize\ttfamily unit\+::\+T\+Sdio\+::\+T\+Sdio (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyAttention}{Внимание}
+Нет проверки инициализирована SD карточка или нет!!! 
+\end{DoxyAttention}
+
+
+\subsection{Методы}
+\mbox{\Hypertarget{classunit_1_1_t_sdio_a01d0b69d4bf6735a74efc1a4661289e7}\label{classunit_1_1_t_sdio_a01d0b69d4bf6735a74efc1a4661289e7}} 
+\index{unit\+::\+T\+Sdio@{unit\+::\+T\+Sdio}!check@{check}}
+\index{check@{check}!unit\+::\+T\+Sdio@{unit\+::\+T\+Sdio}}
+\subsubsection{\texorpdfstring{check()}{check()}}
+{\footnotesize\ttfamily bool unit\+::\+T\+Sdio\+::check (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Проверка работоспособности S\+D\+IO. 
+
+\begin{DoxyReturn}{Возвращает}
+Если все Ok, то возвращается true 
+\end{DoxyReturn}
+
+
+Замещает \hyperlink{classunit_1_1_t_unit_abdcc6daabc86cea10abc96593d9d2c2a}{unit\+::\+T\+Unit}.
+
+
+
+Объявления и описания членов классов находятся в файлах\+:\begin{DoxyCompactItemize}
+\item 
+Core/cpp/T\+Sdio.\+hpp\item 
+Core/cpp/T\+Sdio.\+cpp\end{DoxyCompactItemize}

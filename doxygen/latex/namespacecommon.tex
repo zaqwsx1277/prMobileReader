@@ -1,0 +1,50 @@
+\hypertarget{namespacecommon}{}\section{Пространство имен common}
+\label{namespacecommon}\index{common@{common}}
+
+
+Различные общие для всего приложения определения  
+
+
+\subsection*{Переменные}
+\begin{DoxyCompactItemize}
+\item 
+std\+::unique\+\_\+ptr$<$ \hyperlink{classapp_1_1_t_application}{app\+::\+T\+Application} $>$ \hyperlink{namespacecommon_afb09e0e369090296753bc8e2d0274823}{app} \{ nullptr \}
+\begin{DoxyCompactList}\small\item\em Указатель на данные для обеспечения работы приложения \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespacecommon_ac1517a41cc3b73ca63e645dca03d6d47}\label{namespacecommon_ac1517a41cc3b73ca63e645dca03d6d47}} 
+std\+::string \hyperlink{namespacecommon_ac1517a41cc3b73ca63e645dca03d6d47}{st\+Temp\+Str} \{ \char`\"{}\char`\"{} \}
+\begin{DoxyCompactList}\small\item\em Временная строка для корректной отсылки сообщений по U\+A\+RT. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespacecommon_a9e2c1d0b0f61994e2ebef34621b6ba0c}\label{namespacecommon_a9e2c1d0b0f61994e2ebef34621b6ba0c}} 
+std\+::string \hyperlink{namespacecommon_a9e2c1d0b0f61994e2ebef34621b6ba0c}{st\+Sync\+Time\+File\+Name} \{ \char`\"{}time\char`\"{} \}
+\begin{DoxyCompactList}\small\item\em Имя файла для синхронизации времени \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespacecommon_ac1f212cd0775ff1f6c0295b72d658e25}\label{namespacecommon_ac1f212cd0775ff1f6c0295b72d658e25}} 
+std\+::string \hyperlink{namespacecommon_ac1f212cd0775ff1f6c0295b72d658e25}{st\+Tag\+File\+Name} \{ \char`\"{}tags.\+tag\char`\"{} \}
+\begin{DoxyCompactList}\small\item\em Имя файла для хранения меток \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespacecommon_a373798ef1a9c0a94b49bc38455d62d10}\label{namespacecommon_a373798ef1a9c0a94b49bc38455d62d10}} 
+std\+::string \hyperlink{namespacecommon_a373798ef1a9c0a94b49bc38455d62d10}{st\+Photo\+File\+Name} \{ \char`\"{}photos.\+pho\char`\"{} \}
+\begin{DoxyCompactList}\small\item\em Имя файла для хранения меток \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespacecommon_ad9edd5582300fe9f535b3d2f912291bb}\label{namespacecommon_ad9edd5582300fe9f535b3d2f912291bb}} 
+uint8\+\_\+t \hyperlink{namespacecommon_ad9edd5582300fe9f535b3d2f912291bb}{st\+Tag\+Buf\+Id} \mbox{[}25\mbox{]} \{ 0 \}
+\begin{DoxyCompactList}\small\item\em Буфер для чтения метки \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespacecommon_a07e080fe05fc55b6f3eab1de78a1157a}\label{namespacecommon_a07e080fe05fc55b6f3eab1de78a1157a}} 
+uint8\+\_\+t \hyperlink{namespacecommon_a07e080fe05fc55b6f3eab1de78a1157a}{st\+File\+Buf} \mbox{[}512\mbox{]} \{ 0 \}
+\begin{DoxyCompactList}\small\item\em Буфер для записи данных в файл. Он здесь, т.\+к. S\+D\+IO работает по D\+MA. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespacecommon_a64410627120637f6951a05b65a001c0e}\label{namespacecommon_a64410627120637f6951a05b65a001c0e}} 
+uint8\+\_\+t \hyperlink{namespacecommon_a64410627120637f6951a05b65a001c0e}{st\+Photo\+Buf} \mbox{[}1600 $\ast$94\mbox{]} \{0\}
+\begin{DoxyCompactList}\small\item\em Буфер для сканирования изображения \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Подробное описание}
+Различные общие для всего приложения определения 
+
+\subsection{Переменные}
+\mbox{\Hypertarget{namespacecommon_afb09e0e369090296753bc8e2d0274823}\label{namespacecommon_afb09e0e369090296753bc8e2d0274823}} 
+\index{common@{common}!app@{app}}
+\index{app@{app}!common@{common}}
+\subsubsection{\texorpdfstring{app}{app}}
+{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$ \hyperlink{classapp_1_1_t_application}{app\+::\+T\+Application} $>$ common\+::app \{ nullptr \}}
+
+
+
+Указатель на данные для обеспечения работы приложения 
+
+Указатель на класс обслуживающий приложение 

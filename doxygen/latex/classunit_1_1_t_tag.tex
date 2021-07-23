@@ -1,0 +1,96 @@
+\hypertarget{classunit_1_1_t_tag}{}\section{Класс unit\+:\+:T\+Tag}
+\label{classunit_1_1_t_tag}\index{unit\+::\+T\+Tag@{unit\+::\+T\+Tag}}
+
+
+{\ttfamily \#include $<$T\+Tag.\+hpp$>$}
+
+
+
+Граф наследования\+:unit\+:\+:T\+Tag\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=149pt]{classunit_1_1_t_tag__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Граф связей класса unit\+:\+:T\+Tag\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=149pt]{classunit_1_1_t_tag__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Открытые члены}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classunit_1_1_t_tag_adc2c2801738b094045529f1373f28203}\label{classunit_1_1_t_tag_adc2c2801738b094045529f1373f28203}} 
+bool \hyperlink{classunit_1_1_t_tag_adc2c2801738b094045529f1373f28203}{check} ()
+\begin{DoxyCompactList}\small\item\em Проверка оборудования \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classunit_1_1_t_tag_ae3158aefc30472351d25cfba3c3f0b9f}\label{classunit_1_1_t_tag_ae3158aefc30472351d25cfba3c3f0b9f}} 
+void \hyperlink{classunit_1_1_t_tag_ae3158aefc30472351d25cfba3c3f0b9f}{init} ()
+\begin{DoxyCompactList}\small\item\em Инициализация устройства \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classunit_1_1_t_tag_acd600380312d44954f0b46ec5f704691}\label{classunit_1_1_t_tag_acd600380312d44954f0b46ec5f704691}} 
+void \hyperlink{classunit_1_1_t_tag_acd600380312d44954f0b46ec5f704691}{sleep} ()
+\begin{DoxyCompactList}\small\item\em Перевод в режим энергосбережения \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classunit_1_1_t_tag_afc0b9080d0c67ed9fbdaa4ae3bfdfc7c}\label{classunit_1_1_t_tag_afc0b9080d0c67ed9fbdaa4ae3bfdfc7c}} 
+void \hyperlink{classunit_1_1_t_tag_afc0b9080d0c67ed9fbdaa4ae3bfdfc7c}{wakeup} ()
+\begin{DoxyCompactList}\small\item\em Выход из режима энергосбережения \end{DoxyCompactList}\item 
+bool \hyperlink{classunit_1_1_t_tag_a1dfd588909730d0b48edbeda273526fe}{process} ()
+\begin{DoxyCompactList}\small\item\em Чтения метки \end{DoxyCompactList}\item 
+void \hyperlink{classunit_1_1_t_tag_a90fba846800afa1b828d81f079ba735e}{copy\+Tag} (uint8\+\_\+t $\ast$)
+\begin{DoxyCompactList}\small\item\em Копирование текущей метки из регистра R\+T\+C\+\_\+\+B\+K\+P\+\_\+\+D\+R0 в uint8\+\_\+t буфер \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Подробное описание}
+Класс управления чипом P\+N532 Считанная метка записывается в backup регистр R\+T\+C\+\_\+\+B\+K\+P\+\_\+\+D\+R0 и доступна всегда. 
+
+\subsection{Методы}
+\mbox{\Hypertarget{classunit_1_1_t_tag_a90fba846800afa1b828d81f079ba735e}\label{classunit_1_1_t_tag_a90fba846800afa1b828d81f079ba735e}} 
+\index{unit\+::\+T\+Tag@{unit\+::\+T\+Tag}!copy\+Tag@{copy\+Tag}}
+\index{copy\+Tag@{copy\+Tag}!unit\+::\+T\+Tag@{unit\+::\+T\+Tag}}
+\subsubsection{\texorpdfstring{copy\+Tag()}{copyTag()}}
+{\footnotesize\ttfamily void unit\+::\+T\+Tag\+::copy\+Tag (\begin{DoxyParamCaption}\item[{uint8\+\_\+t $\ast$}]{in\+Ptr }\end{DoxyParamCaption})}
+
+
+
+Копирование текущей метки из регистра R\+T\+C\+\_\+\+B\+K\+P\+\_\+\+D\+R0 в uint8\+\_\+t буфер 
+
+
+
+ 
+\begin{DoxyParams}{Аргументы}
+{\em in\+Ptr} & Указатель куда копируем метку \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classunit_1_1_t_tag_a1dfd588909730d0b48edbeda273526fe}\label{classunit_1_1_t_tag_a1dfd588909730d0b48edbeda273526fe}} 
+\index{unit\+::\+T\+Tag@{unit\+::\+T\+Tag}!process@{process}}
+\index{process@{process}!unit\+::\+T\+Tag@{unit\+::\+T\+Tag}}
+\subsubsection{\texorpdfstring{process()}{process()}}
+{\footnotesize\ttfamily bool unit\+::\+T\+Tag\+::process (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Чтения метки 
+
+Метод сканирует метку и записывает ее в регистр \begin{DoxyReturn}{Возвращает}
+При успешном сканировании возвращает true 
+\end{DoxyReturn}
+
+
+Замещает \hyperlink{classunit_1_1_t_unit_a108691c8b988d97c65237c83a31db706}{unit\+::\+T\+Unit}.
+
+Граф вызовов\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=318pt]{classunit_1_1_t_tag_a1dfd588909730d0b48edbeda273526fe_cgraph}
+\end{center}
+\end{figure}
+
+
+Объявления и описания членов классов находятся в файлах\+:\begin{DoxyCompactItemize}
+\item 
+Core/cpp/T\+Tag.\+hpp\item 
+Core/cpp/T\+Tag.\+cpp\end{DoxyCompactItemize}

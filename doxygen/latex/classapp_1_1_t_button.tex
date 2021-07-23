@@ -1,0 +1,96 @@
+\hypertarget{classapp_1_1_t_button}{}\section{Класс app\+:\+:T\+Button}
+\label{classapp_1_1_t_button}\index{app\+::\+T\+Button@{app\+::\+T\+Button}}
+
+
+{\ttfamily \#include $<$T\+Button.\+hpp$>$}
+
+
+
+Граф связей класса app\+:\+:T\+Button\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=171pt]{classapp_1_1_t_button__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Открытые члены}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classapp_1_1_t_button_a92fc2dcb3d54a563b7b1a96900a4717c}{start\+Bounce} ()
+\begin{DoxyCompactList}\small\item\em Запуск процедуры устранения дребезга \end{DoxyCompactList}\item 
+bool \hyperlink{classapp_1_1_t_button_a52714fba93672ac5690de6f9d56e9a5f}{check\+Bounce} ()
+\begin{DoxyCompactList}\small\item\em Проверка устранения дребезга контактов \end{DoxyCompactList}\item 
+G\+P\+I\+O\+\_\+\+Pin\+State \hyperlink{classapp_1_1_t_button_a1d6cf41ee0a98746592b1d604041f8ce}{get\+State} ()
+\begin{DoxyCompactList}\small\item\em Получение состояния кнопки. \end{DoxyCompactList}\item 
+\hyperlink{classapp_1_1_t_button_a846432bef1a2f5f2705eef5f95d22ae2}{T\+Button} (G\+P\+I\+O\+\_\+\+Type\+Def $\ast$, uint16\+\_\+t)
+\end{DoxyCompactItemize}
+
+
+\subsection{Подробное описание}
+Класс для работы с кнопками 
+
+\subsection{Конструктор(ы)}
+\mbox{\Hypertarget{classapp_1_1_t_button_a846432bef1a2f5f2705eef5f95d22ae2}\label{classapp_1_1_t_button_a846432bef1a2f5f2705eef5f95d22ae2}} 
+\index{app\+::\+T\+Button@{app\+::\+T\+Button}!T\+Button@{T\+Button}}
+\index{T\+Button@{T\+Button}!app\+::\+T\+Button@{app\+::\+T\+Button}}
+\subsubsection{\texorpdfstring{T\+Button()}{TButton()}}
+{\footnotesize\ttfamily app\+::\+T\+Button\+::\+T\+Button (\begin{DoxyParamCaption}\item[{G\+P\+I\+O\+\_\+\+Type\+Def $\ast$}]{in\+Gpio\+Port,  }\item[{uint16\+\_\+t}]{in\+Gpio }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Аргументы}
+{\em in\+Gpio\+Port} & Регистр G\+P\+IO \\
+\hline
+{\em in\+Gpio} & Пин \\
+\hline
+\end{DoxyParams}
+\begin{DoxyAttention}{Внимание}
+Я ни коем образом не проверяю правильность передачи параметров 
+\end{DoxyAttention}
+
+
+\subsection{Методы}
+\mbox{\Hypertarget{classapp_1_1_t_button_a52714fba93672ac5690de6f9d56e9a5f}\label{classapp_1_1_t_button_a52714fba93672ac5690de6f9d56e9a5f}} 
+\index{app\+::\+T\+Button@{app\+::\+T\+Button}!check\+Bounce@{check\+Bounce}}
+\index{check\+Bounce@{check\+Bounce}!app\+::\+T\+Button@{app\+::\+T\+Button}}
+\subsubsection{\texorpdfstring{check\+Bounce()}{checkBounce()}}
+{\footnotesize\ttfamily bool app\+::\+T\+Button\+::check\+Bounce (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Проверка устранения дребезга контактов 
+
+\begin{DoxyReturn}{Возвращает}
+true Если дребезг устранен 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classapp_1_1_t_button_a1d6cf41ee0a98746592b1d604041f8ce}\label{classapp_1_1_t_button_a1d6cf41ee0a98746592b1d604041f8ce}} 
+\index{app\+::\+T\+Button@{app\+::\+T\+Button}!get\+State@{get\+State}}
+\index{get\+State@{get\+State}!app\+::\+T\+Button@{app\+::\+T\+Button}}
+\subsubsection{\texorpdfstring{get\+State()}{getState()}}
+{\footnotesize\ttfamily G\+P\+I\+O\+\_\+\+Pin\+State app\+::\+T\+Button\+::get\+State (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Получение состояния кнопки. 
+
+\begin{DoxyReturn}{Возвращает}
+Состояние нажатой кнопки. 
+\end{DoxyReturn}
+\begin{DoxyAttention}{Внимание}
+Устранение дребезга не проверяется вообще. 
+\end{DoxyAttention}
+\mbox{\Hypertarget{classapp_1_1_t_button_a92fc2dcb3d54a563b7b1a96900a4717c}\label{classapp_1_1_t_button_a92fc2dcb3d54a563b7b1a96900a4717c}} 
+\index{app\+::\+T\+Button@{app\+::\+T\+Button}!start\+Bounce@{start\+Bounce}}
+\index{start\+Bounce@{start\+Bounce}!app\+::\+T\+Button@{app\+::\+T\+Button}}
+\subsubsection{\texorpdfstring{start\+Bounce()}{startBounce()}}
+{\footnotesize\ttfamily void app\+::\+T\+Button\+::start\+Bounce (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Запуск процедуры устранения дребезга 
+
+Вне зависимости от состояния тупо запускаем устранение дребезга контактов. 
+
+Объявления и описания членов классов находятся в файлах\+:\begin{DoxyCompactItemize}
+\item 
+Core/cpp/T\+Button.\+hpp\item 
+Core/cpp/T\+Button.\+cpp\end{DoxyCompactItemize}

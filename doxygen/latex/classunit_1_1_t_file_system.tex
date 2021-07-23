@@ -1,0 +1,140 @@
+\hypertarget{classunit_1_1_t_file_system}{}\section{Класс unit\+:\+:T\+File\+System}
+\label{classunit_1_1_t_file_system}\index{unit\+::\+T\+File\+System@{unit\+::\+T\+File\+System}}
+
+
+Класс для работы с файловой системой  
+
+
+
+
+{\ttfamily \#include $<$T\+File\+System.\+hpp$>$}
+
+
+
+Граф наследования\+:unit\+:\+:T\+File\+System\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=174pt]{classunit_1_1_t_file_system__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Граф связей класса unit\+:\+:T\+File\+System\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=174pt]{classunit_1_1_t_file_system__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Открытые члены}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classunit_1_1_t_file_system_ac45162c4d69b6661aab204724af57322}{T\+File\+System} ()
+\item 
+virtual \hyperlink{classunit_1_1_t_file_system_a87299dbbdea872b06972f1432ef9ef88}{$\sim$\+T\+File\+System} ()
+\item 
+bool \hyperlink{classunit_1_1_t_file_system_a0737b50d219570ae2e11ea17a32cc85c}{check} ()
+\begin{DoxyCompactList}\small\item\em Проверка работоспособности S\+D-\/карточки \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classunit_1_1_t_file_system_a036085cc2f2674f9ea89426000b6ba02}\label{classunit_1_1_t_file_system_a036085cc2f2674f9ea89426000b6ba02}} 
+void \hyperlink{classunit_1_1_t_file_system_a036085cc2f2674f9ea89426000b6ba02}{init} ()
+\begin{DoxyCompactList}\small\item\em Инициализация устройства \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classunit_1_1_t_file_system_a4e4fd801d58a5c6b526a65ec5cb187dd}\label{classunit_1_1_t_file_system_a4e4fd801d58a5c6b526a65ec5cb187dd}} 
+void \hyperlink{classunit_1_1_t_file_system_a4e4fd801d58a5c6b526a65ec5cb187dd}{sleep} ()
+\begin{DoxyCompactList}\small\item\em Перевод в режим энергосбережения \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classunit_1_1_t_file_system_a99d5e06aee69d3674ea441f140f6a47b}\label{classunit_1_1_t_file_system_a99d5e06aee69d3674ea441f140f6a47b}} 
+void \hyperlink{classunit_1_1_t_file_system_a99d5e06aee69d3674ea441f140f6a47b}{wakeup} ()
+\begin{DoxyCompactList}\small\item\em Выход из режима энергосбережения \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classunit_1_1_t_file_system_af7969ea11284d9f6f093687f0ba90082}\label{classunit_1_1_t_file_system_af7969ea11284d9f6f093687f0ba90082}} 
+bool \hyperlink{classunit_1_1_t_file_system_af7969ea11284d9f6f093687f0ba90082}{process} ()
+\begin{DoxyCompactList}\small\item\em Получение данных \end{DoxyCompactList}\item 
+void \hyperlink{classunit_1_1_t_file_system_aaf4766a6f4dcd6759e362ffc977615f5}{get\+Time} ()
+\begin{DoxyCompactList}\small\item\em Синхронизация времени \end{DoxyCompactList}\item 
+void \hyperlink{classunit_1_1_t_file_system_a79523b2edca3574ec6254af671f28256}{set\+Tag} ()
+\begin{DoxyCompactList}\small\item\em Запись на SD ID сосканированной метки \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classunit_1_1_t_file_system_aacd7aae1827432b04c06b9a1d440b949}\label{classunit_1_1_t_file_system_aacd7aae1827432b04c06b9a1d440b949}} 
+bool \hyperlink{classunit_1_1_t_file_system_aacd7aae1827432b04c06b9a1d440b949}{write\+Photo} ()
+\begin{DoxyCompactList}\small\item\em Запись на SD изображения полученного с камеры \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Подробное описание}
+Класс для работы с файловой системой 
+
+Класс для работы с файловой системой на S\+D-\/карточке. Он нужен только что-\/бы записывать туда фотки, аудио и метки. \begin{DoxyAttention}{Внимание}
+Перед работой с файловой системой всегда необходимо инициальзировать SD карточку 
+\end{DoxyAttention}
+
+
+\subsection{Конструктор(ы)}
+\mbox{\Hypertarget{classunit_1_1_t_file_system_ac45162c4d69b6661aab204724af57322}\label{classunit_1_1_t_file_system_ac45162c4d69b6661aab204724af57322}} 
+\index{unit\+::\+T\+File\+System@{unit\+::\+T\+File\+System}!T\+File\+System@{T\+File\+System}}
+\index{T\+File\+System@{T\+File\+System}!unit\+::\+T\+File\+System@{unit\+::\+T\+File\+System}}
+\subsubsection{\texorpdfstring{T\+File\+System()}{TFileSystem()}}
+{\footnotesize\ttfamily unit\+::\+T\+File\+System\+::\+T\+File\+System (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Монтируем файловую систему. \begin{DoxyAttention}{Внимание}
+SD карта должна быть уже проинициализированна 
+\end{DoxyAttention}
+\mbox{\Hypertarget{classunit_1_1_t_file_system_a87299dbbdea872b06972f1432ef9ef88}\label{classunit_1_1_t_file_system_a87299dbbdea872b06972f1432ef9ef88}} 
+\index{unit\+::\+T\+File\+System@{unit\+::\+T\+File\+System}!````~T\+File\+System@{$\sim$\+T\+File\+System}}
+\index{````~T\+File\+System@{$\sim$\+T\+File\+System}!unit\+::\+T\+File\+System@{unit\+::\+T\+File\+System}}
+\subsubsection{\texorpdfstring{$\sim$\+T\+File\+System()}{~TFileSystem()}}
+{\footnotesize\ttfamily unit\+::\+T\+File\+System\+::$\sim$\+T\+File\+System (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+\begin{DoxyAttention}{Внимание}
+Файловая система должна быть размонтирована всегда, в противном случае SD\textquotesingle{}шка убивается 
+\end{DoxyAttention}
+
+
+\subsection{Методы}
+\mbox{\Hypertarget{classunit_1_1_t_file_system_a0737b50d219570ae2e11ea17a32cc85c}\label{classunit_1_1_t_file_system_a0737b50d219570ae2e11ea17a32cc85c}} 
+\index{unit\+::\+T\+File\+System@{unit\+::\+T\+File\+System}!check@{check}}
+\index{check@{check}!unit\+::\+T\+File\+System@{unit\+::\+T\+File\+System}}
+\subsubsection{\texorpdfstring{check()}{check()}}
+{\footnotesize\ttfamily bool unit\+::\+T\+File\+System\+::check (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Проверка работоспособности S\+D-\/карточки 
+
+\begin{DoxyRefDesc}{Необходимо сделать}
+\item[\hyperlink{todo__todo000004}{Необходимо сделать}]Приделать проверку записи и чтения тестового файла \end{DoxyRefDesc}
+\begin{DoxyReturn}{Возвращает}
+
+\end{DoxyReturn}
+
+
+Замещает \hyperlink{classunit_1_1_t_unit_abdcc6daabc86cea10abc96593d9d2c2a}{unit\+::\+T\+Unit}.
+
+\mbox{\Hypertarget{classunit_1_1_t_file_system_aaf4766a6f4dcd6759e362ffc977615f5}\label{classunit_1_1_t_file_system_aaf4766a6f4dcd6759e362ffc977615f5}} 
+\index{unit\+::\+T\+File\+System@{unit\+::\+T\+File\+System}!get\+Time@{get\+Time}}
+\index{get\+Time@{get\+Time}!unit\+::\+T\+File\+System@{unit\+::\+T\+File\+System}}
+\subsubsection{\texorpdfstring{get\+Time()}{getTime()}}
+{\footnotesize\ttfamily void unit\+::\+T\+File\+System\+::get\+Time (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Синхронизация времени 
+
+\begin{DoxyAttention}{Внимание}
+Инициализацию Fat\+FS нужно проверять до вызова этого метода 
+\end{DoxyAttention}
+\mbox{\Hypertarget{classunit_1_1_t_file_system_a79523b2edca3574ec6254af671f28256}\label{classunit_1_1_t_file_system_a79523b2edca3574ec6254af671f28256}} 
+\index{unit\+::\+T\+File\+System@{unit\+::\+T\+File\+System}!set\+Tag@{set\+Tag}}
+\index{set\+Tag@{set\+Tag}!unit\+::\+T\+File\+System@{unit\+::\+T\+File\+System}}
+\subsubsection{\texorpdfstring{set\+Tag()}{setTag()}}
+{\footnotesize\ttfamily void unit\+::\+T\+File\+System\+::set\+Tag (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Запись на SD ID сосканированной метки 
+
+\begin{DoxyAttention}{Внимание}
+Перед вызовом необходимо проверить, что Метка сосканирована и FS успешно инициализированна 
+\end{DoxyAttention}
+
+
+Объявления и описания членов классов находятся в файлах\+:\begin{DoxyCompactItemize}
+\item 
+Core/cpp/T\+File\+System.\+hpp\item 
+Core/cpp/T\+File\+System.\+cpp\end{DoxyCompactItemize}

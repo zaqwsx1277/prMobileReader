@@ -1,0 +1,120 @@
+\hypertarget{namespaceunit}{}\section{Пространство имен unit}
+\label{namespaceunit}\index{unit@{unit}}
+
+
+Всё, что касается работы управления внешними чипами  
+
+
+\subsection*{Классы}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classunit_1_1_t_audio}{T\+Audio}
+\item 
+class \hyperlink{classunit_1_1_t_bq25121}{T\+Bq25121}
+\item 
+class \hyperlink{classunit_1_1_t_file_system}{T\+File\+System}
+\begin{DoxyCompactList}\small\item\em Класс для работы с файловой системой \end{DoxyCompactList}\item 
+class \hyperlink{classunit_1_1_t_i2_c}{T\+I2C}
+\item 
+class \hyperlink{classunit_1_1_t_photo}{T\+Photo}
+\item 
+class \hyperlink{classunit_1_1_t_sdio}{T\+Sdio}
+\item 
+class \hyperlink{classunit_1_1_t_tag}{T\+Tag}
+\item 
+class \hyperlink{classunit_1_1_t_unit}{T\+Unit}
+\end{DoxyCompactItemize}
+\subsection*{Функции}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{namespaceunit_a00a34096b0492123f3830e75447e59d7}\label{namespaceunit_a00a34096b0492123f3830e75447e59d7}} 
+constexpr uint8\+\_\+t \hyperlink{namespaceunit_a00a34096b0492123f3830e75447e59d7}{def\+Bq25121\+Addr\+Write} (\hyperlink{namespaceunit_af46d6c2767dafd308cf474c40fbeb8ec}{def\+Bq25121\+Adrr}$<$$<$ 1)
+\begin{DoxyCompactList}\small\item\em I2C адрес чипа B\+Q25121 для записи \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Переменные}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{namespaceunit_a3a82b0d0086859e1e04e0878fb932db3}\label{namespaceunit_a3a82b0d0086859e1e04e0878fb932db3}} 
+constexpr uint32\+\_\+t \hyperlink{namespaceunit_a3a82b0d0086859e1e04e0878fb932db3}{st\+Audio\+Duration} \{ 10000 \}
+\begin{DoxyCompactList}\small\item\em Максимальная длительность записи аудио \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespaceunit_af46d6c2767dafd308cf474c40fbeb8ec}\label{namespaceunit_af46d6c2767dafd308cf474c40fbeb8ec}} 
+constexpr uint8\+\_\+t \hyperlink{namespaceunit_af46d6c2767dafd308cf474c40fbeb8ec}{def\+Bq25121\+Adrr} \{ 0x6\+A \}
+\begin{DoxyCompactList}\small\item\em I2C адрес чипа B\+Q25121. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespaceunit_a288a496e8f8769855083c088ae7560b9}\label{namespaceunit_a288a496e8f8769855083c088ae7560b9}} 
+constexpr uint8\+\_\+t \hyperlink{namespaceunit_a288a496e8f8769855083c088ae7560b9}{def\+Bq25121\+Addr\+Read} \{ (\hyperlink{namespaceunit_af46d6c2767dafd308cf474c40fbeb8ec}{def\+Bq25121\+Adrr} $<$$<$ 1) + 1 \}
+\begin{DoxyCompactList}\small\item\em I2C адрес чипа B\+Q25121 для чтения \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespaceunit_ab0580f2a23a63c34bfb8d724d6a62b5a}\label{namespaceunit_ab0580f2a23a63c34bfb8d724d6a62b5a}} 
+constexpr uint8\+\_\+t {\bfseries def\+Bq25121\+Cmd\+\_\+00} \mbox{[}$\,$\mbox{]} \{ 0x00, 0x00 \}
+\item 
+\mbox{\Hypertarget{namespaceunit_aa36516696f6f93e324939647b1a827f7}\label{namespaceunit_aa36516696f6f93e324939647b1a827f7}} 
+constexpr uint8\+\_\+t {\bfseries def\+Bq25121\+Cmd\+\_\+01} \mbox{[}$\,$\mbox{]} \{ 0x01, 0x00 \}
+\item 
+\mbox{\Hypertarget{namespaceunit_a677ac2bb5fbf6c6e9c105088ac9d5414}\label{namespaceunit_a677ac2bb5fbf6c6e9c105088ac9d5414}} 
+constexpr uint8\+\_\+t {\bfseries def\+Bq25121\+Cmd\+\_\+02} \mbox{[}$\,$\mbox{]} \{ 0x02, 0x88 \}
+\item 
+\mbox{\Hypertarget{namespaceunit_a8fb3be9b7803c7cc2c4ca90898faec3d}\label{namespaceunit_a8fb3be9b7803c7cc2c4ca90898faec3d}} 
+constexpr uint8\+\_\+t {\bfseries def\+Bq25121\+Cmd\+\_\+03} \mbox{[}$\,$\mbox{]} \{ 0x03, 0x98 \}
+\item 
+\mbox{\Hypertarget{namespaceunit_abed998b1b5d20891626f3493002ddec4}\label{namespaceunit_abed998b1b5d20891626f3493002ddec4}} 
+constexpr uint8\+\_\+t {\bfseries def\+Bq25121\+Cmd\+\_\+04} \mbox{[}$\,$\mbox{]} \{ 0x04, 0x26 \}
+\item 
+\mbox{\Hypertarget{namespaceunit_a61a67af9243053db1b51c07d2537d8b3}\label{namespaceunit_a61a67af9243053db1b51c07d2537d8b3}} 
+constexpr uint8\+\_\+t {\bfseries def\+Bq25121\+Cmd\+\_\+05} \mbox{[}$\,$\mbox{]} \{ 0x05, 0x78 \}
+\item 
+\mbox{\Hypertarget{namespaceunit_a662307ee220d67ec1d625d2602045fe2}\label{namespaceunit_a662307ee220d67ec1d625d2602045fe2}} 
+constexpr uint8\+\_\+t {\bfseries def\+Bq25121\+Cmd\+\_\+06} \mbox{[}$\,$\mbox{]} \{ 0x06, 0x\+F\+E \}
+\item 
+\mbox{\Hypertarget{namespaceunit_aaac486d7d72c0cca96ec7dea7d3eb949}\label{namespaceunit_aaac486d7d72c0cca96ec7dea7d3eb949}} 
+constexpr uint8\+\_\+t {\bfseries def\+Bq25121\+Cmd\+\_\+07} \mbox{[}$\,$\mbox{]} \{ 0x07, 0x\+D0 \}
+\item 
+\mbox{\Hypertarget{namespaceunit_af7326930119d82fa4138eaa1a5d06cd3}\label{namespaceunit_af7326930119d82fa4138eaa1a5d06cd3}} 
+constexpr uint8\+\_\+t {\bfseries def\+Bq25121\+Cmd\+\_\+08} \mbox{[}$\,$\mbox{]} \{ 0x08, 0x48 \}
+\item 
+\mbox{\Hypertarget{namespaceunit_adfff8f732367d25e495e36d8c42fe6b0}\label{namespaceunit_adfff8f732367d25e495e36d8c42fe6b0}} 
+constexpr uint8\+\_\+t {\bfseries def\+Bq25121\+Cmd\+\_\+09} \mbox{[}$\,$\mbox{]} \{ 0x09, 0x32 \}
+\item 
+\mbox{\Hypertarget{namespaceunit_a4046328eb4948dd6d45bb766c644edcc}\label{namespaceunit_a4046328eb4948dd6d45bb766c644edcc}} 
+constexpr uint8\+\_\+t {\bfseries def\+Bq25121\+Cmd\+\_\+0B} \mbox{[}$\,$\mbox{]} \{ 0x0\+B, 0x42 \}
+\item 
+\mbox{\Hypertarget{namespaceunit_abcbb090579c207ee6b57c5de2a688616}\label{namespaceunit_abcbb090579c207ee6b57c5de2a688616}} 
+constexpr uint32\+\_\+t \hyperlink{namespaceunit_abcbb090579c207ee6b57c5de2a688616}{def\+Bq25121\+Time\+Out} \{ 100 \}
+\begin{DoxyCompactList}\small\item\em Таймаут для работы по шине I2C. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespaceunit_acbeeb78b619bb42824b0c0518e456f95}\label{namespaceunit_acbeeb78b619bb42824b0c0518e456f95}} 
+constexpr uint32\+\_\+t \hyperlink{namespaceunit_acbeeb78b619bb42824b0c0518e456f95}{st\+Photo\+Time\+Wait} \{ 5000 \}
+\begin{DoxyCompactList}\small\item\em Время ожидания отпускания кнопки \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespaceunit_a72c06d57e001189306ca7978d5b2df8f}\label{namespaceunit_a72c06d57e001189306ca7978d5b2df8f}} 
+constexpr uint16\+\_\+t \hyperlink{namespaceunit_a72c06d57e001189306ca7978d5b2df8f}{st\+Photo\+I2\+C\+Write} \{ 0x60 \}
+\begin{DoxyCompactList}\small\item\em Адрес для записи на шине I2C. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespaceunit_a50f740136690db44e593be6a0e62d429}\label{namespaceunit_a50f740136690db44e593be6a0e62d429}} 
+constexpr uint16\+\_\+t \hyperlink{namespaceunit_a50f740136690db44e593be6a0e62d429}{st\+Photo\+I2\+C\+Read} \{ 0x61 \}
+\begin{DoxyCompactList}\small\item\em Адрес для чтения на шине I2C. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespaceunit_a8ef813be3eb747a2ef19ed15edb1db76}\label{namespaceunit_a8ef813be3eb747a2ef19ed15edb1db76}} 
+constexpr uint32\+\_\+t \hyperlink{namespaceunit_a8ef813be3eb747a2ef19ed15edb1db76}{st\+Photo\+I2\+C\+Timeout} \{ 100 \}
+\begin{DoxyCompactList}\small\item\em Таймаут при работе по шине I2C. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespaceunit_a40b076ece72209541014f35f94c3b5fa}\label{namespaceunit_a40b076ece72209541014f35f94c3b5fa}} 
+constexpr uint32\+\_\+t \hyperlink{namespaceunit_a40b076ece72209541014f35f94c3b5fa}{st\+Photo\+D\+C\+M\+I\+Timeout} \{ 10000 \}
+\begin{DoxyCompactList}\small\item\em Таймаут получения изображения \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespaceunit_af17602370595c7749fafdea0a4ce5697}\label{namespaceunit_af17602370595c7749fafdea0a4ce5697}} 
+constexpr uint8\+\_\+t {\bfseries st\+Tag\+Cmd\+Ack} \mbox{[}$\,$\mbox{]} \{0x00,0x00,0x\+F\+F,0x00,0x\+F\+F,0x00\}
+\item 
+\mbox{\Hypertarget{namespaceunit_acbd5e383603353c1013338c523fc38c2}\label{namespaceunit_acbd5e383603353c1013338c523fc38c2}} 
+constexpr uint8\+\_\+t {\bfseries st\+Tag\+Cmd\+Ack\+Wake\+Up} \mbox{[}$\,$\mbox{]} \{0x55,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x\+F\+F,0x03,0x\+F\+D,0x\+D4,0x14,0x01,0x17,0x00\}
+\item 
+\mbox{\Hypertarget{namespaceunit_a658685ce82f0a5844442b23ea32dc32f}\label{namespaceunit_a658685ce82f0a5844442b23ea32dc32f}} 
+constexpr uint8\+\_\+t {\bfseries st\+Tag\+Cmd\+Scan} \mbox{[}$\,$\mbox{]} \{0x00,0x00,0x\+F\+F,0x04,0x\+F\+C,0x\+D4,0x4\+A,0x01,0x00,0x\+E1,0x00\}
+\item 
+\mbox{\Hypertarget{namespaceunit_a82966a454a3c0b019e3069e11bd42e58}\label{namespaceunit_a82966a454a3c0b019e3069e11bd42e58}} 
+constexpr uint8\+\_\+t {\bfseries st\+Tag\+Cmd\+Sleep} \mbox{[}$\,$\mbox{]} \{0x00, 0x\+F\+F, 0x03, 0x\+F\+D, 0x\+D4, 0x16, 0x10, 0x06, 0x00\}
+\item 
+\mbox{\Hypertarget{namespaceunit_aa0dcd71ec85a3cd4efd9a1f7932b85c4}\label{namespaceunit_aa0dcd71ec85a3cd4efd9a1f7932b85c4}} 
+constexpr uint32\+\_\+t \hyperlink{namespaceunit_aa0dcd71ec85a3cd4efd9a1f7932b85c4}{st\+Tag\+Usart\+Time\+Out} \{ 100 \}
+\begin{DoxyCompactList}\small\item\em Время ожидания отправки сообщений по U\+S\+A\+RT. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespaceunit_a261d46e79e60f0c63e800220b3823f52}\label{namespaceunit_a261d46e79e60f0c63e800220b3823f52}} 
+constexpr uint32\+\_\+t \hyperlink{namespaceunit_a261d46e79e60f0c63e800220b3823f52}{st\+Tag\+Usart\+Wait\+ID} \{ 10000 \}
+\begin{DoxyCompactList}\small\item\em Время ожидания получения ID метки (10 сек) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespaceunit_ad375ec8c6ee3711bef6f664811d73b14}\label{namespaceunit_ad375ec8c6ee3711bef6f664811d73b14}} 
+constexpr uint32\+\_\+t \hyperlink{namespaceunit_ad375ec8c6ee3711bef6f664811d73b14}{st\+Tag\+Wait\+Sync} \{ 5000 \}
+\begin{DoxyCompactList}\small\item\em Время ожидания синхронизации \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Подробное описание}
+Всё, что касается работы управления внешними чипами 

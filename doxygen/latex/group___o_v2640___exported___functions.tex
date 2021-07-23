@@ -1,0 +1,94 @@
+\hypertarget{group___o_v2640___exported___functions}{}\section{O\+V2640\+\_\+\+Exported\+\_\+\+Functions}
+\label{group___o_v2640___exported___functions}\index{O\+V2640\+\_\+\+Exported\+\_\+\+Functions@{O\+V2640\+\_\+\+Exported\+\_\+\+Functions}}
+Граф связей класса O\+V2640\+\_\+\+Exported\+\_\+\+Functions\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=310pt]{group___o_v2640___exported___functions}
+\end{center}
+\end{figure}
+\subsection*{Функции}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{group___o_v2640___exported___functions_ga4f4e3d4382932ad47f2c30e2461a8355}\label{group___o_v2640___exported___functions_ga4f4e3d4382932ad47f2c30e2461a8355}} 
+void {\bfseries ov2640\+\_\+\+Init} (uint16\+\_\+t Device\+Addr, uint32\+\_\+t resolution)
+\item 
+\mbox{\Hypertarget{group___o_v2640___exported___functions_ga942828d9066961933f178394521e95cf}\label{group___o_v2640___exported___functions_ga942828d9066961933f178394521e95cf}} 
+void {\bfseries ov2640\+\_\+\+Config} (uint16\+\_\+t Device\+Addr, uint32\+\_\+t feature, uint32\+\_\+t value, uint32\+\_\+t B\+R\+\_\+value)
+\item 
+void \hyperlink{group___o_v2640___exported___functions_gab8212120406cb75db2b159188d708160}{O\+V2640\+\_\+\+J\+P\+E\+G\+Config} (Image\+Format\+\_\+\+Type\+Def Image\+Format)
+\begin{DoxyCompactList}\small\item\em Initializes the O\+V2640 C\+A\+M\+E\+RA component. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group___o_v2640___exported___functions_ga481ceacfba870cbd2566b1cc2a243bb7}\label{group___o_v2640___exported___functions_ga481ceacfba870cbd2566b1cc2a243bb7}} 
+void {\bfseries O\+V2640\+\_\+\+Brightness\+Config} (uint8\+\_\+t Brightness)
+\item 
+\mbox{\Hypertarget{group___o_v2640___exported___functions_ga5dfda64dfd5f9d8b21c2433c7e1e42fe}\label{group___o_v2640___exported___functions_ga5dfda64dfd5f9d8b21c2433c7e1e42fe}} 
+void {\bfseries O\+V2640\+\_\+\+Auto\+Exposure} (uint8\+\_\+t level)
+\item 
+\mbox{\Hypertarget{group___o_v2640___exported___functions_ga2a1ea5c5164eaaee2367100fc31fd4ad}\label{group___o_v2640___exported___functions_ga2a1ea5c5164eaaee2367100fc31fd4ad}} 
+void {\bfseries O\+V2640\+\_\+\+Soft\+\_\+\+Standby} (void)
+\item 
+\mbox{\Hypertarget{group___o_v2640___exported___functions_gaa5edc1649dc35f3a8cb975921b9e59c8}\label{group___o_v2640___exported___functions_gaa5edc1649dc35f3a8cb975921b9e59c8}} 
+void {\bfseries O\+V2640\+\_\+\+Soft\+\_\+\+Wakeup} (void)
+\item 
+\mbox{\Hypertarget{group___o_v2640___exported___functions_gaba6fd377ed3b31798b6dbf0315957bb1}\label{group___o_v2640___exported___functions_gaba6fd377ed3b31798b6dbf0315957bb1}} 
+uint8\+\_\+t {\bfseries O\+V2640\+\_\+\+I\+D\+\_\+check} (void)
+\end{DoxyCompactItemize}
+\subsection*{Переменные}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{group___o_v2640___exported___functions_gac379bcc152d860f08b1279fd3e232295}\label{group___o_v2640___exported___functions_gac379bcc152d860f08b1279fd3e232295}} 
+I2\+C\+\_\+\+Handle\+Type\+Def {\bfseries hi2c2}
+\end{DoxyCompactItemize}
+
+
+\subsection{Подробное описание}
+
+
+\subsection{Функции}
+\mbox{\Hypertarget{group___o_v2640___exported___functions_gab8212120406cb75db2b159188d708160}\label{group___o_v2640___exported___functions_gab8212120406cb75db2b159188d708160}} 
+\index{O\+V2640\+\_\+\+Exported\+\_\+\+Functions@{O\+V2640\+\_\+\+Exported\+\_\+\+Functions}!O\+V2640\+\_\+\+J\+P\+E\+G\+Config@{O\+V2640\+\_\+\+J\+P\+E\+G\+Config}}
+\index{O\+V2640\+\_\+\+J\+P\+E\+G\+Config@{O\+V2640\+\_\+\+J\+P\+E\+G\+Config}!O\+V2640\+\_\+\+Exported\+\_\+\+Functions@{O\+V2640\+\_\+\+Exported\+\_\+\+Functions}}
+\subsubsection{\texorpdfstring{O\+V2640\+\_\+\+J\+P\+E\+G\+Config()}{OV2640\_JPEGConfig()}}
+{\footnotesize\ttfamily void O\+V2640\+\_\+\+J\+P\+E\+G\+Config (\begin{DoxyParamCaption}\item[{Image\+Format\+\_\+\+Type\+Def}]{Image\+Format }\end{DoxyParamCaption})}
+
+
+
+Initializes the O\+V2640 C\+A\+M\+E\+RA component. 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em Device\+Addr} & Device address on communication Bus. \\
+\hline
+{\em resolution} & Camera resolution \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Возвращаемые значения}
+{\em None} & Configures the O\+V2640 camera feature. \\
+\hline
+\end{DoxyRetVals}
+
+\begin{DoxyParams}{Аргументы}
+{\em Device\+Addr} & Device address on communication Bus. \\
+\hline
+{\em feature} & Camera feature to be configured \\
+\hline
+{\em value} & Value to be configured \\
+\hline
+{\em brightness\+\_\+value} & Brightness value to be configured \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Возвращаемые значения}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+Граф вызовов\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{group___o_v2640___exported___functions_gab8212120406cb75db2b159188d708160_cgraph}
+\end{center}
+\end{figure}

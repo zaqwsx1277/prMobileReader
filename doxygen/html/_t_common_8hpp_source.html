@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.13"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>СКОП 2.01: Исходный файл Core/cpp/TCommon.hpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">СКОП 2.01
+   &#160;<span id="projectnumber">2.0</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.8.13 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Поиск');
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_c6310732a22f63c0c2fc5595561e68f1.html">Core</a></li><li class="navelem"><a class="el" href="dir_d8f307df66eb1dd6892dd23095730946.html">cpp</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">TCommon.hpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div><div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * TCommon.hpp</span></div><div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> *</span></div><div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> *  Created on: Jun 2, 2021</span></div><div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> *      Author: AAL</span></div><div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> */</span></div><div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;</div><div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#ifndef CPP_TCOMMON_HPP_</span></div><div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#define CPP_TCOMMON_HPP_</span></div><div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;</div><div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div><div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;memory&gt;</span></div><div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;</div><div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &quot;TApplication.hpp&quot;</span></div><div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;</div><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacecommon.html">common</a> {</div><div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keyword">extern</span> std::unique_ptr &lt;app::TApplication&gt; <a class="code" href="namespacecommon.html#afb09e0e369090296753bc8e2d0274823">app</a> ;    </div><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keyword">extern</span> std::string <a class="code" href="namespacecommon.html#ac1517a41cc3b73ca63e645dca03d6d47">stTempStr</a> ;                      </div><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keyword">extern</span> std::string <a class="code" href="namespacecommon.html#a9e2c1d0b0f61994e2ebef34621b6ba0c">stSyncTimeFileName</a> ;             </div><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="keyword">extern</span> std::string <a class="code" href="namespacecommon.html#ac1f212cd0775ff1f6c0295b72d658e25">stTagFileName</a> ;                  </div><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keyword">extern</span> std::string <a class="code" href="namespacecommon.html#a373798ef1a9c0a94b49bc38455d62d10">stPhotoFileName</a> ;                </div><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keyword">extern</span> uint8_t <a class="code" href="namespacecommon.html#ad9edd5582300fe9f535b3d2f912291bb">stTagBufId</a> [25] ;                    </div><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keyword">extern</span> uint8_t <a class="code" href="namespacecommon.html#a07e080fe05fc55b6f3eab1de78a1157a">stFileBuf</a> [512] ;                    </div><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="keyword">extern</span> uint8_t <a class="code" href="namespacecommon.html#a64410627120637f6951a05b65a001c0e">stPhotoBuf</a> [1600*94] ;               </div><div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;} <span class="comment">/* namespace common */</span></div><div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div><div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* CPP_TCOMMON_HPP_ */</span><span class="preprocessor"></span></div><div class="ttc" id="namespacecommon_html_a64410627120637f6951a05b65a001c0e"><div class="ttname"><a href="namespacecommon.html#a64410627120637f6951a05b65a001c0e">common::stPhotoBuf</a></div><div class="ttdeci">uint8_t stPhotoBuf[1600 *94]</div><div class="ttdoc">Буфер для сканирования изображения </div><div class="ttdef"><b>Definition:</b> TCommon.cpp:20</div></div>
+<div class="ttc" id="namespacecommon_html_ac1f212cd0775ff1f6c0295b72d658e25"><div class="ttname"><a href="namespacecommon.html#ac1f212cd0775ff1f6c0295b72d658e25">common::stTagFileName</a></div><div class="ttdeci">std::string stTagFileName</div><div class="ttdoc">Имя файла для хранения меток </div><div class="ttdef"><b>Definition:</b> TCommon.cpp:15</div></div>
+<div class="ttc" id="namespacecommon_html_a373798ef1a9c0a94b49bc38455d62d10"><div class="ttname"><a href="namespacecommon.html#a373798ef1a9c0a94b49bc38455d62d10">common::stPhotoFileName</a></div><div class="ttdeci">std::string stPhotoFileName</div><div class="ttdoc">Имя файла для хранения меток </div><div class="ttdef"><b>Definition:</b> TCommon.cpp:16</div></div>
+<div class="ttc" id="namespacecommon_html_ad9edd5582300fe9f535b3d2f912291bb"><div class="ttname"><a href="namespacecommon.html#ad9edd5582300fe9f535b3d2f912291bb">common::stTagBufId</a></div><div class="ttdeci">uint8_t stTagBufId[25]</div><div class="ttdoc">Буфер для чтения метки </div><div class="ttdef"><b>Definition:</b> TCommon.cpp:18</div></div>
+<div class="ttc" id="namespacecommon_html_afb09e0e369090296753bc8e2d0274823"><div class="ttname"><a href="namespacecommon.html#afb09e0e369090296753bc8e2d0274823">common::app</a></div><div class="ttdeci">std::unique_ptr&lt; app::TApplication &gt; app</div><div class="ttdoc">Указатель на данные для обеспечения работы приложения </div><div class="ttdef"><b>Definition:</b> TCommon.cpp:12</div></div>
+<div class="ttc" id="namespacecommon_html_ac1517a41cc3b73ca63e645dca03d6d47"><div class="ttname"><a href="namespacecommon.html#ac1517a41cc3b73ca63e645dca03d6d47">common::stTempStr</a></div><div class="ttdeci">std::string stTempStr</div><div class="ttdoc">Временная строка для корректной отсылки сообщений по UART. </div><div class="ttdef"><b>Definition:</b> TCommon.cpp:13</div></div>
+<div class="ttc" id="namespacecommon_html"><div class="ttname"><a href="namespacecommon.html">common</a></div><div class="ttdoc">Различные общие для всего приложения определения </div><div class="ttdef"><b>Definition:</b> TCommon.cpp:10</div></div>
+<div class="ttc" id="namespacecommon_html_a07e080fe05fc55b6f3eab1de78a1157a"><div class="ttname"><a href="namespacecommon.html#a07e080fe05fc55b6f3eab1de78a1157a">common::stFileBuf</a></div><div class="ttdeci">uint8_t stFileBuf[512]</div><div class="ttdoc">Буфер для записи данных в файл. Он здесь, т.к. SDIO работает по DMA. </div><div class="ttdef"><b>Definition:</b> TCommon.cpp:19</div></div>
+<div class="ttc" id="namespacecommon_html_a9e2c1d0b0f61994e2ebef34621b6ba0c"><div class="ttname"><a href="namespacecommon.html#a9e2c1d0b0f61994e2ebef34621b6ba0c">common::stSyncTimeFileName</a></div><div class="ttdeci">std::string stSyncTimeFileName</div><div class="ttdoc">Имя файла для синхронизации времени </div><div class="ttdef"><b>Definition:</b> TCommon.cpp:14</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Создано системой &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.13
+</small></address>
+</body>
+</html>

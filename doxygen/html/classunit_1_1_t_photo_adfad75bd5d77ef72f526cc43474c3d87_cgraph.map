@@ -1,0 +1,4 @@
+<map id="unit::TPhoto::init" name="unit::TPhoto::init">
+<area shape="rect" id="node2" href="$group___o_v2640___private___functions.html#gab8212120406cb75db2b159188d708160" title="Initializes the OV2640 CAMERA component. " alt="" coords="172,5,321,32"/>
+<area shape="rect" id="node3" href="$group___o_v2640___private___functions.html#gabb581a828532aa534596ea82b558b239" title="Camera writes single data. " alt="" coords="369,5,549,32"/>
+</map>

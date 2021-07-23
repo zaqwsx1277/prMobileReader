@@ -1,0 +1,53 @@
+\hypertarget{classunit_1_1_t_audio}{}\section{Класс unit\+:\+:T\+Audio}
+\label{classunit_1_1_t_audio}\index{unit\+::\+T\+Audio@{unit\+::\+T\+Audio}}
+
+
+{\ttfamily \#include $<$T\+Audio.\+hpp$>$}
+
+
+
+Граф наследования\+:unit\+:\+:T\+Audio\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=149pt]{classunit_1_1_t_audio__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Граф связей класса unit\+:\+:T\+Audio\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=149pt]{classunit_1_1_t_audio__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Открытые члены}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classunit_1_1_t_audio_a69cc926edc98c59e9ffaad10ceb605f0}\label{classunit_1_1_t_audio_a69cc926edc98c59e9ffaad10ceb605f0}} 
+bool \hyperlink{classunit_1_1_t_audio_a69cc926edc98c59e9ffaad10ceb605f0}{check} ()
+\begin{DoxyCompactList}\small\item\em Проверка работоспособности аудио (запись и вопроизведение пищалки) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classunit_1_1_t_audio_a362d211c87c2497e12792243cc2c0fc9}\label{classunit_1_1_t_audio_a362d211c87c2497e12792243cc2c0fc9}} 
+void \hyperlink{classunit_1_1_t_audio_a362d211c87c2497e12792243cc2c0fc9}{init} ()
+\begin{DoxyCompactList}\small\item\em Инициализация устройства \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classunit_1_1_t_audio_aab519e5239080d5ef906293dedc9399a}\label{classunit_1_1_t_audio_aab519e5239080d5ef906293dedc9399a}} 
+void \hyperlink{classunit_1_1_t_audio_aab519e5239080d5ef906293dedc9399a}{sleep} ()
+\begin{DoxyCompactList}\small\item\em Перевод в режим энергосбережения \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classunit_1_1_t_audio_a3cbc7de5ae0d03af42eeed896829d85c}\label{classunit_1_1_t_audio_a3cbc7de5ae0d03af42eeed896829d85c}} 
+void \hyperlink{classunit_1_1_t_audio_a3cbc7de5ae0d03af42eeed896829d85c}{wakeup} ()
+\begin{DoxyCompactList}\small\item\em Выход из режима энергосбережения \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classunit_1_1_t_audio_ad547ef4d28534b9cd76d2e7eb539d1e0}\label{classunit_1_1_t_audio_ad547ef4d28534b9cd76d2e7eb539d1e0}} 
+bool \hyperlink{classunit_1_1_t_audio_ad547ef4d28534b9cd76d2e7eb539d1e0}{process} ()
+\begin{DoxyCompactList}\small\item\em Получение данных с микрофона и запись его в файл \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Подробное описание}
+
+
+ Класс для работы со звуком 
+
+Объявления и описания членов классов находятся в файлах\+:\begin{DoxyCompactItemize}
+\item 
+Core/cpp/T\+Audio.\+hpp\item 
+Core/cpp/T\+Audio.\+cpp\end{DoxyCompactItemize}

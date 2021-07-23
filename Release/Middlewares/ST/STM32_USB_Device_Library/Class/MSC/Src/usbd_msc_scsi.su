@@ -1,0 +1,6 @@
+usbd_msc_scsi.c:536:6:SCSI_SenseCode.constprop	8	static
+usbd_msc_scsi.c:1001:15:SCSI_ProcessWrite	24	static
+usbd_msc_scsi.c:964:15:SCSI_ProcessRead	24	static
+usbd_msc_scsi.c:944:15:SCSI_CheckAddressRange	8	static
+usbd_msc_scsi.c:121:8:SCSI_ProcessCmd	32	static
+usbd_msc_scsi.c:536:6:SCSI_SenseCode	8	static

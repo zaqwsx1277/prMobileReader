@@ -1,0 +1,138 @@
+\hypertarget{group___o_v2640___private___functions}{}\section{O\+V2640\+\_\+\+Private\+\_\+\+Functions}
+\label{group___o_v2640___private___functions}\index{O\+V2640\+\_\+\+Private\+\_\+\+Functions@{O\+V2640\+\_\+\+Private\+\_\+\+Functions}}
+Граф связей класса O\+V2640\+\_\+\+Private\+\_\+\+Functions\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=324pt]{group___o_v2640___private___functions}
+\end{center}
+\end{figure}
+\subsection*{Функции}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{group___o_v2640___private___functions_gabb581a828532aa534596ea82b558b239}{D\+C\+M\+I\+\_\+\+Single\+Random\+Write} (uint8\+\_\+t Reg, uint8\+\_\+t Data)
+\begin{DoxyCompactList}\small\item\em Camera writes single data. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group___o_v2640___private___functions_ga13f5c102ea099728a3ca5f0686876a60}\label{group___o_v2640___private___functions_ga13f5c102ea099728a3ca5f0686876a60}} 
+void {\bfseries C\+A\+M\+E\+R\+A\+\_\+\+I\+O\+\_\+\+Write} (uint8\+\_\+t Addr, uint8\+\_\+t Reg, uint8\+\_\+t Value)
+\item 
+uint8\+\_\+t \hyperlink{group___o_v2640___private___functions_gaf0a9c7f2380cdcd4bcd801a5681d3b4b}{C\+A\+M\+E\+R\+A\+\_\+\+I\+O\+\_\+\+Read} (uint8\+\_\+t Addr, uint8\+\_\+t Reg)
+\begin{DoxyCompactList}\small\item\em Camera reads single data. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group___o_v2640___private___functions_ga2a1ea5c5164eaaee2367100fc31fd4ad}\label{group___o_v2640___private___functions_ga2a1ea5c5164eaaee2367100fc31fd4ad}} 
+void {\bfseries O\+V2640\+\_\+\+Soft\+\_\+\+Standby} (void)
+\item 
+\mbox{\Hypertarget{group___o_v2640___private___functions_gaa5edc1649dc35f3a8cb975921b9e59c8}\label{group___o_v2640___private___functions_gaa5edc1649dc35f3a8cb975921b9e59c8}} 
+void {\bfseries O\+V2640\+\_\+\+Soft\+\_\+\+Wakeup} (void)
+\item 
+\mbox{\Hypertarget{group___o_v2640___private___functions_gaba6fd377ed3b31798b6dbf0315957bb1}\label{group___o_v2640___private___functions_gaba6fd377ed3b31798b6dbf0315957bb1}} 
+uint8\+\_\+t {\bfseries O\+V2640\+\_\+\+I\+D\+\_\+check} (void)
+\item 
+void \hyperlink{group___o_v2640___private___functions_gab8212120406cb75db2b159188d708160}{O\+V2640\+\_\+\+J\+P\+E\+G\+Config} (Image\+Format\+\_\+\+Type\+Def Image\+Format)
+\begin{DoxyCompactList}\small\item\em Initializes the O\+V2640 C\+A\+M\+E\+RA component. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group___o_v2640___private___functions_gafc67aa8d6b647d02687fa0582fbd39cc}\label{group___o_v2640___private___functions_gafc67aa8d6b647d02687fa0582fbd39cc}} 
+void {\bfseries S\+C\+C\+B\+\_\+\+Write\+Regs} (const uint8\+\_\+t $\ast$pbuf)
+\item 
+\mbox{\Hypertarget{group___o_v2640___private___functions_ga5dfda64dfd5f9d8b21c2433c7e1e42fe}\label{group___o_v2640___private___functions_ga5dfda64dfd5f9d8b21c2433c7e1e42fe}} 
+void {\bfseries O\+V2640\+\_\+\+Auto\+Exposure} (uint8\+\_\+t level)
+\item 
+\mbox{\Hypertarget{group___o_v2640___private___functions_ga481ceacfba870cbd2566b1cc2a243bb7}\label{group___o_v2640___private___functions_ga481ceacfba870cbd2566b1cc2a243bb7}} 
+void {\bfseries O\+V2640\+\_\+\+Brightness\+Config} (uint8\+\_\+t Brightness)
+\end{DoxyCompactItemize}
+
+
+\subsection{Подробное описание}
+
+
+\subsection{Функции}
+\mbox{\Hypertarget{group___o_v2640___private___functions_gaf0a9c7f2380cdcd4bcd801a5681d3b4b}\label{group___o_v2640___private___functions_gaf0a9c7f2380cdcd4bcd801a5681d3b4b}} 
+\index{O\+V2640\+\_\+\+Private\+\_\+\+Functions@{O\+V2640\+\_\+\+Private\+\_\+\+Functions}!C\+A\+M\+E\+R\+A\+\_\+\+I\+O\+\_\+\+Read@{C\+A\+M\+E\+R\+A\+\_\+\+I\+O\+\_\+\+Read}}
+\index{C\+A\+M\+E\+R\+A\+\_\+\+I\+O\+\_\+\+Read@{C\+A\+M\+E\+R\+A\+\_\+\+I\+O\+\_\+\+Read}!O\+V2640\+\_\+\+Private\+\_\+\+Functions@{O\+V2640\+\_\+\+Private\+\_\+\+Functions}}
+\subsubsection{\texorpdfstring{C\+A\+M\+E\+R\+A\+\_\+\+I\+O\+\_\+\+Read()}{CAMERA\_IO\_Read()}}
+{\footnotesize\ttfamily uint8\+\_\+t C\+A\+M\+E\+R\+A\+\_\+\+I\+O\+\_\+\+Read (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{Addr,  }\item[{uint8\+\_\+t}]{Reg }\end{DoxyParamCaption})}
+
+
+
+Camera reads single data. 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em Addr} & I2C address \\
+\hline
+{\em Reg} & Register address \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Возвращаемые значения}
+{\em Read} & data \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{group___o_v2640___private___functions_gabb581a828532aa534596ea82b558b239}\label{group___o_v2640___private___functions_gabb581a828532aa534596ea82b558b239}} 
+\index{O\+V2640\+\_\+\+Private\+\_\+\+Functions@{O\+V2640\+\_\+\+Private\+\_\+\+Functions}!D\+C\+M\+I\+\_\+\+Single\+Random\+Write@{D\+C\+M\+I\+\_\+\+Single\+Random\+Write}}
+\index{D\+C\+M\+I\+\_\+\+Single\+Random\+Write@{D\+C\+M\+I\+\_\+\+Single\+Random\+Write}!O\+V2640\+\_\+\+Private\+\_\+\+Functions@{O\+V2640\+\_\+\+Private\+\_\+\+Functions}}
+\subsubsection{\texorpdfstring{D\+C\+M\+I\+\_\+\+Single\+Random\+Write()}{DCMI\_SingleRandomWrite()}}
+{\footnotesize\ttfamily void D\+C\+M\+I\+\_\+\+Single\+Random\+Write (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{Reg,  }\item[{uint8\+\_\+t}]{Data }\end{DoxyParamCaption})}
+
+
+
+Camera writes single data. 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em Addr} & I2C address \\
+\hline
+{\em Reg} & Register address \\
+\hline
+{\em Value} & Data to be written \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Возвращаемые значения}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{group___o_v2640___private___functions_gab8212120406cb75db2b159188d708160}\label{group___o_v2640___private___functions_gab8212120406cb75db2b159188d708160}} 
+\index{O\+V2640\+\_\+\+Private\+\_\+\+Functions@{O\+V2640\+\_\+\+Private\+\_\+\+Functions}!O\+V2640\+\_\+\+J\+P\+E\+G\+Config@{O\+V2640\+\_\+\+J\+P\+E\+G\+Config}}
+\index{O\+V2640\+\_\+\+J\+P\+E\+G\+Config@{O\+V2640\+\_\+\+J\+P\+E\+G\+Config}!O\+V2640\+\_\+\+Private\+\_\+\+Functions@{O\+V2640\+\_\+\+Private\+\_\+\+Functions}}
+\subsubsection{\texorpdfstring{O\+V2640\+\_\+\+J\+P\+E\+G\+Config()}{OV2640\_JPEGConfig()}}
+{\footnotesize\ttfamily void O\+V2640\+\_\+\+J\+P\+E\+G\+Config (\begin{DoxyParamCaption}\item[{Image\+Format\+\_\+\+Type\+Def}]{Image\+Format }\end{DoxyParamCaption})}
+
+
+
+Initializes the O\+V2640 C\+A\+M\+E\+RA component. 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em Device\+Addr} & Device address on communication Bus. \\
+\hline
+{\em resolution} & Camera resolution \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Возвращаемые значения}
+{\em None} & Configures the O\+V2640 camera feature. \\
+\hline
+\end{DoxyRetVals}
+
+\begin{DoxyParams}{Аргументы}
+{\em Device\+Addr} & Device address on communication Bus. \\
+\hline
+{\em feature} & Camera feature to be configured \\
+\hline
+{\em value} & Value to be configured \\
+\hline
+{\em brightness\+\_\+value} & Brightness value to be configured \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Возвращаемые значения}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+Граф вызовов\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{group___o_v2640___private___functions_gab8212120406cb75db2b159188d708160_cgraph}
+\end{center}
+\end{figure}

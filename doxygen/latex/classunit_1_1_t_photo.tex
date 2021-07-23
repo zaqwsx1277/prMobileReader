@@ -1,0 +1,185 @@
+\hypertarget{classunit_1_1_t_photo}{}\section{Класс unit\+:\+:T\+Photo}
+\label{classunit_1_1_t_photo}\index{unit\+::\+T\+Photo@{unit\+::\+T\+Photo}}
+
+
+{\ttfamily \#include $<$T\+Photo.\+hpp$>$}
+
+
+
+Граф наследования\+:unit\+:\+:T\+Photo\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=150pt]{classunit_1_1_t_photo__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Граф связей класса unit\+:\+:T\+Photo\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=150pt]{classunit_1_1_t_photo__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Открытые члены}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classunit_1_1_t_photo_ac4d5d37e712767fa9b899648949b2ef3}{T\+Photo} ()
+\item 
+virtual \hyperlink{classunit_1_1_t_photo_a1c9c83e03a16b4e66a0fc48f734a5b93}{$\sim$\+T\+Photo} ()
+\item 
+bool \hyperlink{classunit_1_1_t_photo_a292ed1d6e9fb0b8335234891716eec8d}{check} ()
+\begin{DoxyCompactList}\small\item\em Проверка оборудования \end{DoxyCompactList}\item 
+void \hyperlink{classunit_1_1_t_photo_adfad75bd5d77ef72f526cc43474c3d87}{init} ()
+\begin{DoxyCompactList}\small\item\em Инициализация устройства \end{DoxyCompactList}\item 
+void \hyperlink{classunit_1_1_t_photo_acfdae485260a64864e779cacd15644f7}{sleep} ()
+\begin{DoxyCompactList}\small\item\em Перевод в режим энергосбережения \end{DoxyCompactList}\item 
+void \hyperlink{classunit_1_1_t_photo_a2d8ecace1e51abed1a68731b486680f6}{wakeup} ()
+\begin{DoxyCompactList}\small\item\em Выход из режима энергосбережения \end{DoxyCompactList}\item 
+bool \hyperlink{classunit_1_1_t_photo_a8323fa27bff29d883e9903b74c341605}{process} ()
+\begin{DoxyCompactList}\small\item\em Получение изображения с камеры и запись его в файл \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Подробное описание}
+Класс работы с камерой O\+V2640 \begin{DoxyRefDesc}{Необходимо сделать}
+\item[\hyperlink{todo__todo000005}{Необходимо сделать}]Убрать ov2640.\+c и передалать на плюсы (Хотя не очень понятно зачем???) 
+
+Убрать все Warning в ov2640.\+c \end{DoxyRefDesc}
+
+
+\subsection{Конструктор(ы)}
+\mbox{\Hypertarget{classunit_1_1_t_photo_ac4d5d37e712767fa9b899648949b2ef3}\label{classunit_1_1_t_photo_ac4d5d37e712767fa9b899648949b2ef3}} 
+\index{unit\+::\+T\+Photo@{unit\+::\+T\+Photo}!T\+Photo@{T\+Photo}}
+\index{T\+Photo@{T\+Photo}!unit\+::\+T\+Photo@{unit\+::\+T\+Photo}}
+\subsubsection{\texorpdfstring{T\+Photo()}{TPhoto()}}
+{\footnotesize\ttfamily unit\+::\+T\+Photo\+::\+T\+Photo (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+ Конструктор инициализирующий камеру и переводящий ее в режим sleep Граф вызовов\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=322pt]{classunit_1_1_t_photo_ac4d5d37e712767fa9b899648949b2ef3_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classunit_1_1_t_photo_a1c9c83e03a16b4e66a0fc48f734a5b93}\label{classunit_1_1_t_photo_a1c9c83e03a16b4e66a0fc48f734a5b93}} 
+\index{unit\+::\+T\+Photo@{unit\+::\+T\+Photo}!````~T\+Photo@{$\sim$\+T\+Photo}}
+\index{````~T\+Photo@{$\sim$\+T\+Photo}!unit\+::\+T\+Photo@{unit\+::\+T\+Photo}}
+\subsubsection{\texorpdfstring{$\sim$\+T\+Photo()}{~TPhoto()}}
+{\footnotesize\ttfamily unit\+::\+T\+Photo\+::$\sim$\+T\+Photo (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+ Граф вызовов\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=328pt]{classunit_1_1_t_photo_a1c9c83e03a16b4e66a0fc48f734a5b93_cgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Методы}
+\mbox{\Hypertarget{classunit_1_1_t_photo_a292ed1d6e9fb0b8335234891716eec8d}\label{classunit_1_1_t_photo_a292ed1d6e9fb0b8335234891716eec8d}} 
+\index{unit\+::\+T\+Photo@{unit\+::\+T\+Photo}!check@{check}}
+\index{check@{check}!unit\+::\+T\+Photo@{unit\+::\+T\+Photo}}
+\subsubsection{\texorpdfstring{check()}{check()}}
+{\footnotesize\ttfamily bool unit\+::\+T\+Photo\+::check (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Проверка оборудования 
+
+
+
+
+
+\begin{DoxyReturn}{Возвращает}
+При успешной проверке возвращается true 
+\end{DoxyReturn}
+
+
+Замещает \hyperlink{classunit_1_1_t_unit_abdcc6daabc86cea10abc96593d9d2c2a}{unit\+::\+T\+Unit}.
+
+\mbox{\Hypertarget{classunit_1_1_t_photo_adfad75bd5d77ef72f526cc43474c3d87}\label{classunit_1_1_t_photo_adfad75bd5d77ef72f526cc43474c3d87}} 
+\index{unit\+::\+T\+Photo@{unit\+::\+T\+Photo}!init@{init}}
+\index{init@{init}!unit\+::\+T\+Photo@{unit\+::\+T\+Photo}}
+\subsubsection{\texorpdfstring{init()}{init()}}
+{\footnotesize\ttfamily void unit\+::\+T\+Photo\+::init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Инициализация устройства 
+
+
+
+ Задаются все конфигурацилнные настройки 
+
+Замещает \hyperlink{classunit_1_1_t_unit_afc001dd57ba88e571e6b650a416b76a5}{unit\+::\+T\+Unit}.
+
+\mbox{\Hypertarget{classunit_1_1_t_photo_a8323fa27bff29d883e9903b74c341605}\label{classunit_1_1_t_photo_a8323fa27bff29d883e9903b74c341605}} 
+\index{unit\+::\+T\+Photo@{unit\+::\+T\+Photo}!process@{process}}
+\index{process@{process}!unit\+::\+T\+Photo@{unit\+::\+T\+Photo}}
+\subsubsection{\texorpdfstring{process()}{process()}}
+{\footnotesize\ttfamily bool unit\+::\+T\+Photo\+::process (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Получение изображения с камеры и запись его в файл 
+
+
+
+ \begin{DoxyAttention}{Внимание}
+Я ни коим образом не проверяю корректность инициализации и возвращаемые ошибки!!! 
+\end{DoxyAttention}
+
+
+Замещает \hyperlink{classunit_1_1_t_unit_a108691c8b988d97c65237c83a31db706}{unit\+::\+T\+Unit}.
+
+Граф вызовов\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=336pt]{classunit_1_1_t_photo_a8323fa27bff29d883e9903b74c341605_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classunit_1_1_t_photo_acfdae485260a64864e779cacd15644f7}\label{classunit_1_1_t_photo_acfdae485260a64864e779cacd15644f7}} 
+\index{unit\+::\+T\+Photo@{unit\+::\+T\+Photo}!sleep@{sleep}}
+\index{sleep@{sleep}!unit\+::\+T\+Photo@{unit\+::\+T\+Photo}}
+\subsubsection{\texorpdfstring{sleep()}{sleep()}}
+{\footnotesize\ttfamily void unit\+::\+T\+Photo\+::sleep (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Перевод в режим энергосбережения 
+
+
+
+ 
+
+Замещает \hyperlink{classunit_1_1_t_unit_afa851323a357e4287ca230d2bce8977b}{unit\+::\+T\+Unit}.
+
+\mbox{\Hypertarget{classunit_1_1_t_photo_a2d8ecace1e51abed1a68731b486680f6}\label{classunit_1_1_t_photo_a2d8ecace1e51abed1a68731b486680f6}} 
+\index{unit\+::\+T\+Photo@{unit\+::\+T\+Photo}!wakeup@{wakeup}}
+\index{wakeup@{wakeup}!unit\+::\+T\+Photo@{unit\+::\+T\+Photo}}
+\subsubsection{\texorpdfstring{wakeup()}{wakeup()}}
+{\footnotesize\ttfamily void unit\+::\+T\+Photo\+::wakeup (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Выход из режима энергосбережения 
+
+
+
+ 
+
+Замещает \hyperlink{classunit_1_1_t_unit_a11fd67d0186e8e60ef517d6a44db225f}{unit\+::\+T\+Unit}.
+
+
+
+Объявления и описания членов классов находятся в файлах\+:\begin{DoxyCompactItemize}
+\item 
+Core/cpp/T\+Photo.\+hpp\item 
+Core/cpp/T\+Photo.\+cpp\end{DoxyCompactItemize}
