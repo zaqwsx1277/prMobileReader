@@ -1,6 +1,0 @@
-TButton.cpp:18:1:app::TButton::TButton(GPIO_TypeDef*, uint16_t)	24	static
-TButton.cpp:27:6:void app::TButton::startBounce()	16	static
-TButton.cpp:35:6:bool app::TButton::checkBounce()	24	static
-TButton.cpp:54:15:GPIO_PinState app::TButton::getState()	16	static
-TButton.hpp:33:10:app::TButton::~TButton()	16	static
-TButton.hpp:33:10:virtual app::TButton::~TButton()	16	static
