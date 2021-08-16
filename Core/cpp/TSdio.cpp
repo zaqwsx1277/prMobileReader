@@ -21,13 +21,13 @@ TSdio::TSdio()
 {
 	if (HAL_SD_Init(&hsd) != HAL_OK)
 		common::app -> setState(app::appState::appErrSDIO) ;
-	  else common::app -> debugMesage ("SDIO initialization - OK.") ;
+	  else common::app -> debugMessage ("SDIO initialization - OK.") ;
 }
 //----------------------------------------------
 TSdio::~TSdio()
 {
 	HAL_SD_DeInit(&hsd) ;
-	common::app -> debugMesage ("SDIO deinitialization - OK.") ;
+	common::app -> debugMessage ("SDIO deinitialization - OK.") ;
 }
 //----------------------------------------------
 /*!

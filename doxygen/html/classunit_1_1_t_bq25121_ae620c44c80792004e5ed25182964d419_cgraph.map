@@ -1,3 +1,4 @@
 <map id="unit::TBq25121::TBq25121" name="unit::TBq25121::TBq25121">
-<area shape="rect" id="node2" href="$namespaceunit.html#a00a34096b0492123f3830e75447e59d7" title="I2C адрес чипа BQ25121 для записи " alt="" coords="231,5,409,32"/>
+<area shape="rect" id="node2" href="$classunit_1_1_t_bq25121.html#a195490b2493631c50f5f7380436c24be" title="Инициализация устройства " alt="" coords="231,5,365,32"/>
+<area shape="rect" id="node3" href="$namespaceunit.html#a00a34096b0492123f3830e75447e59d7" title="I2C адрес чипа BQ25121 для записи " alt="" coords="413,5,592,32"/>
 </map>

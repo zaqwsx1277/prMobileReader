@@ -22,12 +22,13 @@ constexpr uint8_t stTagCmdSleep [] {0x00, 0xFF, 0x03, 0xFD, 0xD4, 0x16, 0x10, 0x
 constexpr uint32_t stTagUsartTimeOut { 100 } ;		///< Время ожидания отправки сообщений по USART
 constexpr uint32_t stTagUsartWaitID { 10000 } ;		///< Время ожидания получения ID метки (10 сек)
 
-constexpr uint32_t stTagWaitSync { 5000 } ;			///< Время ожидания синхронизации
+constexpr uint32_t stTagWaitSync { 10000 } ;			///< Время ожидания синхронизации
 
 //-------------------------------------------------------
 /*!
  * Класс управления чипом PN532
- * Считанная метка записывается в backup регистр RTC_BKP_DR0 и доступна всегда.
+ * Считанная метка записывается в backup регистр RTC_BKP_DR0 и всегда доступна.
+ * /todo Разобраться с режимами sleep и wakeup
  */
 class TTag : public TUnit {
 private :

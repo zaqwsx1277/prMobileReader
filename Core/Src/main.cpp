@@ -113,16 +113,18 @@ int main(void)
   MX_DCMI_Init();
   /* USER CODE BEGIN 2 */
   common::app = std::make_unique <app::TApplication> () ;		// Если при запуске были какие-то ошибки по работе периферии, то сразу же тупо проваливаемся в менеджер
-  common::app -> debugMesage (app::appState::appStarted) ;
-  common::app -> debugMesage ("Time now: " + common::app -> getMessageTime ()) ;
+
+//  common::app -> debugMessage ("Time now: " + common::app -> getMessageTime ()) ;  // Перенести эту херню в конструктор TApplication
   if (common::app -> getState().first == app::appState::appUnknown) {
   	  	  	  	  	  	  	  	  	  	  	  	  	  // Проверяю был ли первоначальный запуск или выход из режима StandBy
       if(__HAL_PWR_GET_FLAG(PWR_FLAG_WU)) {
 	      __HAL_PWR_CLEAR_FLAG(PWR_FLAG_WU);			  // Очищаем флаг выхода из режима StandBy
 	      HAL_PWR_DisableWakeUpPin(PWR_WAKEUP_PIN1) ;
-	      common::app -> setState (app::appState::appCheckButton) ;
+//	      common::app -> debugMessage (app::appState::appReady) ;
+	      common::app -> setState (app::appState::appStartBounce) ;
       }
         else {
+           common::app -> debugMessage (app::appState::appStarted) ;
     	   common::app -> checkUnits () ;					// При первоначальном запуске проверяем оборудование
 #ifdef DEBUG
     	   common::app -> setState (app::appState::appStartBounce) ;	// Запускаем устрнения дребезга контактов и определения нажатых кнопок
@@ -139,11 +141,6 @@ int main(void)
   HAL_TIM_Base_Start_IT (&htim7) ;
 
   while (1) {
-//	  auto photo = HAL_GPIO_ReadPin ( GPIOA, GPIO_PIN_0 ) ;
-//	  auto tag = HAL_GPIO_ReadPin ( GPIOB, GPIO_PIN_12 ) ;
-//	  auto audio = HAL_GPIO_ReadPin ( GPIOE, GPIO_PIN_3 ) ;
-//	  auto doc = HAL_GPIO_ReadPin ( GPIOA, GPIO_PIN_9 ) ;
-
 	  common::app -> stateManager () ;
 
     /* USER CODE END WHILE */
@@ -152,7 +149,6 @@ int main(void)
   }
   /* USER CODE END 3 */
 }
-
 
 /**
   * @brief System Clock Configuration
@@ -218,6 +214,9 @@ void Error_Handler(void)
 {
   /* USER CODE BEGIN Error_Handler_Debug */
   /* User can add his own implementation to report the HAL error return state */
+
+	common::app -> setState(app::appHwErr) ;	// Если сюда прилетели, то пиздец котенку и в этом случае записываем события минимум на флешку :(
+	common::app -> writeLog () ;
 
   /* USER CODE END Error_Handler_Debug */
 }

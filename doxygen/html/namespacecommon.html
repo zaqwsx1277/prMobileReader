@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">СКОП 2.01
-   &#160;<span id="projectnumber">2.0</span>
+   &#160;<span id="projectnumber">A21.07 - 31.07.2021</span>
    </div>
   </td>
  </tr>
@@ -88,7 +88,7 @@ std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hre
 <tr class="separator:ac1f212cd0775ff1f6c0295b72d658e25"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a373798ef1a9c0a94b49bc38455d62d10"><td class="memItemLeft" align="right" valign="top"><a id="a373798ef1a9c0a94b49bc38455d62d10"></a>
 std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecommon.html#a373798ef1a9c0a94b49bc38455d62d10">stPhotoFileName</a> { &quot;photos.pho&quot; }</td></tr>
-<tr class="memdesc:a373798ef1a9c0a94b49bc38455d62d10"><td class="mdescLeft">&#160;</td><td class="mdescRight">Имя файла для хранения меток <br /></td></tr>
+<tr class="memdesc:a373798ef1a9c0a94b49bc38455d62d10"><td class="mdescLeft">&#160;</td><td class="mdescRight">Имя файла для хранения фоток <br /></td></tr>
 <tr class="separator:a373798ef1a9c0a94b49bc38455d62d10"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad9edd5582300fe9f535b3d2f912291bb"><td class="memItemLeft" align="right" valign="top"><a id="ad9edd5582300fe9f535b3d2f912291bb"></a>
 uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecommon.html#ad9edd5582300fe9f535b3d2f912291bb">stTagBufId</a> [25] { 0 }</td></tr>
@@ -98,10 +98,22 @@ uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="n
 uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecommon.html#a07e080fe05fc55b6f3eab1de78a1157a">stFileBuf</a> [512] { 0 }</td></tr>
 <tr class="memdesc:a07e080fe05fc55b6f3eab1de78a1157a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Буфер для записи данных в файл. Он здесь, т.к. SDIO работает по DMA. <br /></td></tr>
 <tr class="separator:a07e080fe05fc55b6f3eab1de78a1157a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a64410627120637f6951a05b65a001c0e"><td class="memItemLeft" align="right" valign="top"><a id="a64410627120637f6951a05b65a001c0e"></a>
-uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecommon.html#a64410627120637f6951a05b65a001c0e">stPhotoBuf</a> [1600 *94] {0}</td></tr>
-<tr class="memdesc:a64410627120637f6951a05b65a001c0e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Буфер для сканирования изображения <br /></td></tr>
-<tr class="separator:a64410627120637f6951a05b65a001c0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5603cfb8998012c5d4e0bb217baf8293"><td class="memItemLeft" align="right" valign="top"><a id="a5603cfb8998012c5d4e0bb217baf8293"></a>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecommon.html#a5603cfb8998012c5d4e0bb217baf8293">stPhotoBuf</a> [1600 *40] {0}</td></tr>
+<tr class="memdesc:a5603cfb8998012c5d4e0bb217baf8293"><td class="mdescLeft">&#160;</td><td class="mdescRight">Буфер для сканирования изображения <br /></td></tr>
+<tr class="separator:a5603cfb8998012c5d4e0bb217baf8293"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeca12b629edac6586f4b0fbcf9617769"><td class="memItemLeft" align="right" valign="top"><a id="aeca12b629edac6586f4b0fbcf9617769"></a>
+tdAudioFrame&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecommon.html#aeca12b629edac6586f4b0fbcf9617769">stAudioBuf</a> [2][unit::stAudioBufSize] { 0 }</td></tr>
+<tr class="memdesc:aeca12b629edac6586f4b0fbcf9617769"><td class="mdescLeft">&#160;</td><td class="mdescRight">Буфер для записи данных с микрофона. <br /></td></tr>
+<tr class="separator:aeca12b629edac6586f4b0fbcf9617769"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1a1c25124d2328c41042070beb16c208"><td class="memItemLeft" align="right" valign="top"><a id="a1a1c25124d2328c41042070beb16c208"></a>
+<a class="el" href="group___xD0_x9F_xD0_xB5_xD1_x80_xD0_xB5_xD1_x87_xD0_xB8_xD1_x81_xD0_xBB_xD0_xB5_xD0_xBD_xD0_xB8_xD1_x8F.html#ga30dd689bff585403e080598b50585936">unit::crAudioBufID</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecommon.html#a1a1c25124d2328c41042070beb16c208">stAudioBufId</a> { unit::crAudioBufID::crStop }</td></tr>
+<tr class="memdesc:a1a1c25124d2328c41042070beb16c208"><td class="mdescLeft">&#160;</td><td class="mdescRight">Индекс обрабатываемого буфера <br /></td></tr>
+<tr class="separator:a1a1c25124d2328c41042070beb16c208"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a516c5010126a38173eacd0de486b662e"><td class="memItemLeft" align="right" valign="top"><a id="a516c5010126a38173eacd0de486b662e"></a>
+const uint32_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecommon.html#a516c5010126a38173eacd0de486b662e">stPrtSN</a></td></tr>
+<tr class="memdesc:a516c5010126a38173eacd0de486b662e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Адрес серийного номера кристала <br /></td></tr>
+<tr class="separator:a516c5010126a38173eacd0de486b662e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Подробное описание</h2>
 <div class="textblock"><p>Различные общие для всего приложения определения </p>

@@ -25,6 +25,8 @@
 \subsection*{Открытые члены}
 \begin{DoxyCompactItemize}
 \item 
+\hyperlink{classunit_1_1_t_tag_afc2c7b675721b1577270b70a5dc02649}{T\+Tag} ()
+\item 
 \mbox{\Hypertarget{classunit_1_1_t_tag_adc2c2801738b094045529f1373f28203}\label{classunit_1_1_t_tag_adc2c2801738b094045529f1373f28203}} 
 bool \hyperlink{classunit_1_1_t_tag_adc2c2801738b094045529f1373f28203}{check} ()
 \begin{DoxyCompactList}\small\item\em Проверка оборудования \end{DoxyCompactList}\item 
@@ -44,7 +46,28 @@ void \hyperlink{classunit_1_1_t_tag_a90fba846800afa1b828d81f079ba735e}{copy\+Tag
 
 
 \subsection{Подробное описание}
-Класс управления чипом P\+N532 Считанная метка записывается в backup регистр R\+T\+C\+\_\+\+B\+K\+P\+\_\+\+D\+R0 и доступна всегда. 
+Класс управления чипом P\+N532 Считанная метка записывается в backup регистр R\+T\+C\+\_\+\+B\+K\+P\+\_\+\+D\+R0 и всегда доступна. /todo Разобраться с режимами sleep и wakeup 
+
+\subsection{Конструктор(ы)}
+\mbox{\Hypertarget{classunit_1_1_t_tag_afc2c7b675721b1577270b70a5dc02649}\label{classunit_1_1_t_tag_afc2c7b675721b1577270b70a5dc02649}} 
+\index{unit\+::\+T\+Tag@{unit\+::\+T\+Tag}!T\+Tag@{T\+Tag}}
+\index{T\+Tag@{T\+Tag}!unit\+::\+T\+Tag@{unit\+::\+T\+Tag}}
+\subsubsection{\texorpdfstring{T\+Tag()}{TTag()}}
+{\footnotesize\ttfamily unit\+::\+T\+Tag\+::\+T\+Tag (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+ \begin{DoxyAttention}{Внимание}
+Работа со сканированием метки должна инициализироваться при запуске контроллера, что бы загнать чит в режим Sleep 
+\end{DoxyAttention}
+Граф вызовов\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=295pt]{classunit_1_1_t_tag_afc2c7b675721b1577270b70a5dc02649_cgraph}
+\end{center}
+\end{figure}
+
 
 \subsection{Методы}
 \mbox{\Hypertarget{classunit_1_1_t_tag_a90fba846800afa1b828d81f079ba735e}\label{classunit_1_1_t_tag_a90fba846800afa1b828d81f079ba735e}} 

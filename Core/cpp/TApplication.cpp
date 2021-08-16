@@ -4,6 +4,10 @@
  *  Created on: Jun 2, 2021
  *      Author: AAL
  */
+#include <string>
+#include <sstream>
+#include <ios>
+#include <iomanip>
 
 #include "TApplication.hpp"
 
@@ -25,12 +29,10 @@ TApplication::TApplication()
 {
 	HAL_PWR_EnableBkUpAccess() ;			// Чтобы не взрывать себе мозги, доступ к backup регистрам открываем навсегда
 	mAppStateChange = HAL_GetTick() ;
-
-	uint32_t xxx = 0xA223355 ;
-	HAL_RTCEx_BKUPWrite(&hrtc, RTC_BKP_DR0, xxx) ;
+	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_4, GPIO_PIN_SET) ;	// Светодиод включесктся навсегда
 }
 /*!----------------------------------------------------------
- *
+ *	Деструктор в принципе не нужен вообще.
  */
 TApplication::~TApplication()
 {
@@ -43,17 +45,24 @@ TApplication::~TApplication()
  */
 void TApplication::checkUnits ()
 {
-//	if (mFileSystem == nullptr) mFileSystem = std::make_unique <unit::TFileSystem> () ;
-//	  else mFileSystem -> check () ;								// И на хрена что-то проверять, если FS уже смонтирована?
+	if (mSdio == nullptr) mSdio = std::make_unique <unit::TSdio> () ;		// Если нужно, то инициализируем все классы, а если не нужно, то значит мы попали сюда из состояния appAudioWaitStop
+	if (mFileSystem == nullptr) mFileSystem = std::make_unique <unit::TFileSystem> () ;
 //	if (mTag == nullptr) mTag = std::make_unique <app::TTag> () ;
-//	if (mPhoto = nullptr) mPhoto = std::make_unique <app::TPhoto> () ;
+	if (mPhoto == nullptr) mPhoto = std::make_unique <unit::TPhoto> () ;
 //	if (mAudio == nullptr) mAudio = std::make_unique <app::TAudio> () ;
 
 //	if (mI2c -> check () != true) mAppState = app::appState::appErrI2C ;
 
-//	if (mFileSystem != nullptr) mFileSystem.release() ;
+	if (mFileSystem -> check () == true) common::app -> debugMessage ("FS system check - OK") ;
+	  else common::app -> debugMessage ("FS system check - Error") ;
+	if (mPhoto -> check() == true) common::app -> debugMessage ("Photo check - OK") ;
+	  else common::app -> debugMessage ("Photo check - Error") ;
+
+
+	if (mFileSystem != nullptr) mFileSystem.reset() ;
+	if (mSdio != nullptr) mSdio.reset() ;
 //	if (mTag != nullptr) mTag.release() ;
-//	if (mPhoto != nullptr) mPhoto.release() ;
+	if (mPhoto != nullptr) mPhoto.release() ;
 //	if (mAudio != nullptr) mAudio.release() ;
 }
 //-----------------------------------------------------------
@@ -62,44 +71,22 @@ void TApplication::stateManager ()
 	switch (mAppState) {
 	  case appState::appStandBy: {
 		HAL_GPIO_WritePin(GPIOD, GPIO_PIN_13, GPIO_PIN_RESET) ;
-		if (mFileSystem != nullptr) mFileSystem.release() ;		// Дергаем все деструктры, т.к. в них может быть перевод устройства в режим Sleep
-		if (mTag != nullptr) mTag.release() ;
-		if (mPhoto != nullptr) mPhoto.release() ;
-		if (mAudio != nullptr) mAudio.release() ;
-		if (mSdio != nullptr) mSdio.release() ;
+		if (mFileSystem != nullptr) mFileSystem.reset() ;		// Дергаем все деструктры, т.к. в них должен быть перевод устройства в режим Sleep
+		if (mTag != nullptr) mTag.reset() ;
+		if (mPhoto != nullptr) mPhoto.reset() ;
+		if (mAudio != nullptr) mAudio.reset() ;
+		if (mSdio != nullptr) mSdio.reset() ;
+		if (mLog != nullptr) mLog.reset() ;
 
-		HAL_PWR_DisableBkUpAccess();
 #ifdef DEBUG
 		HAL_Delay(5000) ;
 		makeInfo(typeInfo::infoAudioLight,tsndShort, 1) ;
-		debugMesage() ;
-		common::app -> debugMesage ("Time now: " + common::app -> getMessageTime ()) ;
+		debugMessage() ;
+		common::app -> debugMessage ("Time now: " + common::app -> getMessageTime ()) ;
+		common::app -> setState (app::appState::appCheckButton) ;
 #else
-		makeInfo(typeInfo::infoAudio, tsndShort, 1) ;
-
-		GPIO_InitTypeDef GPIO_InitStruct = {0};
-		GPIO_InitStruct.Pin = GPIO_PIN_All ;
-		GPIO_InitStruct.Mode = GPIO_MODE_ANALOG;
-		GPIO_InitStruct.Pull = GPIO_NOPULL;
-		HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
-		HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
-//		HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
-		HAL_GPIO_Init(GPIOD, &GPIO_InitStruct);
-		HAL_GPIO_Init(GPIOE, &GPIO_InitStruct);
-
-		GPIO_InitTypeDef GPIO_InitStructX = {0};
-		GPIO_InitStructX.Pin = GPIO_PIN_2|GPIO_PIN_4|GPIO_PIN_5|GPIO_PIN_6
-                |GPIO_PIN_7|GPIO_PIN_8|GPIO_PIN_9|GPIO_PIN_10
-                |GPIO_PIN_11|GPIO_PIN_12|GPIO_PIN_13
-                |GPIO_PIN_3 |GPIO_PIN_1; ;
-		GPIO_InitStruct.Mode = GPIO_MODE_ANALOG;
-		GPIO_InitStruct.Pull = GPIO_NOPULL;
-		HAL_GPIO_Init(GPIOC, &GPIO_InitStructX);
-
-
-		__HAL_RCC_PWR_CLK_ENABLE() ;
-		HAL_PWR_EnableWakeUpPin(PWR_WAKEUP_PIN1) ;
-		HAL_PWR_EnterSTANDBYMode() ;
+		HAL_PWR_DisableBkUpAccess();
+		sleep () ;
 #endif /* DEBUG */
 	  }
 	  break;
@@ -129,18 +116,20 @@ void TApplication::stateManager ()
 	  }
 	  break ;
 
-	  case appState::appAudio :
+	  case appState::appAudio : {
 		  makeInfo(typeInfo::infoAudioLight, tsndShort, 1) ;
 		  if (mSdio == nullptr) mSdio = std::make_unique <unit::TSdio> () ;		// Если нужно, то инициализируем все классы, а если не нужно, то значит мы попали сюда из состояния appAudioWaitStop
-		  if (mFileSystem == nullptr) mFileSystem = std::make_unique <unit::TFileSystem> () ;
-		  if (mAudio == nullptr) mAudio = std::make_unique <unit::TAudio> () ;
+		  if (mFileSystem == nullptr && mAppState == appState::appAudio) mFileSystem = std::make_shared <unit::TFileSystem> () ;
+		  if (mAudio == nullptr && mAppState == appState::appAudio) mAudio = std::make_unique <unit::TAudio> (mFileSystem) ;
 
 		  while (getState ().first == appState::appAudio) {
+			  if (mAudio -> process() == false) setState(appState::appAudioErr) ; ;
 			  if (getState().second > unit::stAudioDuration) setState(appState::appAudioStop) ;
 			  if (mButton [btnAudio].getState() != GPIO_PIN_RESET) {			// Если прекращается запись звука, то ждём 500 мСек
 				  setState(appState::appAudioWaitStop) ;
 			  }
 		  }
+	  }
 	  break ;
 
 	  case appState::appAudioWaitStop: 											// Ждём 500 мСек и проваливаемся в StandBy
@@ -150,16 +139,18 @@ void TApplication::stateManager ()
 
 	  case appState::appAudioStop :
 		  makeInfo(typeInfo::infoAudioLight, tsndShort, 1) ;
-		  if (mAudio == nullptr) mAudio.release() ;
+		  if (mAudio == nullptr) mAudio.reset () ;
 		  setState(appState::appStandBy) ;
 	  break ;
 
 	  case appState::appPhoto :
-		  makeInfo(typeInfo::infoAudioLight, tsndShort, 1) ;
+		  if (mPhoto == nullptr) mPhoto = std::make_unique <unit::TPhoto> () ;
+		  if (mSdio == nullptr) mSdio = std::make_unique <unit::TSdio> () ;				// По хорошему инициализацию FS нужно делать после получения картинки
+		  if (mFileSystem == nullptr) mFileSystem = std::make_unique <unit::TFileSystem> () ;
 		  mPhoto -> process() ;
 		  while (mButton [idButton::btnPhoto].getState() == GPIO_PIN_SET) {
 			  if (getState().second > unit::stPhotoTimeWait && getState().first == appState::appPhoto) {
-				  setState(appState::appPhotoButtonPress) ;
+				  setState(appState::appPhotoButtonPress) ;					// Если кнопка долго не отпускается, то выдаем сообщение об ошибке
 				  makeInfo(typeInfo::infoAudioLight, tsndContinue, 0) ;
 			  }
 		  }
@@ -168,41 +159,32 @@ void TApplication::stateManager ()
 
 	  case appState::appTag :
 		  makeInfo(typeInfo::infoAudioLight, tsndShort, 1) ;
+		  if (mTag == nullptr) mTag = std::make_unique <unit::TTag> () ;
 		  if (mTag -> process ()) {
 			  mSdio = std::make_unique <unit::TSdio> () ;
 			  mFileSystem = std::make_unique <unit::TFileSystem> () ;
 			  if (getState ().first == appState::appTag) mFileSystem -> setTag() ;			// в методе setTag могут быть ошибки!!!
-			  if (getState ().first == appState::appTag) setState(appState::appStandBy) ; // если ошибок нет, то переходим в StandBy, а если есть, то сначала их обрабатываем
+			  if (getState ().first == appState::appTag) setState(appState::appStandBy) ; 	// если ошибок нет, то переходим в StandBy, а если есть, то сначала их обрабатываем
 		  }
 	  break ;
 
 	  case appState::appDoc :
-#ifdef DEBUG
-		  while (1) {//mButton [idButton::btnDoc].getState() == GPIO_PIN_SET) {
-			  HAL_Delay(1000) ;
-			  common::app -> debugMesage ("Time now: " + common::app -> getMessageTime ()) ;
-		  } ;
-#else
 		  while (mButton [idButton::btnDoc].getState() == GPIO_PIN_SET) {
 			  HAL_Delay(1000) ;
-			  common::app -> debugMesage ("Time now: " + common::app -> getMessageTime ()) ;
+			  common::app -> debugMessage ("Time now: " + common::app -> getMessageTime ()) ;
 		  }
-#endif
 		  setState(appState::appStandBy) ;
 	  break ;
 
 	  case appState::appDocSyncTime:
 		  mSdio = std::make_unique <unit::TSdio> () ;
+HAL_Delay(5000) ;	// Задержка для исключения одновременного доступа к файлу синхронизации времени.
 		  mFileSystem = std::make_unique <unit::TFileSystem> () ;
 		  if (getState().first != appErrFileFS) {
 			  makeInfo(typeInfo::infoAudioLight, tsndShort, 1) ;
 			  mFileSystem -> getTime () ;
-			  mFileSystem.release() ;
+			  mFileSystem.reset() ;
 		  }
-		    else {
-		      mFileSystem.release() ;
-			  mSdio.release() ;										// Т.к. ошибка FS, то выдаем сообщение и проваливаемся в режим StandBy
-		    }
 		  setState(appState::appDoc) ;
 	  break ;
 
@@ -220,18 +202,19 @@ void TApplication::stateManager ()
 		  setState(appState::appStandBy) ;
 	  break;
 
+	  case appState::appPhotoButtonPress :
 	  case appState::appBounceTimeout:
 	  case appState::appTagNoId :
 	  case appState::appErrFileFS :
-	  case appState::appPhotoButtonPress :
 	  case appState::appErrButton :
 	  case appState::appPhotoTimeout :
-		  makeInfo(typeInfo::infoAudioLight, tsndShort, 2) ;
+	  case appState::appAudioErr :
+		  makeInfo(typeInfo::infoAudioLight, tsndShort, 3) ;
 		  setState(appState::appStandBy) ;
 	  break ;
 
 	  default:
-		  common::app -> debugMesage ("No command handler") ;
+		  common::app -> debugMessage ("No command handler") ;
 		  makeInfo(typeInfo::infoAudioLight, tsndLong, 2000) ;
 		  setState(appState::appStandBy) ;
 	  break;
@@ -249,7 +232,7 @@ bool TApplication::setState (app::appState inAppState)
 	bool retValue { false } ;
 
 	if (inAppState != mAppState) {
-		debugMesage(msgAppState.at (inAppState)) ;
+		debugMessage(msgAppState.at (inAppState)) ;
 		mAppState = inAppState ;
 		mAppStateChange = HAL_GetTick() ;
 		retValue = true ;
@@ -329,20 +312,20 @@ void TApplication::makeInfo (const app::typeInfo inTypeInfo, const app::typeSoun
 void TApplication::makeInfoGpio (const app::typeInfo inTypeInfo, const GPIO_PinState inState)
 {
 	if (inTypeInfo == infoAudio || inTypeInfo == infoAudioLight) HAL_GPIO_WritePin(GPIOD, GPIO_PIN_13, inState) ;
-	if (inTypeInfo == infoLight || inTypeInfo == infoAudioLight) HAL_GPIO_WritePin(GPIOC, GPIO_PIN_4, inState) ;
+//	if (inTypeInfo == infoLight || inTypeInfo == infoAudioLight) HAL_GPIO_WritePin(GPIOC, GPIO_PIN_4, inState) ;
 }
 //-----------------------------------------------------------
 /*!
  * @param inMesage Текстовая строка которую нужно вывести в отладочный порт
  * @todo Переделать на хрен на потоковый вывод
  */
-void TApplication::debugMesage (const std::string &inMesage)
+void TApplication::debugMessage (const std::string &inMesage)
 {
 	uint32_t timeStart = HAL_GetTick() ;
 	while (HAL_UART_GetState (&huart1) == HAL_UART_STATE_BUSY_TX)
 		if ((HAL_GetTick() - timeStart) > 1000) return ;
 	common::stTempStr = (inMesage  + "\r\n") ;
-	debugMesage (common::stTempStr.c_str(), inMesage.size() + 2) ;
+	debugMessage (common::stTempStr.c_str(), inMesage.size() + 2) ;
 }
 //-----------------------------------------------------------
 /*!
@@ -350,9 +333,9 @@ void TApplication::debugMesage (const std::string &inMesage)
  * @param inMesage Указатель на строку, которую нужно вывести в отладочный порт
  * @param inSize Размер выводимого бувера
  */
-void TApplication::debugMesage (const char *inMesage, const std::size_t inSize)
+void TApplication::debugMessage (const char *inMesage, const std::size_t inSize)
 {
-	debugMesage ((const uint8_t *)inMesage, inSize) ;
+	debugMessage ((const uint8_t *)inMesage, inSize) ;
 }
 /*!-----------------------------------------------------------
  * @param inMesage Указатель на массив, который нужно вывести в отладочный порт
@@ -360,7 +343,7 @@ void TApplication::debugMesage (const char *inMesage, const std::size_t inSize)
  * @todo Переделать на хрен на потоковый вывод
  * @attention На хрена я приделал callback я понятия не имею :(
  */
-void TApplication::debugMesage (const uint8_t *inMesage, const std::size_t inSize)
+void TApplication::debugMessage (const uint8_t *inMesage, const std::size_t inSize)
 {
 //	uint32_t timeStart = HAL_GetTick() ;
 	while(HAL_UART_Transmit_IT(&huart1, (uint8_t *) inMesage, inSize) == HAL_BUSY ) {
@@ -368,19 +351,19 @@ void TApplication::debugMesage (const uint8_t *inMesage, const std::size_t inSiz
 	}
 }
 //-----------------------------------------------------------
-void TApplication::debugMesage ()
+void TApplication::debugMessage ()
 {
-	debugMesage (mAppState) ;
+	debugMessage (mAppState) ;
 }
 //-----------------------------------------------------------
 /*!
  * @param inState Состояние из appState
  */
-void TApplication::debugMesage (const appState inState)
+void TApplication::debugMessage (const appState inState)
 {
 	auto res = msgAppState.find (inState) ;
-	if (res != msgAppState.end ()) debugMesage (res -> second) ;
-	  else debugMesage ("Unknown breed beast") ;
+	if (res != msgAppState.end ()) debugMessage (res -> second) ;
+	  else debugMessage ("Unknown breed beast") ;
 }
 //-----------------------------------------------------------
 void TApplication::startBounce ()
@@ -411,13 +394,71 @@ std::string TApplication::getMessageTime ()
 	HAL_RTC_GetTime (&hrtc, &time, RTC_FORMAT_BIN);
 	HAL_RTC_GetDate(&hrtc, &date, RTC_FORMAT_BIN);
 
-	return std::to_string(date.Date) + "." + std::to_string(date.Month) + "." + std::to_string(date.Year) + " " +
-		   std::to_string(time.Hours) + ":" + std::to_string(time.Minutes) + ":" + std::to_string(time.Seconds) ;
+	std::stringstream tempStr ;
+	tempStr << std::dec << std::internal << std::setfill('0') << std::setw (2) << static_cast<uint32_t> (date.Date) << "."
+															  << std::setw (2) << static_cast<uint32_t> (date.Month) << "."
+																   << std::setw (2) << static_cast<uint32_t> (date.Year) << " "
+																   << std::setw (2) << static_cast<uint32_t> (time.Hours) << ":"
+																   << std::setw (2) << static_cast<uint32_t> (time.Minutes) << ":"
+																   << std::setw (2) << static_cast<uint32_t> (time.Seconds) ;
+
+	return tempStr.str () ;
 }
 //-----------------------------------------------------------
 void TApplication::writePhoto ()
 {
 	mFileSystem -> writePhoto () ;
 }
-//-----------------------------------------------------------
+/*! -----------------------------------------------------------
+ * \brief Перевод контроллера в режим StandBy
+ * \todo Разобраться какие пины нужно переводить в "Аналог", а какие нет???
+ */
+void TApplication::sleep ()
+{
+	common::app -> debugMessage ("Standby mode") ;
+	makeInfo(typeInfo::infoAudio, tsndShort, 1) ;
+	HAL_PWR_EnableBkUpAccess() ;
+
+		GPIO_InitTypeDef GPIO_InitStruct = {0};
+		GPIO_InitStruct.Pin = GPIO_PIN_All ;
+		GPIO_InitStruct.Mode = GPIO_MODE_ANALOG;
+		GPIO_InitStruct.Pull = GPIO_NOPULL;
+//		HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+		HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+//		HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
+		HAL_GPIO_Init(GPIOD, &GPIO_InitStruct);
+		HAL_GPIO_Init(GPIOE, &GPIO_InitStruct);
+
+		GPIO_InitTypeDef GPIO_InitStructX = {0};
+		GPIO_InitStructX.Pin = GPIO_PIN_2|GPIO_PIN_4|GPIO_PIN_5|GPIO_PIN_6
+                |GPIO_PIN_7|GPIO_PIN_8|GPIO_PIN_9|GPIO_PIN_10
+                |GPIO_PIN_11|GPIO_PIN_12|GPIO_PIN_13
+                |GPIO_PIN_3 |GPIO_PIN_1;
+		GPIO_InitStructX.Mode = GPIO_MODE_ANALOG;
+		GPIO_InitStructX.Pull = GPIO_NOPULL;
+		HAL_GPIO_Init(GPIOC, &GPIO_InitStructX);
+
+		GPIO_InitTypeDef GPIO_InitStructA = {0};
+		GPIO_InitStructA.Pin = GPIO_PIN_2|GPIO_PIN_4|GPIO_PIN_5|GPIO_PIN_6
+                |GPIO_PIN_7|GPIO_PIN_8|GPIO_PIN_9|GPIO_PIN_10
+                |GPIO_PIN_11|GPIO_PIN_12|GPIO_PIN_13
+                |GPIO_PIN_3 |GPIO_PIN_14 | GPIO_PIN_15 | GPIO_PIN_1 ;
+		GPIO_InitStructA.Mode = GPIO_MODE_ANALOG;
+		GPIO_InitStructA.Pull = GPIO_NOPULL;
+		HAL_GPIO_Init(GPIOA, &GPIO_InitStructA);
+
+	__HAL_RCC_PWR_CLK_ENABLE() ;
+	HAL_PWR_EnableWakeUpPin(PWR_WAKEUP_PIN1) ;
+	HAL_PWR_EnterSTANDBYMode() ;
+	HAL_Delay(100) ;
+	common::app -> debugMessage ("Error Standby mode: " + common::app -> getMessageTime ()) ;	// Сюда мы попасть не должны ни когда
+}
+/*!-----------------------------------------------------------
+ *
+ */
+void TApplication::writeLog ()
+{
+	mLog -> writeLog () ;
+}
+//-------------------------------------------------------
 } /* namespace app */

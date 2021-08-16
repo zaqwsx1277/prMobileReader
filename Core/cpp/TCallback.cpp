@@ -48,7 +48,56 @@ void HAL_UART_TxCpltCallback(UART_HandleTypeDef *huart)
 
 	}
 }
-//-----------------------------------------------------------------------------
+/*!-----------------------------------------------------------------------------
+ * @brief Обработчик прерываний по Vsync от камеры DCMI
+ * @param hdcmi Хендл устройства
+ * @attention Нужен исключительно, что бы остановить считывание изображения с камеры.
+ */
+void HAL_DCMI_VsyncEventCallback(DCMI_HandleTypeDef *hdcmi)
+{
+	if (--tmpCount <= 0) {
+		HAL_DCMI_Stop(hdcmi) ;
+		HAL_DMA_Abort(&hdma_dcmi);
+		tmpFlag = true ;
+	}
+}
+/*!------------------------------------------------------------------------------
+ * @brief Обработчик прерываний по заполнению данными PDM первой половины аудио буфера
+ * @attention Если обработка предыдущего буфера ещё не закончена, то принятый буфер просто теряется
+ */
+void 	HAL_I2S_RxHalfCpltCallback (I2S_HandleTypeDef *hi2s)
+{
+	if (common::stAudioBufId == unit::crAudioBufID::crStop) {
+		common::stAudioBufId = unit::crAudioBufID::crFirst ;
+	}
+}
+/*!------------------------------------------------------------------------------
+ * @brief Обработчик прерываний по заполнению данными PDM второй половины аудио буфера
+ * @attention Если обработка предыдущего буфера ещё не закончена, то принятый буфер просто теряется
+ */
+void HAL_I2S_RxCpltCallback (I2S_HandleTypeDef *hi2s)
+{
+	if (common::stAudioBufId == unit::crAudioBufID::crStop) {
+		common::stAudioBufId = unit::crAudioBufID::crSecond ;
+	}
+}
+/*!
+ * Обработчик прерываний по GPIO
+ * @param inGpio Номер сработавшего GPIO
+ */
+void HAL_GPIO_EXTI_Callback(uint16_t inGpio) {
+
+	switch (inGpio) {
+	  case GPIO_PIN_9: 	// Финсируем снятие с докстанции. Нужно для выписывание пи...ы если кто-то будет играться с установкой и снятием на докстанцию.
+//		if (common::app -> getState().first == app::appState::appDoc)
+//			common::app -> setState()
+
+	  break;
+
+	  default:
+	  break;
+	}
+}
 /*! @} */
 
 

@@ -8,6 +8,10 @@
 \subsection*{Классы}
 \begin{DoxyCompactItemize}
 \item 
+struct \hyperlink{structunit_1_1_audio___buffer_type_def}{Audio\+\_\+\+Buffer\+Type\+Def}
+\begin{DoxyCompactList}\small\item\em \begin{quote}
+Задержка начала записи для устранения посторонних звуков \end{quote}
+\end{DoxyCompactList}\item 
 class \hyperlink{classunit_1_1_t_audio}{T\+Audio}
 \item 
 class \hyperlink{classunit_1_1_t_bq25121}{T\+Bq25121}
@@ -24,6 +28,14 @@ class \hyperlink{classunit_1_1_t_tag}{T\+Tag}
 \item 
 class \hyperlink{classunit_1_1_t_unit}{T\+Unit}
 \end{DoxyCompactItemize}
+\subsection*{Перечисления}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{group___xD0_x9F_xD0_xB5_xD1_x80_xD0_xB5_xD1_x87_xD0_xB8_xD1_x81_xD0_xBB_xD0_xB5_xD0_xBD_xD0_xB8_xD1_x8F_ga30dd689bff585403e080598b50585936}{cr\+Audio\+Buf\+ID} \{ \hyperlink{group___xD0_x9F_xD0_xB5_xD1_x80_xD0_xB5_xD1_x87_xD0_xB8_xD1_x81_xD0_xBB_xD0_xB5_xD0_xBD_xD0_xB8_xD1_x8F_gga30dd689bff585403e080598b50585936af6f3ce609b4a10d8b2a2585f79f99fe5}{cr\+Stop} = 0x\+FF, 
+\hyperlink{group___xD0_x9F_xD0_xB5_xD1_x80_xD0_xB5_xD1_x87_xD0_xB8_xD1_x81_xD0_xBB_xD0_xB5_xD0_xBD_xD0_xB8_xD1_x8F_gga30dd689bff585403e080598b50585936a02daa0965719dc30dc206f51ec6bc4a0}{cr\+First} = 0x00, 
+\hyperlink{group___xD0_x9F_xD0_xB5_xD1_x80_xD0_xB5_xD1_x87_xD0_xB8_xD1_x81_xD0_xBB_xD0_xB5_xD0_xBD_xD0_xB8_xD1_x8F_gga30dd689bff585403e080598b50585936a7a4ceb19867c6e9a69edef27504f9f2a}{cr\+Second} = 0x01
+ \}\begin{DoxyCompactList}\small\item\em Индекс обрабатываемоно аудио буфера \end{DoxyCompactList}
+\end{DoxyCompactItemize}
 \subsection*{Функции}
 \begin{DoxyCompactItemize}
 \item 
@@ -36,6 +48,22 @@ constexpr uint8\+\_\+t \hyperlink{namespaceunit_a00a34096b0492123f3830e75447e59d
 \mbox{\Hypertarget{namespaceunit_a3a82b0d0086859e1e04e0878fb932db3}\label{namespaceunit_a3a82b0d0086859e1e04e0878fb932db3}} 
 constexpr uint32\+\_\+t \hyperlink{namespaceunit_a3a82b0d0086859e1e04e0878fb932db3}{st\+Audio\+Duration} \{ 10000 \}
 \begin{DoxyCompactList}\small\item\em Максимальная длительность записи аудио \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespaceunit_a7a058e0d07546916ab5dffbec805f5d3}\label{namespaceunit_a7a058e0d07546916ab5dffbec805f5d3}} 
+constexpr uint32\+\_\+t \hyperlink{namespaceunit_a7a058e0d07546916ab5dffbec805f5d3}{st\+Audio\+Bitrate} \{ I2\+S\+\_\+\+A\+U\+D\+I\+O\+F\+R\+E\+Q\+\_\+8K \}
+\begin{DoxyCompactList}\small\item\em Битрейт получаемый с микрофона \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespaceunit_aa54bf911cfb8ceec5aea2b94ac45df4f}\label{namespaceunit_aa54bf911cfb8ceec5aea2b94ac45df4f}} 
+constexpr uint32\+\_\+t {\bfseries st\+Audio\+Buf\+Size} \{ 384 \}
+\item 
+\mbox{\Hypertarget{namespaceunit_a5aa5a35b383d36943582e4c6fb0f9e4e}\label{namespaceunit_a5aa5a35b383d36943582e4c6fb0f9e4e}} 
+constexpr uint32\+\_\+t \hyperlink{namespaceunit_a5aa5a35b383d36943582e4c6fb0f9e4e}{st\+Audio\+Buf\+Out\+Size} \{ 256 \}
+\begin{DoxyCompactList}\small\item\em \begin{quote}
+Размер буфера для получения звука с микрофона \end{quote}
+\end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespaceunit_a825ea814e5b3276cd5c1cce83c782c70}\label{namespaceunit_a825ea814e5b3276cd5c1cce83c782c70}} 
+constexpr uint32\+\_\+t \hyperlink{namespaceunit_a825ea814e5b3276cd5c1cce83c782c70}{st\+Audio\+Wait\+Start} \{ 300 \}
+\begin{DoxyCompactList}\small\item\em \begin{quote}
+Размер бувера для записи звука \end{quote}
+\end{DoxyCompactList}\item 
 \mbox{\Hypertarget{namespaceunit_af46d6c2767dafd308cf474c40fbeb8ec}\label{namespaceunit_af46d6c2767dafd308cf474c40fbeb8ec}} 
 constexpr uint8\+\_\+t \hyperlink{namespaceunit_af46d6c2767dafd308cf474c40fbeb8ec}{def\+Bq25121\+Adrr} \{ 0x6\+A \}
 \begin{DoxyCompactList}\small\item\em I2C адрес чипа B\+Q25121. \end{DoxyCompactList}\item 
@@ -52,7 +80,7 @@ constexpr uint8\+\_\+t {\bfseries def\+Bq25121\+Cmd\+\_\+01} \mbox{[}$\,$\mbox{]
 constexpr uint8\+\_\+t {\bfseries def\+Bq25121\+Cmd\+\_\+02} \mbox{[}$\,$\mbox{]} \{ 0x02, 0x88 \}
 \item 
 \mbox{\Hypertarget{namespaceunit_a8fb3be9b7803c7cc2c4ca90898faec3d}\label{namespaceunit_a8fb3be9b7803c7cc2c4ca90898faec3d}} 
-constexpr uint8\+\_\+t {\bfseries def\+Bq25121\+Cmd\+\_\+03} \mbox{[}$\,$\mbox{]} \{ 0x03, 0x98 \}
+constexpr uint8\+\_\+t {\bfseries def\+Bq25121\+Cmd\+\_\+03} \mbox{[}$\,$\mbox{]} \{ 0x03, 0x8\+C \}
 \item 
 \mbox{\Hypertarget{namespaceunit_abed998b1b5d20891626f3493002ddec4}\label{namespaceunit_abed998b1b5d20891626f3493002ddec4}} 
 constexpr uint8\+\_\+t {\bfseries def\+Bq25121\+Cmd\+\_\+04} \mbox{[}$\,$\mbox{]} \{ 0x04, 0x26 \}
@@ -70,22 +98,25 @@ constexpr uint8\+\_\+t {\bfseries def\+Bq25121\+Cmd\+\_\+07} \mbox{[}$\,$\mbox{]
 constexpr uint8\+\_\+t {\bfseries def\+Bq25121\+Cmd\+\_\+08} \mbox{[}$\,$\mbox{]} \{ 0x08, 0x48 \}
 \item 
 \mbox{\Hypertarget{namespaceunit_adfff8f732367d25e495e36d8c42fe6b0}\label{namespaceunit_adfff8f732367d25e495e36d8c42fe6b0}} 
-constexpr uint8\+\_\+t {\bfseries def\+Bq25121\+Cmd\+\_\+09} \mbox{[}$\,$\mbox{]} \{ 0x09, 0x32 \}
+constexpr uint8\+\_\+t {\bfseries def\+Bq25121\+Cmd\+\_\+09} \mbox{[}$\,$\mbox{]} \{ 0x09, 0x3\+A \}
 \item 
 \mbox{\Hypertarget{namespaceunit_a4046328eb4948dd6d45bb766c644edcc}\label{namespaceunit_a4046328eb4948dd6d45bb766c644edcc}} 
-constexpr uint8\+\_\+t {\bfseries def\+Bq25121\+Cmd\+\_\+0B} \mbox{[}$\,$\mbox{]} \{ 0x0\+B, 0x42 \}
+constexpr uint8\+\_\+t {\bfseries def\+Bq25121\+Cmd\+\_\+0B} \mbox{[}$\,$\mbox{]} \{ 0x0\+B, 0x34 \}
+\item 
+\mbox{\Hypertarget{namespaceunit_a5d12e020a84bb26a22336d858a15605a}\label{namespaceunit_a5d12e020a84bb26a22336d858a15605a}} 
+constexpr uint8\+\_\+t {\bfseries def\+Bq25121\+Cmd\+\_\+reset} \mbox{[}$\,$\mbox{]} \{ 0x09, 0x80 \}
 \item 
 \mbox{\Hypertarget{namespaceunit_abcbb090579c207ee6b57c5de2a688616}\label{namespaceunit_abcbb090579c207ee6b57c5de2a688616}} 
 constexpr uint32\+\_\+t \hyperlink{namespaceunit_abcbb090579c207ee6b57c5de2a688616}{def\+Bq25121\+Time\+Out} \{ 100 \}
 \begin{DoxyCompactList}\small\item\em Таймаут для работы по шине I2C. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{namespaceunit_acbeeb78b619bb42824b0c0518e456f95}\label{namespaceunit_acbeeb78b619bb42824b0c0518e456f95}} 
 constexpr uint32\+\_\+t \hyperlink{namespaceunit_acbeeb78b619bb42824b0c0518e456f95}{st\+Photo\+Time\+Wait} \{ 5000 \}
-\begin{DoxyCompactList}\small\item\em Время ожидания отпускания кнопки \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Время ожидания отпускания кнопки после \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{namespaceunit_a72c06d57e001189306ca7978d5b2df8f}\label{namespaceunit_a72c06d57e001189306ca7978d5b2df8f}} 
 constexpr uint16\+\_\+t \hyperlink{namespaceunit_a72c06d57e001189306ca7978d5b2df8f}{st\+Photo\+I2\+C\+Write} \{ 0x60 \}
 \begin{DoxyCompactList}\small\item\em Адрес для записи на шине I2C. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{namespaceunit_a50f740136690db44e593be6a0e62d429}\label{namespaceunit_a50f740136690db44e593be6a0e62d429}} 
-constexpr uint16\+\_\+t \hyperlink{namespaceunit_a50f740136690db44e593be6a0e62d429}{st\+Photo\+I2\+C\+Read} \{ 0x61 \}
+constexpr uint16\+\_\+t \hyperlink{namespaceunit_a50f740136690db44e593be6a0e62d429}{st\+Photo\+I2\+C\+Read} \{ \hyperlink{namespaceunit_a72c06d57e001189306ca7978d5b2df8f}{st\+Photo\+I2\+C\+Write} $\vert$ 0x01 \}
 \begin{DoxyCompactList}\small\item\em Адрес для чтения на шине I2C. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{namespaceunit_a8ef813be3eb747a2ef19ed15edb1db76}\label{namespaceunit_a8ef813be3eb747a2ef19ed15edb1db76}} 
 constexpr uint32\+\_\+t \hyperlink{namespaceunit_a8ef813be3eb747a2ef19ed15edb1db76}{st\+Photo\+I2\+C\+Timeout} \{ 100 \}
@@ -93,6 +124,9 @@ constexpr uint32\+\_\+t \hyperlink{namespaceunit_a8ef813be3eb747a2ef19ed15edb1db
 \mbox{\Hypertarget{namespaceunit_a40b076ece72209541014f35f94c3b5fa}\label{namespaceunit_a40b076ece72209541014f35f94c3b5fa}} 
 constexpr uint32\+\_\+t \hyperlink{namespaceunit_a40b076ece72209541014f35f94c3b5fa}{st\+Photo\+D\+C\+M\+I\+Timeout} \{ 10000 \}
 \begin{DoxyCompactList}\small\item\em Таймаут получения изображения \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespaceunit_ac3cc9679ebdfb6d3e41ab1f557c4a673}\label{namespaceunit_ac3cc9679ebdfb6d3e41ab1f557c4a673}} 
+constexpr uint32\+\_\+t \hyperlink{namespaceunit_ac3cc9679ebdfb6d3e41ab1f557c4a673}{st\+Photo\+Position\+Timeout} \{ 3000 \}
+\begin{DoxyCompactList}\small\item\em Таймаут для выбора объекта фотографирования \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{namespaceunit_af17602370595c7749fafdea0a4ce5697}\label{namespaceunit_af17602370595c7749fafdea0a4ce5697}} 
 constexpr uint8\+\_\+t {\bfseries st\+Tag\+Cmd\+Ack} \mbox{[}$\,$\mbox{]} \{0x00,0x00,0x\+F\+F,0x00,0x\+F\+F,0x00\}
 \item 
@@ -112,7 +146,7 @@ constexpr uint32\+\_\+t \hyperlink{namespaceunit_aa0dcd71ec85a3cd4efd9a1f7932b85
 constexpr uint32\+\_\+t \hyperlink{namespaceunit_a261d46e79e60f0c63e800220b3823f52}{st\+Tag\+Usart\+Wait\+ID} \{ 10000 \}
 \begin{DoxyCompactList}\small\item\em Время ожидания получения ID метки (10 сек) \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{namespaceunit_ad375ec8c6ee3711bef6f664811d73b14}\label{namespaceunit_ad375ec8c6ee3711bef6f664811d73b14}} 
-constexpr uint32\+\_\+t \hyperlink{namespaceunit_ad375ec8c6ee3711bef6f664811d73b14}{st\+Tag\+Wait\+Sync} \{ 5000 \}
+constexpr uint32\+\_\+t \hyperlink{namespaceunit_ad375ec8c6ee3711bef6f664811d73b14}{st\+Tag\+Wait\+Sync} \{ 10000 \}
 \begin{DoxyCompactList}\small\item\em Время ожидания синхронизации \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 

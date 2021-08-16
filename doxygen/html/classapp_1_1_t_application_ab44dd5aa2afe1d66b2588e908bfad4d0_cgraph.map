@@ -1,0 +1,5 @@
+<map id="app::TApplication::sleep" name="app::TApplication::sleep">
+<area shape="rect" id="node2" href="$classapp_1_1_t_application.html#a63da2a3bd444ed62efa0e35ae5f0571d" title="Отправка отладочного сообщения для текущего состояния " alt="" coords="184,5,315,47"/>
+<area shape="rect" id="node3" href="$classapp_1_1_t_application.html#a1d5d4282bfbee6c984b10394f50a6cab" title="Управление информационными сигналом " alt="" coords="184,71,315,112"/>
+<area shape="rect" id="node4" href="$classapp_1_1_t_application.html#aa2cb4a923a937f1a47a28fb5efe3b943" title="Получить текстовое сообщение текущего времени " alt="" coords="184,136,315,177"/>
+</map>

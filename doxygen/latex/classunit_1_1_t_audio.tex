@@ -25,6 +25,10 @@
 \subsection*{Открытые члены}
 \begin{DoxyCompactItemize}
 \item 
+\hyperlink{classunit_1_1_t_audio_a326d9d807df56ef1a264564c69c350b5}{T\+Audio} (std\+::shared\+\_\+ptr$<$ \hyperlink{classunit_1_1_t_file_system}{T\+File\+System} $>$)
+\item 
+virtual \hyperlink{classunit_1_1_t_audio_ab62b7453a3128fd1ab9d2473237ba331}{$\sim$\+T\+Audio} ()
+\item 
 \mbox{\Hypertarget{classunit_1_1_t_audio_a69cc926edc98c59e9ffaad10ceb605f0}\label{classunit_1_1_t_audio_a69cc926edc98c59e9ffaad10ceb605f0}} 
 bool \hyperlink{classunit_1_1_t_audio_a69cc926edc98c59e9ffaad10ceb605f0}{check} ()
 \begin{DoxyCompactList}\small\item\em Проверка работоспособности аудио (запись и вопроизведение пищалки) \end{DoxyCompactList}\item 
@@ -37,7 +41,6 @@ void \hyperlink{classunit_1_1_t_audio_aab519e5239080d5ef906293dedc9399a}{sleep} 
 \mbox{\Hypertarget{classunit_1_1_t_audio_a3cbc7de5ae0d03af42eeed896829d85c}\label{classunit_1_1_t_audio_a3cbc7de5ae0d03af42eeed896829d85c}} 
 void \hyperlink{classunit_1_1_t_audio_a3cbc7de5ae0d03af42eeed896829d85c}{wakeup} ()
 \begin{DoxyCompactList}\small\item\em Выход из режима энергосбережения \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{classunit_1_1_t_audio_ad547ef4d28534b9cd76d2e7eb539d1e0}\label{classunit_1_1_t_audio_ad547ef4d28534b9cd76d2e7eb539d1e0}} 
 bool \hyperlink{classunit_1_1_t_audio_ad547ef4d28534b9cd76d2e7eb539d1e0}{process} ()
 \begin{DoxyCompactList}\small\item\em Получение данных с микрофона и запись его в файл \end{DoxyCompactList}\end{DoxyCompactItemize}
 
@@ -45,7 +48,57 @@ bool \hyperlink{classunit_1_1_t_audio_ad547ef4d28534b9cd76d2e7eb539d1e0}{process
 \subsection{Подробное описание}
 
 
- Класс для работы со звуком 
+ Класс для работы со звуком Запись звука идёт в буфер по D\+MA и по срабатываний прерываний выполняется преобразование из P\+DM в P\+CM запись результата на SD 
+
+\subsection{Конструктор(ы)}
+\mbox{\Hypertarget{classunit_1_1_t_audio_a326d9d807df56ef1a264564c69c350b5}\label{classunit_1_1_t_audio_a326d9d807df56ef1a264564c69c350b5}} 
+\index{unit\+::\+T\+Audio@{unit\+::\+T\+Audio}!T\+Audio@{T\+Audio}}
+\index{T\+Audio@{T\+Audio}!unit\+::\+T\+Audio@{unit\+::\+T\+Audio}}
+\subsubsection{\texorpdfstring{T\+Audio()}{TAudio()}}
+{\footnotesize\ttfamily unit\+::\+T\+Audio\+::\+T\+Audio (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \hyperlink{classunit_1_1_t_file_system}{T\+File\+System} $>$}]{in\+Ptr\+File\+System }\end{DoxyParamCaption})}
+
+Конструктор инициализирующий работу для записи аудио. Все данные для P\+DM -\/$>$ P\+CM преобразования задаются в настройках Cube\+MX 
+\begin{DoxyParams}{Аргументы}
+{\em in\+Ptr\+File\+System} & Указатель на класс работы с файловой системой \\
+\hline
+\end{DoxyParams}
+\begin{DoxyAttention}{Внимание}
+Я ни коем образом не проверяю указатель на файловую систему!!! sizeof (\hyperlink{namespacecommon_aeca12b629edac6586f4b0fbcf9617769}{common\+::st\+Audio\+Buf})/2 
+\end{DoxyAttention}
+\mbox{\Hypertarget{classunit_1_1_t_audio_ab62b7453a3128fd1ab9d2473237ba331}\label{classunit_1_1_t_audio_ab62b7453a3128fd1ab9d2473237ba331}} 
+\index{unit\+::\+T\+Audio@{unit\+::\+T\+Audio}!````~T\+Audio@{$\sim$\+T\+Audio}}
+\index{````~T\+Audio@{$\sim$\+T\+Audio}!unit\+::\+T\+Audio@{unit\+::\+T\+Audio}}
+\subsubsection{\texorpdfstring{$\sim$\+T\+Audio()}{~TAudio()}}
+{\footnotesize\ttfamily unit\+::\+T\+Audio\+::$\sim$\+T\+Audio (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+\begin{DoxyAttention}{Внимание}
+По хорошему нужно проверять и дожидаться остановки D\+MA, т.\+к. в противном случае контроллер не уйдёт в Stand\+By 
+\end{DoxyAttention}
+
+
+\subsection{Методы}
+\mbox{\Hypertarget{classunit_1_1_t_audio_ad547ef4d28534b9cd76d2e7eb539d1e0}\label{classunit_1_1_t_audio_ad547ef4d28534b9cd76d2e7eb539d1e0}} 
+\index{unit\+::\+T\+Audio@{unit\+::\+T\+Audio}!process@{process}}
+\index{process@{process}!unit\+::\+T\+Audio@{unit\+::\+T\+Audio}}
+\subsubsection{\texorpdfstring{process()}{process()}}
+{\footnotesize\ttfamily bool unit\+::\+T\+Audio\+::process (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Получение данных с микрофона и запись его в файл 
+
+
+
+ Запись буфера полученного с микрофона \begin{DoxyReturn}{Возвращает}
+true в случае успешной записи 
+\end{DoxyReturn}
+\begin{DoxyRefDesc}{Необходимо сделать}
+\item[\hyperlink{todo__todo000006}{Необходимо сделать}]Переделать на хрен, т.\+к. написано через жопу кривыми руками. \+:( \end{DoxyRefDesc}
+
+
+Замещает \hyperlink{classunit_1_1_t_unit_a108691c8b988d97c65237c83a31db706}{unit\+::\+T\+Unit}.
+
+
 
 Объявления и описания членов классов находятся в файлах\+:\begin{DoxyCompactItemize}
 \item 

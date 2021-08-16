@@ -11,45 +11,13 @@
 class \hyperlink{classapp_1_1_t_application}{T\+Application}
 \begin{DoxyCompactList}\small\item\em Класс содержащий данные для обеспечения работы приложения \end{DoxyCompactList}\item 
 class \hyperlink{classapp_1_1_t_button}{T\+Button}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Класс для работы с кнопками \end{DoxyCompactList}\item 
+struct \hyperlink{structapp_1_1td_log_item}{td\+Log\+Item}
+\begin{DoxyCompactList}\small\item\em Описание структуры для хранения одной записи лога. \end{DoxyCompactList}\item 
+class \hyperlink{classapp_1_1_t_log}{T\+Log}
+\begin{DoxyCompactList}\small\item\em Класс ведения лога работы \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Перечисления}
 \begin{DoxyCompactItemize}
-\item 
-enum \hyperlink{group___xD0_x9F_xD0_xB5_xD1_x80_xD0_xB5_xD1_x87_xD0_xB8_xD1_x81_xD0_xBB_xD0_xB5_xD0_xBD_xD0_xB8_xD1_x8F_ga290e8080c661e52c2f685fd4af148acf}{app\+State} \{ \newline
-\hyperlink{group___xD0_x9F_xD0_xB5_xD1_x80_xD0_xB5_xD1_x87_xD0_xB8_xD1_x81_xD0_xBB_xD0_xB5_xD0_xBD_xD0_xB8_xD1_x8F_gga290e8080c661e52c2f685fd4af148acfafba3da9bcc34395d19f8704220660bf7}{app\+Unknown} = 0, 
-\hyperlink{group___xD0_x9F_xD0_xB5_xD1_x80_xD0_xB5_xD1_x87_xD0_xB8_xD1_x81_xD0_xBB_xD0_xB5_xD0_xBD_xD0_xB8_xD1_x8F_gga290e8080c661e52c2f685fd4af148acfa06429e3f15123c01cc678c167cc05b8b}{app\+Started}, 
-\hyperlink{group___xD0_x9F_xD0_xB5_xD1_x80_xD0_xB5_xD1_x87_xD0_xB8_xD1_x81_xD0_xBB_xD0_xB5_xD0_xBD_xD0_xB8_xD1_x8F_gga290e8080c661e52c2f685fd4af148acfa4cf039e664fb2026ab3fd90d0a51050b}{app\+Stand\+By}, 
-\hyperlink{group___xD0_x9F_xD0_xB5_xD1_x80_xD0_xB5_xD1_x87_xD0_xB8_xD1_x81_xD0_xBB_xD0_xB5_xD0_xBD_xD0_xB8_xD1_x8F_gga290e8080c661e52c2f685fd4af148acfa7703d6d19f36dc6ada3ce7b8e3be5a23}{app\+Ready}, 
-\newline
-\hyperlink{group___xD0_x9F_xD0_xB5_xD1_x80_xD0_xB5_xD1_x87_xD0_xB8_xD1_x81_xD0_xBB_xD0_xB5_xD0_xBD_xD0_xB8_xD1_x8F_gga290e8080c661e52c2f685fd4af148acfae13f6f6403aa802b7802fb9d6defd008}{app\+Audio}, 
-\hyperlink{group___xD0_x9F_xD0_xB5_xD1_x80_xD0_xB5_xD1_x87_xD0_xB8_xD1_x81_xD0_xBB_xD0_xB5_xD0_xBD_xD0_xB8_xD1_x8F_gga290e8080c661e52c2f685fd4af148acfac9780bfeff75ce5754c1557da55fb8b0}{app\+Audio\+Wait\+Stop}, 
-\hyperlink{group___xD0_x9F_xD0_xB5_xD1_x80_xD0_xB5_xD1_x87_xD0_xB8_xD1_x81_xD0_xBB_xD0_xB5_xD0_xBD_xD0_xB8_xD1_x8F_gga290e8080c661e52c2f685fd4af148acfa6c6a194d643920afd30bf8f10e6658db}{app\+Audio\+Stop}, 
-\hyperlink{group___xD0_x9F_xD0_xB5_xD1_x80_xD0_xB5_xD1_x87_xD0_xB8_xD1_x81_xD0_xBB_xD0_xB5_xD0_xBD_xD0_xB8_xD1_x8F_gga290e8080c661e52c2f685fd4af148acfa9ef71d54d0a6d2e454e96e97c047bcc6}{app\+Photo}, 
-\newline
-\hyperlink{group___xD0_x9F_xD0_xB5_xD1_x80_xD0_xB5_xD1_x87_xD0_xB8_xD1_x81_xD0_xBB_xD0_xB5_xD0_xBD_xD0_xB8_xD1_x8F_gga290e8080c661e52c2f685fd4af148acfa6ece4969fa6384847ee632f9fd55e124}{app\+Photo\+Button\+Press}, 
-\hyperlink{group___xD0_x9F_xD0_xB5_xD1_x80_xD0_xB5_xD1_x87_xD0_xB8_xD1_x81_xD0_xBB_xD0_xB5_xD0_xBD_xD0_xB8_xD1_x8F_gga290e8080c661e52c2f685fd4af148acfae597d89c5bbd7f9873f7fa369ef24df6}{app\+Photo\+I2\+C\+Err}, 
-\hyperlink{group___xD0_x9F_xD0_xB5_xD1_x80_xD0_xB5_xD1_x87_xD0_xB8_xD1_x81_xD0_xBB_xD0_xB5_xD0_xBD_xD0_xB8_xD1_x8F_gga290e8080c661e52c2f685fd4af148acfacaecf479ee7651cb23d3ecfca43f3ddd}{app\+Photo\+Timeout}, 
-\hyperlink{group___xD0_x9F_xD0_xB5_xD1_x80_xD0_xB5_xD1_x87_xD0_xB8_xD1_x81_xD0_xBB_xD0_xB5_xD0_xBD_xD0_xB8_xD1_x8F_gga290e8080c661e52c2f685fd4af148acfa3c31d143e9bc2e3d48ba23ae8bfe01d5}{app\+Tag}, 
-\newline
-\hyperlink{group___xD0_x9F_xD0_xB5_xD1_x80_xD0_xB5_xD1_x87_xD0_xB8_xD1_x81_xD0_xBB_xD0_xB5_xD0_xBD_xD0_xB8_xD1_x8F_gga290e8080c661e52c2f685fd4af148acfa25d59b57a27a13e034cab5faf26fd4e0}{app\+Tag\+Err}, 
-\hyperlink{group___xD0_x9F_xD0_xB5_xD1_x80_xD0_xB5_xD1_x87_xD0_xB8_xD1_x81_xD0_xBB_xD0_xB5_xD0_xBD_xD0_xB8_xD1_x8F_gga290e8080c661e52c2f685fd4af148acfaccc67d66e13249dc4fa22d624ce013d4}{app\+Doc}, 
-\hyperlink{group___xD0_x9F_xD0_xB5_xD1_x80_xD0_xB5_xD1_x87_xD0_xB8_xD1_x81_xD0_xBB_xD0_xB5_xD0_xBD_xD0_xB8_xD1_x8F_gga290e8080c661e52c2f685fd4af148acfa50b594306c1d7a073119a0a7bb94a56b}{app\+Doc\+Wait\+Stop}, 
-\hyperlink{group___xD0_x9F_xD0_xB5_xD1_x80_xD0_xB5_xD1_x87_xD0_xB8_xD1_x81_xD0_xBB_xD0_xB5_xD0_xBD_xD0_xB8_xD1_x8F_gga290e8080c661e52c2f685fd4af148acfae29d9127eb593964667686b495588ecf}{app\+Check\+Bounce}, 
-\newline
-\hyperlink{group___xD0_x9F_xD0_xB5_xD1_x80_xD0_xB5_xD1_x87_xD0_xB8_xD1_x81_xD0_xBB_xD0_xB5_xD0_xBD_xD0_xB8_xD1_x8F_gga290e8080c661e52c2f685fd4af148acfa336edab4342b86e8be3ec106f44c65ae}{app\+Check\+Button}, 
-\hyperlink{group___xD0_x9F_xD0_xB5_xD1_x80_xD0_xB5_xD1_x87_xD0_xB8_xD1_x81_xD0_xBB_xD0_xB5_xD0_xBD_xD0_xB8_xD1_x8F_gga290e8080c661e52c2f685fd4af148acfadbe7c90fff8efa5ca2cc07d3f442a855}{app\+Bounce\+Timeout}, 
-\hyperlink{group___xD0_x9F_xD0_xB5_xD1_x80_xD0_xB5_xD1_x87_xD0_xB8_xD1_x81_xD0_xBB_xD0_xB5_xD0_xBD_xD0_xB8_xD1_x8F_gga290e8080c661e52c2f685fd4af148acfa89156a1ccc6c5519c84c8f043e8bdc23}{app\+Start\+Bounce}, 
-\hyperlink{group___xD0_x9F_xD0_xB5_xD1_x80_xD0_xB5_xD1_x87_xD0_xB8_xD1_x81_xD0_xBB_xD0_xB5_xD0_xBD_xD0_xB8_xD1_x8F_gga290e8080c661e52c2f685fd4af148acfaaa919407add286f45f3d2f1efec97654}{app\+Err\+Button}, 
-\newline
-\hyperlink{group___xD0_x9F_xD0_xB5_xD1_x80_xD0_xB5_xD1_x87_xD0_xB8_xD1_x81_xD0_xBB_xD0_xB5_xD0_xBD_xD0_xB8_xD1_x8F_gga290e8080c661e52c2f685fd4af148acfa14b4efaea15974df40b9d19ecb746d99}{app\+Err\+I2C}, 
-\hyperlink{group___xD0_x9F_xD0_xB5_xD1_x80_xD0_xB5_xD1_x87_xD0_xB8_xD1_x81_xD0_xBB_xD0_xB5_xD0_xBD_xD0_xB8_xD1_x8F_gga290e8080c661e52c2f685fd4af148acfac320769ad532ac30ed4846a8503f4e2f}{app\+Err\+Bq25121}, 
-\hyperlink{group___xD0_x9F_xD0_xB5_xD1_x80_xD0_xB5_xD1_x87_xD0_xB8_xD1_x81_xD0_xBB_xD0_xB5_xD0_xBD_xD0_xB8_xD1_x8F_gga290e8080c661e52c2f685fd4af148acfa7896ae5c37f5dd417ec49873ae92ccb5}{app\+Err\+S\+D\+IO}, 
-\hyperlink{group___xD0_x9F_xD0_xB5_xD1_x80_xD0_xB5_xD1_x87_xD0_xB8_xD1_x81_xD0_xBB_xD0_xB5_xD0_xBD_xD0_xB8_xD1_x8F_gga290e8080c661e52c2f685fd4af148acfadb1298f895997311a2e8046367fc542d}{app\+Err\+File\+FS}, 
-\newline
-\hyperlink{group___xD0_x9F_xD0_xB5_xD1_x80_xD0_xB5_xD1_x87_xD0_xB8_xD1_x81_xD0_xBB_xD0_xB5_xD0_xBD_xD0_xB8_xD1_x8F_gga290e8080c661e52c2f685fd4af148acfad4b1d6b99d64109ab0de85d116f91031}{app\+Doc\+Sync\+Time}, 
-\hyperlink{group___xD0_x9F_xD0_xB5_xD1_x80_xD0_xB5_xD1_x87_xD0_xB8_xD1_x81_xD0_xBB_xD0_xB5_xD0_xBD_xD0_xB8_xD1_x8F_gga290e8080c661e52c2f685fd4af148acfaffa1cd7400c54444d0d1240143fd6e0f}{app\+Tag\+No\+Id}, 
-\hyperlink{group___xD0_x9F_xD0_xB5_xD1_x80_xD0_xB5_xD1_x87_xD0_xB8_xD1_x81_xD0_xBB_xD0_xB5_xD0_xBD_xD0_xB8_xD1_x8F_gga290e8080c661e52c2f685fd4af148acfab3c38120e83ed92fbe0aadf4076ad444}{app\+Num}
- \}\begin{DoxyCompactList}\small\item\em Возможные состояния приложения \end{DoxyCompactList}
 \item 
 enum \hyperlink{group___xD0_x9F_xD0_xB5_xD1_x80_xD0_xB5_xD1_x87_xD0_xB8_xD1_x81_xD0_xBB_xD0_xB5_xD0_xBD_xD0_xB8_xD1_x8F_ga33d8f1a04a907b6c65c5dfc88280ac6f}{type\+Sound} \{ \newline
 \hyperlink{group___xD0_x9F_xD0_xB5_xD1_x80_xD0_xB5_xD1_x87_xD0_xB8_xD1_x81_xD0_xBB_xD0_xB5_xD0_xBD_xD0_xB8_xD1_x8F_gga33d8f1a04a907b6c65c5dfc88280ac6fa7237f8fa77d12dd4dd2bd7ca320f2ba3}{tsnd\+Short}, 
@@ -74,6 +42,47 @@ enum \hyperlink{group___xD0_x9F_xD0_xB5_xD1_x80_xD0_xB5_xD1_x87_xD0_xB8_xD1_x81_
 \hyperlink{group___xD0_x9F_xD0_xB5_xD1_x80_xD0_xB5_xD1_x87_xD0_xB8_xD1_x81_xD0_xBB_xD0_xB5_xD0_xBD_xD0_xB8_xD1_x8F_ggaf2797b8ed91d66a25b1b3b05ea7bcfc2a823b0d711ddbab338341f31895c87f7f}{info\+Audio\+Light}, 
 {\bfseries info\+Num}
  \}\begin{DoxyCompactList}\small\item\em Тип информации \end{DoxyCompactList}
+\item 
+enum \hyperlink{namespaceapp_a290e8080c661e52c2f685fd4af148acf}{app\+State} \{ \newline
+\hyperlink{namespaceapp_a290e8080c661e52c2f685fd4af148acfafba3da9bcc34395d19f8704220660bf7}{app\+Unknown} = 0, 
+\hyperlink{namespaceapp_a290e8080c661e52c2f685fd4af148acfa9cdd2569ab7c303c56d07605582a0c4c}{app\+Service}, 
+\hyperlink{namespaceapp_a290e8080c661e52c2f685fd4af148acfa06429e3f15123c01cc678c167cc05b8b}{app\+Started}, 
+\hyperlink{namespaceapp_a290e8080c661e52c2f685fd4af148acfa4cf039e664fb2026ab3fd90d0a51050b}{app\+Stand\+By}, 
+\newline
+\hyperlink{namespaceapp_a290e8080c661e52c2f685fd4af148acfa7703d6d19f36dc6ada3ce7b8e3be5a23}{app\+Ready}, 
+\hyperlink{namespaceapp_a290e8080c661e52c2f685fd4af148acfae13f6f6403aa802b7802fb9d6defd008}{app\+Audio}, 
+\hyperlink{namespaceapp_a290e8080c661e52c2f685fd4af148acfac9780bfeff75ce5754c1557da55fb8b0}{app\+Audio\+Wait\+Stop}, 
+\hyperlink{namespaceapp_a290e8080c661e52c2f685fd4af148acfa6c6a194d643920afd30bf8f10e6658db}{app\+Audio\+Stop}, 
+\newline
+\hyperlink{namespaceapp_a290e8080c661e52c2f685fd4af148acfa1dd3c4162940c6309ae21829677e261e}{app\+Audio\+Err}, 
+\hyperlink{namespaceapp_a290e8080c661e52c2f685fd4af148acfa9ef71d54d0a6d2e454e96e97c047bcc6}{app\+Photo}, 
+\hyperlink{namespaceapp_a290e8080c661e52c2f685fd4af148acfa6ece4969fa6384847ee632f9fd55e124}{app\+Photo\+Button\+Press}, 
+\hyperlink{namespaceapp_a290e8080c661e52c2f685fd4af148acfae597d89c5bbd7f9873f7fa369ef24df6}{app\+Photo\+I2\+C\+Err}, 
+\newline
+\hyperlink{namespaceapp_a290e8080c661e52c2f685fd4af148acfacaecf479ee7651cb23d3ecfca43f3ddd}{app\+Photo\+Timeout}, 
+\hyperlink{namespaceapp_a290e8080c661e52c2f685fd4af148acfa3c31d143e9bc2e3d48ba23ae8bfe01d5}{app\+Tag}, 
+\hyperlink{namespaceapp_a290e8080c661e52c2f685fd4af148acfa25d59b57a27a13e034cab5faf26fd4e0}{app\+Tag\+Err}, 
+\hyperlink{namespaceapp_a290e8080c661e52c2f685fd4af148acfaccc67d66e13249dc4fa22d624ce013d4}{app\+Doc}, 
+\newline
+\hyperlink{namespaceapp_a290e8080c661e52c2f685fd4af148acfa50b594306c1d7a073119a0a7bb94a56b}{app\+Doc\+Wait\+Stop}, 
+\hyperlink{namespaceapp_a290e8080c661e52c2f685fd4af148acfae29d9127eb593964667686b495588ecf}{app\+Check\+Bounce}, 
+\hyperlink{namespaceapp_a290e8080c661e52c2f685fd4af148acfa336edab4342b86e8be3ec106f44c65ae}{app\+Check\+Button}, 
+\hyperlink{namespaceapp_a290e8080c661e52c2f685fd4af148acfadbe7c90fff8efa5ca2cc07d3f442a855}{app\+Bounce\+Timeout}, 
+\newline
+\hyperlink{namespaceapp_a290e8080c661e52c2f685fd4af148acfa89156a1ccc6c5519c84c8f043e8bdc23}{app\+Start\+Bounce}, 
+\hyperlink{namespaceapp_a290e8080c661e52c2f685fd4af148acfaaa919407add286f45f3d2f1efec97654}{app\+Err\+Button}, 
+\hyperlink{namespaceapp_a290e8080c661e52c2f685fd4af148acfa14b4efaea15974df40b9d19ecb746d99}{app\+Err\+I2C}, 
+\hyperlink{namespaceapp_a290e8080c661e52c2f685fd4af148acfac320769ad532ac30ed4846a8503f4e2f}{app\+Err\+Bq25121}, 
+\newline
+\hyperlink{namespaceapp_a290e8080c661e52c2f685fd4af148acfa7896ae5c37f5dd417ec49873ae92ccb5}{app\+Err\+S\+D\+IO}, 
+\hyperlink{namespaceapp_a290e8080c661e52c2f685fd4af148acfadb1298f895997311a2e8046367fc542d}{app\+Err\+File\+FS}, 
+\hyperlink{namespaceapp_a290e8080c661e52c2f685fd4af148acfad4b1d6b99d64109ab0de85d116f91031}{app\+Doc\+Sync\+Time}, 
+\hyperlink{namespaceapp_a290e8080c661e52c2f685fd4af148acfaffa1cd7400c54444d0d1240143fd6e0f}{app\+Tag\+No\+Id}, 
+\newline
+\hyperlink{namespaceapp_a290e8080c661e52c2f685fd4af148acfa30f5a19a2b92d2a52cdd3ecbceff1f93}{app\+Fs\+Repair}, 
+\hyperlink{namespaceapp_a290e8080c661e52c2f685fd4af148acfac4eb6f96d240af51718080f4d805b044}{app\+Hw\+Err}, 
+\hyperlink{namespaceapp_a290e8080c661e52c2f685fd4af148acfab3c38120e83ed92fbe0aadf4076ad444}{app\+Num}
+ \}
 \end{DoxyCompactItemize}
 \subsection*{Переменные}
 \begin{DoxyCompactItemize}
@@ -93,49 +102,159 @@ enum \hyperlink{group___xD0_x9F_xD0_xB5_xD1_x80_xD0_xB5_xD1_x87_xD0_xB8_xD1_x81_
 \mbox{\Hypertarget{namespaceapp_a5d3e2252ee97a72dc9ab825375962ca1}\label{namespaceapp_a5d3e2252ee97a72dc9ab825375962ca1}} 
 constexpr uint32\+\_\+t \hyperlink{namespaceapp_a5d3e2252ee97a72dc9ab825375962ca1}{st\+App\+Debug\+Timeout} \{ 5000 \}
 \begin{DoxyCompactList}\small\item\em Время ожидания отправки отладочного сообщения \end{DoxyCompactList}\item 
-const std\+::unordered\+\_\+map$<$ \hyperlink{group___xD0_x9F_xD0_xB5_xD1_x80_xD0_xB5_xD1_x87_xD0_xB8_xD1_x81_xD0_xBB_xD0_xB5_xD0_xBD_xD0_xB8_xD1_x8F_ga290e8080c661e52c2f685fd4af148acf}{app\+State}, std\+::string $>$ \hyperlink{namespaceapp_a5731c1034c8fb7eaa43470e10aeff84c}{msg\+App\+State}
-\end{DoxyCompactItemize}
+const std\+::unordered\+\_\+map$<$ \hyperlink{namespaceapp_a290e8080c661e52c2f685fd4af148acf}{app\+State}, std\+::string $>$ \hyperlink{namespaceapp_a5731c1034c8fb7eaa43470e10aeff84c}{msg\+App\+State}
+\item 
+\mbox{\Hypertarget{namespaceapp_a98dd8ffbf0b01d222238c1df988adcaa}\label{namespaceapp_a98dd8ffbf0b01d222238c1df988adcaa}} 
+const \hyperlink{structapp_1_1td_log_item}{td\+Log\+Item} $\ast$ {\bfseries st\+Ptr\+Log\+Start} \{ reinterpret\+\_\+cast $<$\hyperlink{structapp_1_1td_log_item}{td\+Log\+Item}$\ast$$>$ (0x081\+E0000\+U) \}
+\item 
+\mbox{\Hypertarget{namespaceapp_a51952c8370b735a12cf723ced096ca48}\label{namespaceapp_a51952c8370b735a12cf723ced096ca48}} 
+constexpr uint32\+\_\+t \hyperlink{namespaceapp_a51952c8370b735a12cf723ced096ca48}{st\+Log\+Size} \{ 0x20000 \}
+\begin{DoxyCompactList}\small\item\em Размер лога на внутренней флешке \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Подробное описание}
 Всё, что касается управления приложением 
+
+\subsection{Перечисления}
+\mbox{\Hypertarget{namespaceapp_a290e8080c661e52c2f685fd4af148acf}\label{namespaceapp_a290e8080c661e52c2f685fd4af148acf}} 
+\index{app@{app}!app\+State@{app\+State}}
+\index{app\+State@{app\+State}!app@{app}}
+\subsubsection{\texorpdfstring{app\+State}{appState}}
+{\footnotesize\ttfamily enum \hyperlink{namespaceapp_a290e8080c661e52c2f685fd4af148acf}{app\+::app\+State}}
+
+\begin{DoxyEnumFields}{Элементы перечислений}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{app\+Unknown@{app\+Unknown}!app@{app}}\index{app@{app}!app\+Unknown@{app\+Unknown}}}\mbox{\Hypertarget{namespaceapp_a290e8080c661e52c2f685fd4af148acfafba3da9bcc34395d19f8704220660bf7}\label{namespaceapp_a290e8080c661e52c2f685fd4af148acfafba3da9bcc34395d19f8704220660bf7}} 
+app\+Unknown&Пиздец котёнку. \+:(. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{app\+Service@{app\+Service}!app@{app}}\index{app@{app}!app\+Service@{app\+Service}}}\mbox{\Hypertarget{namespaceapp_a290e8080c661e52c2f685fd4af148acfa9cdd2569ab7c303c56d07605582a0c4c}\label{namespaceapp_a290e8080c661e52c2f685fd4af148acfa9cdd2569ab7c303c56d07605582a0c4c}} 
+app\+Service&Режим сервисного обслуживания \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{app\+Started@{app\+Started}!app@{app}}\index{app@{app}!app\+Started@{app\+Started}}}\mbox{\Hypertarget{namespaceapp_a290e8080c661e52c2f685fd4af148acfa06429e3f15123c01cc678c167cc05b8b}\label{namespaceapp_a290e8080c661e52c2f685fd4af148acfa06429e3f15123c01cc678c167cc05b8b}} 
+app\+Started&Начальный запуск. Приложение \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{app\+Stand\+By@{app\+Stand\+By}!app@{app}}\index{app@{app}!app\+Stand\+By@{app\+Stand\+By}}}\mbox{\Hypertarget{namespaceapp_a290e8080c661e52c2f685fd4af148acfa4cf039e664fb2026ab3fd90d0a51050b}\label{namespaceapp_a290e8080c661e52c2f685fd4af148acfa4cf039e664fb2026ab3fd90d0a51050b}} 
+app\+Stand\+By&Переход в режим Stand\+By. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{app\+Ready@{app\+Ready}!app@{app}}\index{app@{app}!app\+Ready@{app\+Ready}}}\mbox{\Hypertarget{namespaceapp_a290e8080c661e52c2f685fd4af148acfa7703d6d19f36dc6ada3ce7b8e3be5a23}\label{namespaceapp_a290e8080c661e52c2f685fd4af148acfa7703d6d19f36dc6ada3ce7b8e3be5a23}} 
+app\+Ready&Приложение восстановилось из режима энергосбережения \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{app\+Audio@{app\+Audio}!app@{app}}\index{app@{app}!app\+Audio@{app\+Audio}}}\mbox{\Hypertarget{namespaceapp_a290e8080c661e52c2f685fd4af148acfae13f6f6403aa802b7802fb9d6defd008}\label{namespaceapp_a290e8080c661e52c2f685fd4af148acfae13f6f6403aa802b7802fb9d6defd008}} 
+app\+Audio&Нажата кнопка записи звука \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{app\+Audio\+Wait\+Stop@{app\+Audio\+Wait\+Stop}!app@{app}}\index{app@{app}!app\+Audio\+Wait\+Stop@{app\+Audio\+Wait\+Stop}}}\mbox{\Hypertarget{namespaceapp_a290e8080c661e52c2f685fd4af148acfac9780bfeff75ce5754c1557da55fb8b0}\label{namespaceapp_a290e8080c661e52c2f685fd4af148acfac9780bfeff75ce5754c1557da55fb8b0}} 
+app\+Audio\+Wait\+Stop&Режим предотвращения случайного отпускания кнопки записи звука \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{app\+Audio\+Stop@{app\+Audio\+Stop}!app@{app}}\index{app@{app}!app\+Audio\+Stop@{app\+Audio\+Stop}}}\mbox{\Hypertarget{namespaceapp_a290e8080c661e52c2f685fd4af148acfa6c6a194d643920afd30bf8f10e6658db}\label{namespaceapp_a290e8080c661e52c2f685fd4af148acfa6c6a194d643920afd30bf8f10e6658db}} 
+app\+Audio\+Stop&режим окончания записи звука \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{app\+Audio\+Err@{app\+Audio\+Err}!app@{app}}\index{app@{app}!app\+Audio\+Err@{app\+Audio\+Err}}}\mbox{\Hypertarget{namespaceapp_a290e8080c661e52c2f685fd4af148acfa1dd3c4162940c6309ae21829677e261e}\label{namespaceapp_a290e8080c661e52c2f685fd4af148acfa1dd3c4162940c6309ae21829677e261e}} 
+app\+Audio\+Err&Ошибка при записи звука \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{app\+Photo@{app\+Photo}!app@{app}}\index{app@{app}!app\+Photo@{app\+Photo}}}\mbox{\Hypertarget{namespaceapp_a290e8080c661e52c2f685fd4af148acfa9ef71d54d0a6d2e454e96e97c047bcc6}\label{namespaceapp_a290e8080c661e52c2f685fd4af148acfa9ef71d54d0a6d2e454e96e97c047bcc6}} 
+app\+Photo&Нажата кнопка фото \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{app\+Photo\+Button\+Press@{app\+Photo\+Button\+Press}!app@{app}}\index{app@{app}!app\+Photo\+Button\+Press@{app\+Photo\+Button\+Press}}}\mbox{\Hypertarget{namespaceapp_a290e8080c661e52c2f685fd4af148acfa6ece4969fa6384847ee632f9fd55e124}\label{namespaceapp_a290e8080c661e52c2f685fd4af148acfa6ece4969fa6384847ee632f9fd55e124}} 
+app\+Photo\+Button\+Press&Длительное нажатие кнопки сканирования фото \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{app\+Photo\+I2\+C\+Err@{app\+Photo\+I2\+C\+Err}!app@{app}}\index{app@{app}!app\+Photo\+I2\+C\+Err@{app\+Photo\+I2\+C\+Err}}}\mbox{\Hypertarget{namespaceapp_a290e8080c661e52c2f685fd4af148acfae597d89c5bbd7f9873f7fa369ef24df6}\label{namespaceapp_a290e8080c661e52c2f685fd4af148acfae597d89c5bbd7f9873f7fa369ef24df6}} 
+app\+Photo\+I2\+C\+Err&Ошибка по шине I2C видеокамеры \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{app\+Photo\+Timeout@{app\+Photo\+Timeout}!app@{app}}\index{app@{app}!app\+Photo\+Timeout@{app\+Photo\+Timeout}}}\mbox{\Hypertarget{namespaceapp_a290e8080c661e52c2f685fd4af148acfacaecf479ee7651cb23d3ecfca43f3ddd}\label{namespaceapp_a290e8080c661e52c2f685fd4af148acfacaecf479ee7651cb23d3ecfca43f3ddd}} 
+app\+Photo\+Timeout&Превышен таймаут получения изображения \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{app\+Tag@{app\+Tag}!app@{app}}\index{app@{app}!app\+Tag@{app\+Tag}}}\mbox{\Hypertarget{namespaceapp_a290e8080c661e52c2f685fd4af148acfa3c31d143e9bc2e3d48ba23ae8bfe01d5}\label{namespaceapp_a290e8080c661e52c2f685fd4af148acfa3c31d143e9bc2e3d48ba23ae8bfe01d5}} 
+app\+Tag&Нажата кнопка сканирования метки \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{app\+Tag\+Err@{app\+Tag\+Err}!app@{app}}\index{app@{app}!app\+Tag\+Err@{app\+Tag\+Err}}}\mbox{\Hypertarget{namespaceapp_a290e8080c661e52c2f685fd4af148acfa25d59b57a27a13e034cab5faf26fd4e0}\label{namespaceapp_a290e8080c661e52c2f685fd4af148acfa25d59b57a27a13e034cab5faf26fd4e0}} 
+app\+Tag\+Err&Ошибка при работе со сканером меток \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{app\+Doc@{app\+Doc}!app@{app}}\index{app@{app}!app\+Doc@{app\+Doc}}}\mbox{\Hypertarget{namespaceapp_a290e8080c661e52c2f685fd4af148acfaccc67d66e13249dc4fa22d624ce013d4}\label{namespaceapp_a290e8080c661e52c2f685fd4af148acfaccc67d66e13249dc4fa22d624ce013d4}} 
+app\+Doc&Устройство находится на докстанции \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{app\+Doc\+Wait\+Stop@{app\+Doc\+Wait\+Stop}!app@{app}}\index{app@{app}!app\+Doc\+Wait\+Stop@{app\+Doc\+Wait\+Stop}}}\mbox{\Hypertarget{namespaceapp_a290e8080c661e52c2f685fd4af148acfa50b594306c1d7a073119a0a7bb94a56b}\label{namespaceapp_a290e8080c661e52c2f685fd4af148acfa50b594306c1d7a073119a0a7bb94a56b}} 
+app\+Doc\+Wait\+Stop&Режим предотвращения кратковременное снятие с докстанции (пока не реализован т.\+к. ) \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{app\+Check\+Bounce@{app\+Check\+Bounce}!app@{app}}\index{app@{app}!app\+Check\+Bounce@{app\+Check\+Bounce}}}\mbox{\Hypertarget{namespaceapp_a290e8080c661e52c2f685fd4af148acfae29d9127eb593964667686b495588ecf}\label{namespaceapp_a290e8080c661e52c2f685fd4af148acfae29d9127eb593964667686b495588ecf}} 
+app\+Check\+Bounce&Устранение дребезга контактов \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{app\+Check\+Button@{app\+Check\+Button}!app@{app}}\index{app@{app}!app\+Check\+Button@{app\+Check\+Button}}}\mbox{\Hypertarget{namespaceapp_a290e8080c661e52c2f685fd4af148acfa336edab4342b86e8be3ec106f44c65ae}\label{namespaceapp_a290e8080c661e52c2f685fd4af148acfa336edab4342b86e8be3ec106f44c65ae}} 
+app\+Check\+Button&Проверяем нажатые кнопки \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{app\+Bounce\+Timeout@{app\+Bounce\+Timeout}!app@{app}}\index{app@{app}!app\+Bounce\+Timeout@{app\+Bounce\+Timeout}}}\mbox{\Hypertarget{namespaceapp_a290e8080c661e52c2f685fd4af148acfadbe7c90fff8efa5ca2cc07d3f442a855}\label{namespaceapp_a290e8080c661e52c2f685fd4af148acfadbe7c90fff8efa5ca2cc07d3f442a855}} 
+app\+Bounce\+Timeout&За 256 мСек дребезг не устранился. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{app\+Start\+Bounce@{app\+Start\+Bounce}!app@{app}}\index{app@{app}!app\+Start\+Bounce@{app\+Start\+Bounce}}}\mbox{\Hypertarget{namespaceapp_a290e8080c661e52c2f685fd4af148acfa89156a1ccc6c5519c84c8f043e8bdc23}\label{namespaceapp_a290e8080c661e52c2f685fd4af148acfa89156a1ccc6c5519c84c8f043e8bdc23}} 
+app\+Start\+Bounce&Запуск устранения дребезга контактов \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{app\+Err\+Button@{app\+Err\+Button}!app@{app}}\index{app@{app}!app\+Err\+Button@{app\+Err\+Button}}}\mbox{\Hypertarget{namespaceapp_a290e8080c661e52c2f685fd4af148acfaaa919407add286f45f3d2f1efec97654}\label{namespaceapp_a290e8080c661e52c2f685fd4af148acfaaa919407add286f45f3d2f1efec97654}} 
+app\+Err\+Button&Ошибка нажатий кнопок \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{app\+Err\+I2C@{app\+Err\+I2C}!app@{app}}\index{app@{app}!app\+Err\+I2C@{app\+Err\+I2C}}}\mbox{\Hypertarget{namespaceapp_a290e8080c661e52c2f685fd4af148acfa14b4efaea15974df40b9d19ecb746d99}\label{namespaceapp_a290e8080c661e52c2f685fd4af148acfa14b4efaea15974df40b9d19ecb746d99}} 
+app\+Err\+I2C&Ошибка по шине I2C. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{app\+Err\+Bq25121@{app\+Err\+Bq25121}!app@{app}}\index{app@{app}!app\+Err\+Bq25121@{app\+Err\+Bq25121}}}\mbox{\Hypertarget{namespaceapp_a290e8080c661e52c2f685fd4af148acfac320769ad532ac30ed4846a8503f4e2f}\label{namespaceapp_a290e8080c661e52c2f685fd4af148acfac320769ad532ac30ed4846a8503f4e2f}} 
+app\+Err\+Bq25121&Ошибка при работе с чипом B\+Q25121. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{app\+Err\+S\+D\+IO@{app\+Err\+S\+D\+IO}!app@{app}}\index{app@{app}!app\+Err\+S\+D\+IO@{app\+Err\+S\+D\+IO}}}\mbox{\Hypertarget{namespaceapp_a290e8080c661e52c2f685fd4af148acfa7896ae5c37f5dd417ec49873ae92ccb5}\label{namespaceapp_a290e8080c661e52c2f685fd4af148acfa7896ae5c37f5dd417ec49873ae92ccb5}} 
+app\+Err\+S\+D\+IO&Ошибка S\+D-\/карточки \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{app\+Err\+File\+FS@{app\+Err\+File\+FS}!app@{app}}\index{app@{app}!app\+Err\+File\+FS@{app\+Err\+File\+FS}}}\mbox{\Hypertarget{namespaceapp_a290e8080c661e52c2f685fd4af148acfadb1298f895997311a2e8046367fc542d}\label{namespaceapp_a290e8080c661e52c2f685fd4af148acfadb1298f895997311a2e8046367fc542d}} 
+app\+Err\+File\+FS&Ошибка файловой системы \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{app\+Doc\+Sync\+Time@{app\+Doc\+Sync\+Time}!app@{app}}\index{app@{app}!app\+Doc\+Sync\+Time@{app\+Doc\+Sync\+Time}}}\mbox{\Hypertarget{namespaceapp_a290e8080c661e52c2f685fd4af148acfad4b1d6b99d64109ab0de85d116f91031}\label{namespaceapp_a290e8080c661e52c2f685fd4af148acfad4b1d6b99d64109ab0de85d116f91031}} 
+app\+Doc\+Sync\+Time&Синхронизация времени после установки на докстанцию \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{app\+Tag\+No\+Id@{app\+Tag\+No\+Id}!app@{app}}\index{app@{app}!app\+Tag\+No\+Id@{app\+Tag\+No\+Id}}}\mbox{\Hypertarget{namespaceapp_a290e8080c661e52c2f685fd4af148acfaffa1cd7400c54444d0d1240143fd6e0f}\label{namespaceapp_a290e8080c661e52c2f685fd4af148acfaffa1cd7400c54444d0d1240143fd6e0f}} 
+app\+Tag\+No\+Id&Чтение метки выполнено с ошибкой (например, тупо не сосканировали) \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{app\+Fs\+Repair@{app\+Fs\+Repair}!app@{app}}\index{app@{app}!app\+Fs\+Repair@{app\+Fs\+Repair}}}\mbox{\Hypertarget{namespaceapp_a290e8080c661e52c2f685fd4af148acfa30f5a19a2b92d2a52cdd3ecbceff1f93}\label{namespaceapp_a290e8080c661e52c2f685fd4af148acfa30f5a19a2b92d2a52cdd3ecbceff1f93}} 
+app\+Fs\+Repair&Режим восстановления файловой системы \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{app\+Hw\+Err@{app\+Hw\+Err}!app@{app}}\index{app@{app}!app\+Hw\+Err@{app\+Hw\+Err}}}\mbox{\Hypertarget{namespaceapp_a290e8080c661e52c2f685fd4af148acfac4eb6f96d240af51718080f4d805b044}\label{namespaceapp_a290e8080c661e52c2f685fd4af148acfac4eb6f96d240af51718080f4d805b044}} 
+app\+Hw\+Err&Ошибка падения по железу \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{app\+Num@{app\+Num}!app@{app}}\index{app@{app}!app\+Num@{app\+Num}}}\mbox{\Hypertarget{namespaceapp_a290e8080c661e52c2f685fd4af148acfab3c38120e83ed92fbe0aadf4076ad444}\label{namespaceapp_a290e8080c661e52c2f685fd4af148acfab3c38120e83ed92fbe0aadf4076ad444}} 
+app\+Num&Кол-\/во возможных состояний \\
+\hline
+
+\end{DoxyEnumFields}
+
 
 \subsection{Переменные}
 \mbox{\Hypertarget{namespaceapp_a5731c1034c8fb7eaa43470e10aeff84c}\label{namespaceapp_a5731c1034c8fb7eaa43470e10aeff84c}} 
 \index{app@{app}!msg\+App\+State@{msg\+App\+State}}
 \index{msg\+App\+State@{msg\+App\+State}!app@{app}}
 \subsubsection{\texorpdfstring{msg\+App\+State}{msgAppState}}
-{\footnotesize\ttfamily const std\+::unordered\+\_\+map$<$\hyperlink{group___xD0_x9F_xD0_xB5_xD1_x80_xD0_xB5_xD1_x87_xD0_xB8_xD1_x81_xD0_xBB_xD0_xB5_xD0_xBD_xD0_xB8_xD1_x8F_ga290e8080c661e52c2f685fd4af148acf}{app\+State}, std\+::string$>$ app\+::msg\+App\+State}
+{\footnotesize\ttfamily const std\+::unordered\+\_\+map$<$\hyperlink{namespaceapp_a290e8080c661e52c2f685fd4af148acf}{app\+State}, std\+::string$>$ app\+::msg\+App\+State}
 
-{\bfseries Инициализатор}
-\begin{DoxyCode}
-\{
-    \{ \hyperlink{group___xD0_x9F_xD0_xB5_xD1_x80_xD0_xB5_xD1_x87_xD0_xB8_xD1_x81_xD0_xBB_xD0_xB5_xD0_xBD_xD0_xB8_xD1_x8F_gga290e8080c661e52c2f685fd4af148acfafba3da9bcc34395d19f8704220660bf7}{appUnknown}, \textcolor{stringliteral}{"Unknown"} \},
-    \{ \hyperlink{group___xD0_x9F_xD0_xB5_xD1_x80_xD0_xB5_xD1_x87_xD0_xB8_xD1_x81_xD0_xBB_xD0_xB5_xD0_xBD_xD0_xB8_xD1_x8F_gga290e8080c661e52c2f685fd4af148acfa06429e3f15123c01cc678c167cc05b8b}{appStarted}, \textcolor{stringliteral}{"Start application ver: A20.01 - 31.07.2021"} \},
-    \{ \hyperlink{group___xD0_x9F_xD0_xB5_xD1_x80_xD0_xB5_xD1_x87_xD0_xB8_xD1_x81_xD0_xBB_xD0_xB5_xD0_xBD_xD0_xB8_xD1_x8F_gga290e8080c661e52c2f685fd4af148acfa4cf039e664fb2026ab3fd90d0a51050b}{appStandBy}, \textcolor{stringliteral}{"StandBy mode"} \},
-    \{ \hyperlink{group___xD0_x9F_xD0_xB5_xD1_x80_xD0_xB5_xD1_x87_xD0_xB8_xD1_x81_xD0_xBB_xD0_xB5_xD0_xBD_xD0_xB8_xD1_x8F_gga290e8080c661e52c2f685fd4af148acfa7703d6d19f36dc6ada3ce7b8e3be5a23}{appReady}, \textcolor{stringliteral}{"Recovery from mode StandBy"} \},
-    \{ \hyperlink{group___xD0_x9F_xD0_xB5_xD1_x80_xD0_xB5_xD1_x87_xD0_xB8_xD1_x81_xD0_xBB_xD0_xB5_xD0_xBD_xD0_xB8_xD1_x8F_gga290e8080c661e52c2f685fd4af148acfae13f6f6403aa802b7802fb9d6defd008}{appAudio}, \textcolor{stringliteral}{"Audio mode"} \},
-    \{ \hyperlink{group___xD0_x9F_xD0_xB5_xD1_x80_xD0_xB5_xD1_x87_xD0_xB8_xD1_x81_xD0_xBB_xD0_xB5_xD0_xBD_xD0_xB8_xD1_x8F_gga290e8080c661e52c2f685fd4af148acfac9780bfeff75ce5754c1557da55fb8b0}{appAudioWaitStop}, \textcolor{stringliteral}{"Waiting for sound recording stop"} \},
-    \{ \hyperlink{group___xD0_x9F_xD0_xB5_xD1_x80_xD0_xB5_xD1_x87_xD0_xB8_xD1_x81_xD0_xBB_xD0_xB5_xD0_xBD_xD0_xB8_xD1_x8F_gga290e8080c661e52c2f685fd4af148acfa6c6a194d643920afd30bf8f10e6658db}{appAudioStop}, \textcolor{stringliteral}{"Stop sound recording"} \},
-    \{ \hyperlink{group___xD0_x9F_xD0_xB5_xD1_x80_xD0_xB5_xD1_x87_xD0_xB8_xD1_x81_xD0_xBB_xD0_xB5_xD0_xBD_xD0_xB8_xD1_x8F_gga290e8080c661e52c2f685fd4af148acfa9ef71d54d0a6d2e454e96e97c047bcc6}{appPhoto}, \textcolor{stringliteral}{"Photo mode"} \},
-    \{ \hyperlink{group___xD0_x9F_xD0_xB5_xD1_x80_xD0_xB5_xD1_x87_xD0_xB8_xD1_x81_xD0_xBB_xD0_xB5_xD0_xBD_xD0_xB8_xD1_x8F_gga290e8080c661e52c2f685fd4af148acfa6ece4969fa6384847ee632f9fd55e124}{appPhotoButtonPress}, \textcolor{stringliteral}{"Photo mode. Long press of the button"} \},
-    \{ \hyperlink{group___xD0_x9F_xD0_xB5_xD1_x80_xD0_xB5_xD1_x87_xD0_xB8_xD1_x81_xD0_xBB_xD0_xB5_xD0_xBD_xD0_xB8_xD1_x8F_gga290e8080c661e52c2f685fd4af148acfae597d89c5bbd7f9873f7fa369ef24df6}{appPhotoI2CErr}, \textcolor{stringliteral}{"Photo mode. I2C error"} \},
-    \{ \hyperlink{group___xD0_x9F_xD0_xB5_xD1_x80_xD0_xB5_xD1_x87_xD0_xB8_xD1_x81_xD0_xBB_xD0_xB5_xD0_xBD_xD0_xB8_xD1_x8F_gga290e8080c661e52c2f685fd4af148acfacaecf479ee7651cb23d3ecfca43f3ddd}{appPhotoTimeout}, \textcolor{stringliteral}{"Photo mode. DCMI timeout"} \},
-    \{ \hyperlink{group___xD0_x9F_xD0_xB5_xD1_x80_xD0_xB5_xD1_x87_xD0_xB8_xD1_x81_xD0_xBB_xD0_xB5_xD0_xBD_xD0_xB8_xD1_x8F_gga290e8080c661e52c2f685fd4af148acfa3c31d143e9bc2e3d48ba23ae8bfe01d5}{appTag}, \textcolor{stringliteral}{"Tag mode"} \},
-    \{ \hyperlink{group___xD0_x9F_xD0_xB5_xD1_x80_xD0_xB5_xD1_x87_xD0_xB8_xD1_x81_xD0_xBB_xD0_xB5_xD0_xBD_xD0_xB8_xD1_x8F_gga290e8080c661e52c2f685fd4af148acfa25d59b57a27a13e034cab5faf26fd4e0}{appTagErr}, \textcolor{stringliteral}{"PN532 error"} \},
-    \{ \hyperlink{group___xD0_x9F_xD0_xB5_xD1_x80_xD0_xB5_xD1_x87_xD0_xB8_xD1_x81_xD0_xBB_xD0_xB5_xD0_xBD_xD0_xB8_xD1_x8F_gga290e8080c661e52c2f685fd4af148acfaccc67d66e13249dc4fa22d624ce013d4}{appDoc}, \textcolor{stringliteral}{"DocStation mode"} \},
-    \{ \hyperlink{group___xD0_x9F_xD0_xB5_xD1_x80_xD0_xB5_xD1_x87_xD0_xB8_xD1_x81_xD0_xBB_xD0_xB5_xD0_xBD_xD0_xB8_xD1_x8F_gga290e8080c661e52c2f685fd4af148acfa50b594306c1d7a073119a0a7bb94a56b}{appDocWaitStop}, \textcolor{stringliteral}{"Waiting for DocStation mode stop"} \},
-    \{ \hyperlink{group___xD0_x9F_xD0_xB5_xD1_x80_xD0_xB5_xD1_x87_xD0_xB8_xD1_x81_xD0_xBB_xD0_xB5_xD0_xBD_xD0_xB8_xD1_x8F_gga290e8080c661e52c2f685fd4af148acfae29d9127eb593964667686b495588ecf}{appCheckBounce}, \textcolor{stringliteral}{"Debouncing contacts mode"} \},
-    \{ \hyperlink{group___xD0_x9F_xD0_xB5_xD1_x80_xD0_xB5_xD1_x87_xD0_xB8_xD1_x81_xD0_xBB_xD0_xB5_xD0_xBD_xD0_xB8_xD1_x8F_gga290e8080c661e52c2f685fd4af148acfa336edab4342b86e8be3ec106f44c65ae}{appCheckButton}, \textcolor{stringliteral}{"Check button mode"} \},
-    \{ \hyperlink{group___xD0_x9F_xD0_xB5_xD1_x80_xD0_xB5_xD1_x87_xD0_xB8_xD1_x81_xD0_xBB_xD0_xB5_xD0_xBD_xD0_xB8_xD1_x8F_gga290e8080c661e52c2f685fd4af148acfadbe7c90fff8efa5ca2cc07d3f442a855}{appBounceTimeout}, \textcolor{stringliteral}{"Timeout debouncing contacts"} \},
-    \{ \hyperlink{group___xD0_x9F_xD0_xB5_xD1_x80_xD0_xB5_xD1_x87_xD0_xB8_xD1_x81_xD0_xBB_xD0_xB5_xD0_xBD_xD0_xB8_xD1_x8F_gga290e8080c661e52c2f685fd4af148acfa89156a1ccc6c5519c84c8f043e8bdc23}{appStartBounce}, \textcolor{stringliteral}{"Start debouncing contacts"} \},
-    \{ \hyperlink{group___xD0_x9F_xD0_xB5_xD1_x80_xD0_xB5_xD1_x87_xD0_xB8_xD1_x81_xD0_xBB_xD0_xB5_xD0_xBD_xD0_xB8_xD1_x8F_gga290e8080c661e52c2f685fd4af148acfaaa919407add286f45f3d2f1efec97654}{appErrButton}, \textcolor{stringliteral}{"Button pressing error"} \},
-    \{ \hyperlink{group___xD0_x9F_xD0_xB5_xD1_x80_xD0_xB5_xD1_x87_xD0_xB8_xD1_x81_xD0_xBB_xD0_xB5_xD0_xBD_xD0_xB8_xD1_x8F_gga290e8080c661e52c2f685fd4af148acfa14b4efaea15974df40b9d19ecb746d99}{appErrI2C}, \textcolor{stringliteral}{"Bus I2C error"} \},
-    \{ \hyperlink{group___xD0_x9F_xD0_xB5_xD1_x80_xD0_xB5_xD1_x87_xD0_xB8_xD1_x81_xD0_xBB_xD0_xB5_xD0_xBD_xD0_xB8_xD1_x8F_gga290e8080c661e52c2f685fd4af148acfac320769ad532ac30ed4846a8503f4e2f}{appErrBq25121}, \textcolor{stringliteral}{"BQ25121 error"} \},
-    \{ \hyperlink{group___xD0_x9F_xD0_xB5_xD1_x80_xD0_xB5_xD1_x87_xD0_xB8_xD1_x81_xD0_xBB_xD0_xB5_xD0_xBD_xD0_xB8_xD1_x8F_gga290e8080c661e52c2f685fd4af148acfa7896ae5c37f5dd417ec49873ae92ccb5}{appErrSDIO}, \textcolor{stringliteral}{"SD-card error"} \},
-    \{ \hyperlink{group___xD0_x9F_xD0_xB5_xD1_x80_xD0_xB5_xD1_x87_xD0_xB8_xD1_x81_xD0_xBB_xD0_xB5_xD0_xBD_xD0_xB8_xD1_x8F_gga290e8080c661e52c2f685fd4af148acfadb1298f895997311a2e8046367fc542d}{appErrFileFS}, \textcolor{stringliteral}{"File System error"} \},
-    \{ \hyperlink{group___xD0_x9F_xD0_xB5_xD1_x80_xD0_xB5_xD1_x87_xD0_xB8_xD1_x81_xD0_xBB_xD0_xB5_xD0_xBD_xD0_xB8_xD1_x8F_gga290e8080c661e52c2f685fd4af148acfaffa1cd7400c54444d0d1240143fd6e0f}{appTagNoId}, \textcolor{stringliteral}{"No TAG ID"} \},
-    \{ \hyperlink{group___xD0_x9F_xD0_xB5_xD1_x80_xD0_xB5_xD1_x87_xD0_xB8_xD1_x81_xD0_xBB_xD0_xB5_xD0_xBD_xD0_xB8_xD1_x8F_gga290e8080c661e52c2f685fd4af148acfad4b1d6b99d64109ab0de85d116f91031}{appDocSyncTime}, \textcolor{stringliteral}{"Time synchronization mode"} \}
-\}
-\end{DoxyCode}
 Сообщения выдаваемые при переходе в режим перечисленный в app\+State 

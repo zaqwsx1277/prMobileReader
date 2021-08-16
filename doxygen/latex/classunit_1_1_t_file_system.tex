@@ -15,7 +15,7 @@
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=174pt]{classunit_1_1_t_file_system__inherit__graph}
+\includegraphics[width=175pt]{classunit_1_1_t_file_system__inherit__graph}
 \end{center}
 \end{figure}
 
@@ -24,7 +24,7 @@
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=174pt]{classunit_1_1_t_file_system__coll__graph}
+\includegraphics[width=175pt]{classunit_1_1_t_file_system__coll__graph}
 \end{center}
 \end{figure}
 \subsection*{Открытые члены}
@@ -32,7 +32,7 @@
 \item 
 \hyperlink{classunit_1_1_t_file_system_ac45162c4d69b6661aab204724af57322}{T\+File\+System} ()
 \item 
-virtual \hyperlink{classunit_1_1_t_file_system_a87299dbbdea872b06972f1432ef9ef88}{$\sim$\+T\+File\+System} ()
+\hyperlink{classunit_1_1_t_file_system_a87299dbbdea872b06972f1432ef9ef88}{$\sim$\+T\+File\+System} ()
 \item 
 bool \hyperlink{classunit_1_1_t_file_system_a0737b50d219570ae2e11ea17a32cc85c}{check} ()
 \begin{DoxyCompactList}\small\item\em Проверка работоспособности S\+D-\/карточки \end{DoxyCompactList}\item 
@@ -52,9 +52,14 @@ void \hyperlink{classunit_1_1_t_file_system_aaf4766a6f4dcd6759e362ffc977615f5}{g
 \begin{DoxyCompactList}\small\item\em Синхронизация времени \end{DoxyCompactList}\item 
 void \hyperlink{classunit_1_1_t_file_system_a79523b2edca3574ec6254af671f28256}{set\+Tag} ()
 \begin{DoxyCompactList}\small\item\em Запись на SD ID сосканированной метки \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{classunit_1_1_t_file_system_aacd7aae1827432b04c06b9a1d440b949}\label{classunit_1_1_t_file_system_aacd7aae1827432b04c06b9a1d440b949}} 
 bool \hyperlink{classunit_1_1_t_file_system_aacd7aae1827432b04c06b9a1d440b949}{write\+Photo} ()
-\begin{DoxyCompactList}\small\item\em Запись на SD изображения полученного с камеры \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Запись на SD изображения полученного с камеры \end{DoxyCompactList}\item 
+bool \hyperlink{classunit_1_1_t_file_system_a01199e9b6421790c5954dbc69ef84ae2}{write\+Audio} (const uint8\+\_\+t $\ast$, const uint32\+\_\+t)
+\begin{DoxyCompactList}\small\item\em Запись аудио блока на SD. \end{DoxyCompactList}\item 
+void \hyperlink{classunit_1_1_t_file_system_ae30e2668ef7405051b427660fa866302}{close\+Audio} ()
+\begin{DoxyCompactList}\small\item\em Запись размера в хидер аудио файла и завершение его записи \end{DoxyCompactList}\item 
+bool \hyperlink{classunit_1_1_t_file_system_a80f8d844c27c27cb5998b2d2214d041a}{open\+File\+Name} (const std\+::string \&)
+\begin{DoxyCompactList}\small\item\em Формирование имени файла для записи звука и фото \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Подробное описание}
@@ -79,7 +84,7 @@ SD карта должна быть уже проинициализирован�
 \index{unit\+::\+T\+File\+System@{unit\+::\+T\+File\+System}!````~T\+File\+System@{$\sim$\+T\+File\+System}}
 \index{````~T\+File\+System@{$\sim$\+T\+File\+System}!unit\+::\+T\+File\+System@{unit\+::\+T\+File\+System}}
 \subsubsection{\texorpdfstring{$\sim$\+T\+File\+System()}{~TFileSystem()}}
-{\footnotesize\ttfamily unit\+::\+T\+File\+System\+::$\sim$\+T\+File\+System (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+{\footnotesize\ttfamily unit\+::\+T\+File\+System\+::$\sim$\+T\+File\+System (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 \begin{DoxyAttention}{Внимание}
 Файловая система должна быть размонтирована всегда, в противном случае SD\textquotesingle{}шка убивается 
@@ -98,15 +103,27 @@ SD карта должна быть уже проинициализирован�
 Проверка работоспособности S\+D-\/карточки 
 
 \begin{DoxyRefDesc}{Необходимо сделать}
-\item[\hyperlink{todo__todo000004}{Необходимо сделать}]Приделать проверку записи и чтения тестового файла \end{DoxyRefDesc}
+\item[\hyperlink{todo__todo000008}{Необходимо сделать}]Приделать проверку записи и чтения тестового файла \end{DoxyRefDesc}
 \begin{DoxyReturn}{Возвращает}
-
+true если провека выполнилась 
 \end{DoxyReturn}
 
 
 Замещает \hyperlink{classunit_1_1_t_unit_abdcc6daabc86cea10abc96593d9d2c2a}{unit\+::\+T\+Unit}.
 
-\mbox{\Hypertarget{classunit_1_1_t_file_system_aaf4766a6f4dcd6759e362ffc977615f5}\label{classunit_1_1_t_file_system_aaf4766a6f4dcd6759e362ffc977615f5}} 
+\mbox{\Hypertarget{classunit_1_1_t_file_system_ae30e2668ef7405051b427660fa866302}\label{classunit_1_1_t_file_system_ae30e2668ef7405051b427660fa866302}} 
+\index{unit\+::\+T\+File\+System@{unit\+::\+T\+File\+System}!close\+Audio@{close\+Audio}}
+\index{close\+Audio@{close\+Audio}!unit\+::\+T\+File\+System@{unit\+::\+T\+File\+System}}
+\subsubsection{\texorpdfstring{close\+Audio()}{closeAudio()}}
+{\footnotesize\ttfamily void unit\+::\+T\+File\+System\+::close\+Audio (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Запись размера в хидер аудио файла и завершение его записи 
+
+
+
+ \mbox{\Hypertarget{classunit_1_1_t_file_system_aaf4766a6f4dcd6759e362ffc977615f5}\label{classunit_1_1_t_file_system_aaf4766a6f4dcd6759e362ffc977615f5}} 
 \index{unit\+::\+T\+File\+System@{unit\+::\+T\+File\+System}!get\+Time@{get\+Time}}
 \index{get\+Time@{get\+Time}!unit\+::\+T\+File\+System@{unit\+::\+T\+File\+System}}
 \subsubsection{\texorpdfstring{get\+Time()}{getTime()}}
@@ -119,6 +136,26 @@ SD карта должна быть уже проинициализирован�
 \begin{DoxyAttention}{Внимание}
 Инициализацию Fat\+FS нужно проверять до вызова этого метода 
 \end{DoxyAttention}
+\mbox{\Hypertarget{classunit_1_1_t_file_system_a80f8d844c27c27cb5998b2d2214d041a}\label{classunit_1_1_t_file_system_a80f8d844c27c27cb5998b2d2214d041a}} 
+\index{unit\+::\+T\+File\+System@{unit\+::\+T\+File\+System}!open\+File\+Name@{open\+File\+Name}}
+\index{open\+File\+Name@{open\+File\+Name}!unit\+::\+T\+File\+System@{unit\+::\+T\+File\+System}}
+\subsubsection{\texorpdfstring{open\+File\+Name()}{openFileName()}}
+{\footnotesize\ttfamily bool unit\+::\+T\+File\+System\+::open\+File\+Name (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{in\+File\+Name }\end{DoxyParamCaption})}
+
+
+
+Формирование имени файла для записи звука и фото 
+
+
+
+ Формируется имя файла и он открывается 
+\begin{DoxyParams}{Аргументы}
+{\em in\+File\+Name} & Расширения для имени файла \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+true если файл сформировался и открылся 
+\end{DoxyReturn}
 \mbox{\Hypertarget{classunit_1_1_t_file_system_a79523b2edca3574ec6254af671f28256}\label{classunit_1_1_t_file_system_a79523b2edca3574ec6254af671f28256}} 
 \index{unit\+::\+T\+File\+System@{unit\+::\+T\+File\+System}!set\+Tag@{set\+Tag}}
 \index{set\+Tag@{set\+Tag}!unit\+::\+T\+File\+System@{unit\+::\+T\+File\+System}}
@@ -132,6 +169,52 @@ SD карта должна быть уже проинициализирован�
 \begin{DoxyAttention}{Внимание}
 Перед вызовом необходимо проверить, что Метка сосканирована и FS успешно инициализированна 
 \end{DoxyAttention}
+\mbox{\Hypertarget{classunit_1_1_t_file_system_a01199e9b6421790c5954dbc69ef84ae2}\label{classunit_1_1_t_file_system_a01199e9b6421790c5954dbc69ef84ae2}} 
+\index{unit\+::\+T\+File\+System@{unit\+::\+T\+File\+System}!write\+Audio@{write\+Audio}}
+\index{write\+Audio@{write\+Audio}!unit\+::\+T\+File\+System@{unit\+::\+T\+File\+System}}
+\subsubsection{\texorpdfstring{write\+Audio()}{writeAudio()}}
+{\footnotesize\ttfamily bool unit\+::\+T\+File\+System\+::write\+Audio (\begin{DoxyParamCaption}\item[{const uint8\+\_\+t $\ast$}]{in\+Buf,  }\item[{const uint32\+\_\+t}]{in\+Buf\+Len }\end{DoxyParamCaption})}
+
+
+
+Запись аудио блока на SD. 
+
+
+
+
+
+
+\begin{DoxyParams}{Аргументы}
+{\em in\+Buf} & Записываемые данные \\
+\hline
+{\em in\+Buf\+Len} & Длинна записываемых данных \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+Возвращает true при успешной записи 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classunit_1_1_t_file_system_aacd7aae1827432b04c06b9a1d440b949}\label{classunit_1_1_t_file_system_aacd7aae1827432b04c06b9a1d440b949}} 
+\index{unit\+::\+T\+File\+System@{unit\+::\+T\+File\+System}!write\+Photo@{write\+Photo}}
+\index{write\+Photo@{write\+Photo}!unit\+::\+T\+File\+System@{unit\+::\+T\+File\+System}}
+\subsubsection{\texorpdfstring{write\+Photo()}{writePhoto()}}
+{\footnotesize\ttfamily bool unit\+::\+T\+File\+System\+::write\+Photo (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Запись на SD изображения полученного с камеры 
+
+
+
+ Запись изображения на SD. \begin{DoxyReturn}{Возвращает}
+true если запись выполнилась. 
+\end{DoxyReturn}
+Граф вызовов\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=316pt]{classunit_1_1_t_file_system_aacd7aae1827432b04c06b9a1d440b949_cgraph}
+\end{center}
+\end{figure}
 
 
 Объявления и описания членов классов находятся в файлах\+:\begin{DoxyCompactItemize}

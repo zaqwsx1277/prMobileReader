@@ -1,25 +1,5 @@
 var searchData=
 [
-  ['setstate',['setState',['../classapp_1_1_t_application.html#a3df1835103a3ba338821c27ad05f9f8d',1,'app::TApplication']]],
-  ['settag',['setTag',['../classunit_1_1_t_file_system.html#a79523b2edca3574ec6254af671f28256',1,'unit::TFileSystem']]],
-  ['sleep',['sleep',['../classunit_1_1_t_audio.html#aab519e5239080d5ef906293dedc9399a',1,'unit::TAudio::sleep()'],['../classunit_1_1_t_bq25121.html#a769c16732c917f24c1b36292f13df415',1,'unit::TBq25121::sleep()'],['../classunit_1_1_t_file_system.html#a4e4fd801d58a5c6b526a65ec5cb187dd',1,'unit::TFileSystem::sleep()'],['../classunit_1_1_t_i2_c.html#a41cbc4e99cb054156f912d69f84c33e6',1,'unit::TI2C::sleep()'],['../classunit_1_1_t_photo.html#acfdae485260a64864e779cacd15644f7',1,'unit::TPhoto::sleep()'],['../classunit_1_1_t_sdio.html#ac903a19ed873242ad2da15224b3925fa',1,'unit::TSdio::sleep()'],['../classunit_1_1_t_tag.html#acd600380312d44954f0b46ec5f704691',1,'unit::TTag::sleep()'],['../classunit_1_1_t_unit.html#afa851323a357e4287ca230d2bce8977b',1,'unit::TUnit::sleep()']]],
-  ['stappdebugtimeout',['stAppDebugTimeout',['../namespaceapp.html#a5d3e2252ee97a72dc9ab825375962ca1',1,'app']]],
-  ['startbounce',['startBounce',['../classapp_1_1_t_button.html#a92fc2dcb3d54a563b7b1a96900a4717c',1,'app::TButton']]],
-  ['statemanager',['stateManager',['../classapp_1_1_t_application.html#ae673484375cccb05d53f9f4cbeeba985',1,'app::TApplication']]],
-  ['staudioduration',['stAudioDuration',['../namespaceunit.html#a3a82b0d0086859e1e04e0878fb932db3',1,'unit']]],
-  ['stfilebuf',['stFileBuf',['../namespacecommon.html#a07e080fe05fc55b6f3eab1de78a1157a',1,'common']]],
-  ['stphotobuf',['stPhotoBuf',['../namespacecommon.html#a64410627120637f6951a05b65a001c0e',1,'common']]],
-  ['stphotodcmitimeout',['stPhotoDCMITimeout',['../namespaceunit.html#a40b076ece72209541014f35f94c3b5fa',1,'unit']]],
-  ['stphotofilename',['stPhotoFileName',['../namespacecommon.html#a373798ef1a9c0a94b49bc38455d62d10',1,'common']]],
-  ['stphotoi2cread',['stPhotoI2CRead',['../namespaceunit.html#a50f740136690db44e593be6a0e62d429',1,'unit']]],
-  ['stphotoi2ctimeout',['stPhotoI2CTimeout',['../namespaceunit.html#a8ef813be3eb747a2ef19ed15edb1db76',1,'unit']]],
-  ['stphotoi2cwrite',['stPhotoI2CWrite',['../namespaceunit.html#a72c06d57e001189306ca7978d5b2df8f',1,'unit']]],
-  ['stphototimewait',['stPhotoTimeWait',['../namespaceunit.html#acbeeb78b619bb42824b0c0518e456f95',1,'unit']]],
-  ['stsynctimefilename',['stSyncTimeFileName',['../namespacecommon.html#a9e2c1d0b0f61994e2ebef34621b6ba0c',1,'common']]],
-  ['sttagbufid',['stTagBufId',['../namespacecommon.html#ad9edd5582300fe9f535b3d2f912291bb',1,'common']]],
-  ['sttagfilename',['stTagFileName',['../namespacecommon.html#ac1f212cd0775ff1f6c0295b72d658e25',1,'common']]],
-  ['sttagusarttimeout',['stTagUsartTimeOut',['../namespaceunit.html#aa0dcd71ec85a3cd4efd9a1f7932b85c4',1,'unit']]],
-  ['sttagusartwaitid',['stTagUsartWaitID',['../namespaceunit.html#a261d46e79e60f0c63e800220b3823f52',1,'unit']]],
-  ['sttagwaitsync',['stTagWaitSync',['../namespaceunit.html#ad375ec8c6ee3711bef6f664811d73b14',1,'unit']]],
-  ['sttempstr',['stTempStr',['../namespacecommon.html#ac1517a41cc3b73ca63e645dca03d6d47',1,'common']]]
+  ['process',['process',['../classunit_1_1_t_audio.html#ad547ef4d28534b9cd76d2e7eb539d1e0',1,'unit::TAudio::process()'],['../classunit_1_1_t_bq25121.html#aef9b6fa9ec1e989523fa1584cb604a7d',1,'unit::TBq25121::process()'],['../classunit_1_1_t_file_system.html#af7969ea11284d9f6f093687f0ba90082',1,'unit::TFileSystem::process()'],['../classunit_1_1_t_i2_c.html#a246ec834efdab90310976fb19f8047cb',1,'unit::TI2C::process()'],['../classunit_1_1_t_photo.html#a8323fa27bff29d883e9903b74c341605',1,'unit::TPhoto::process()'],['../classunit_1_1_t_sdio.html#a0ae751c5761bfbafdfa977617a43283b',1,'unit::TSdio::process()'],['../classunit_1_1_t_tag.html#a1dfd588909730d0b48edbeda273526fe',1,'unit::TTag::process()'],['../classunit_1_1_t_unit.html#a108691c8b988d97c65237c83a31db706',1,'unit::TUnit::process()']]],
+  ['pushitem',['pushItem',['../classapp_1_1_t_log.html#a9632f9ff3d14bd24d6587f3509fbe9de',1,'app::TLog']]]
 ];

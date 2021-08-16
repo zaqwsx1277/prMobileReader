@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">СКОП 2.01
-   &#160;<span id="projectnumber">2.0</span>
+   &#160;<span id="projectnumber">A21.07 - 31.07.2021</span>
    </div>
   </td>
  </tr>
@@ -64,20 +64,36 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><dl class="reflist">
-<dt><a class="anchor" id="_todo000003"></a>Член <a class="el" href="group___xD0_x9F_xD0_xB5_xD1_x80_xD0_xB5_xD1_x87_xD0_xB8_xD1_x81_xD0_xBB_xD0_xB5_xD0_xBD_xD0_xB8_xD1_x8F.html#ga290e8080c661e52c2f685fd4af148acf">app::appState</a>  </dt>
+<dt><a class="anchor" id="_todo000005"></a>Класс <a class="el" href="classapp_1_1_t_application.html">app::TApplication</a>  </dt>
+<dd><p class="startdd">Сделать ведения лога работы блока и чтение его сервис-инженером </p>
+<p class="enddd">Приделать watchdog  </p>
+</dd>
+<dt><a class="anchor" id="_todo000002"></a>Член <a class="el" href="classapp_1_1_t_application.html#a9f4f8b1ef208edca2c5ea5ef1851efca">app::TApplication::debugMessage</a>  (const uint8_t *, const std::size_t)</dt>
+<dd>Переделать на хрен на потоковый вывод  </dd>
+<dt><a class="anchor" id="_todo000001"></a>Член <a class="el" href="classapp_1_1_t_application.html#abec229b87538c5db318ef57f25f6e84d">app::TApplication::debugMessage</a>  (const std::string &amp;)</dt>
+<dd>Переделать на хрен на потоковый вывод  </dd>
+<dt><a class="anchor" id="_todo000003"></a>Член <a class="el" href="classapp_1_1_t_application.html#ab44dd5aa2afe1d66b2588e908bfad4d0">app::TApplication::sleep</a>  ()</dt>
+<dd>Разобраться какие пины нужно переводить в "Аналог", а какие нет???  </dd>
+<dt><a class="anchor" id="_todo000009"></a>Класс <a class="el" href="classapp_1_1_t_log.html">app::TLog</a>  </dt>
+<dd><p class="startdd">Переделать на запись на SD карточку. </p>
+<p class="enddd">Написать класс для работы с встроенной флешкой  </p>
+</dd>
+<dt><a class="anchor" id="_todo000004"></a>Член <a class="el" href="group___xD0_x9F_xD0_xB5_xD1_x80_xD0_xB5_xD1_x87_xD0_xB8_xD1_x81_xD0_xBB_xD0_xB5_xD0_xBD_xD0_xB8_xD1_x8F.html#ga33d8f1a04a907b6c65c5dfc88280ac6f">app::typeSound</a>  </dt>
 <dd><p class="startdd">Найти оптимальный размер диска для работы с SD карточкой и разобраться с работой SDIO по DMA </p>
-<p class="enddd">Убрать FatFS и сделать свою работу с карточкой  </p>
+<p>Убрать FatFS и сделать свою работу с карточкой </p>
+<p>Реализовать режим сервисного обслуживания (appService) </p>
+<p class="enddd">Реализовать режим восстановления файловой системы  </p>
 </dd>
-<dt><a class="anchor" id="_todo000002"></a>Член <a class="el" href="classapp_1_1_t_application.html#a0c44fe0e56bc2d85720155880c9b54a6">app::TApplication::debugMesage</a>  (const uint8_t *, const std::size_t)</dt>
-<dd>Переделать на хрен на потоковый вывод  </dd>
-<dt><a class="anchor" id="_todo000001"></a>Член <a class="el" href="classapp_1_1_t_application.html#a2ac87a63360e7974afe2249f7b7e54cd">app::TApplication::debugMesage</a>  (const std::string &amp;)</dt>
-<dd>Переделать на хрен на потоковый вывод  </dd>
-<dt><a class="anchor" id="_todo000004"></a>Член <a class="el" href="classunit_1_1_t_file_system.html#a0737b50d219570ae2e11ea17a32cc85c">unit::TFileSystem::check</a>  ()</dt>
+<dt><a class="anchor" id="_todo000006"></a>Член <a class="el" href="classunit_1_1_t_audio.html#ad547ef4d28534b9cd76d2e7eb539d1e0">unit::TAudio::process</a>  ()</dt>
+<dd>Переделать на хрен, т.к. написано через жопу кривыми руками. :(  </dd>
+<dt><a class="anchor" id="_todo000008"></a>Член <a class="el" href="classunit_1_1_t_file_system.html#a0737b50d219570ae2e11ea17a32cc85c">unit::TFileSystem::check</a>  ()</dt>
 <dd>Приделать проверку записи и чтения тестового файла  </dd>
-<dt><a class="anchor" id="_todo000005"></a>Класс <a class="el" href="classunit_1_1_t_photo.html">unit::TPhoto</a>  </dt>
+<dt><a class="anchor" id="_todo000011"></a>Класс <a class="el" href="classunit_1_1_t_photo.html">unit::TPhoto</a>  </dt>
 <dd><p class="startdd">Убрать ov2640.c и передалать на плюсы (Хотя не очень понятно зачем???) </p>
-<p class="enddd">Убрать все Warning в ov2640.c </p>
+<p class="enddd">Убрать все Warning в ov2640.c  </p>
 </dd>
+<dt><a class="anchor" id="_todo000010"></a>Член <a class="el" href="classunit_1_1_t_photo.html#a8323fa27bff29d883e9903b74c341605">unit::TPhoto::process</a>  ()</dt>
+<dd>Переделать ожидание получения изображения </dd>
 </dl>
 </div></div><!-- contents -->
 <!-- start footer part -->

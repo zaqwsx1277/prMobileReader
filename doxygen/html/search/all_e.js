@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['Обработчики_20прерываний',['Обработчики прерываний',['../group___callback.html',1,'']]],
-  ['Список_20задач',['Список задач',['../todo.html',1,'']]],
-  ['Перечисления',['Перечисления',['../group___xD0_x9F_xD0_xB5_xD1_x80_xD0_xB5_xD1_x87_xD0_xB8_xD1_x81_xD0_xBB_xD0_xB5_xD0_xBD_xD0_xB8_xD1_x8F.html',1,'']]]
+  ['_7etapplication',['~TApplication',['../classapp_1_1_t_application.html#a5b7af31c95dab9a3f14ee792429a0737',1,'app::TApplication']]],
+  ['_7etaudio',['~TAudio',['../classunit_1_1_t_audio.html#ab62b7453a3128fd1ab9d2473237ba331',1,'unit::TAudio']]],
+  ['_7etfilesystem',['~TFileSystem',['../classunit_1_1_t_file_system.html#a87299dbbdea872b06972f1432ef9ef88',1,'unit::TFileSystem']]],
+  ['_7etphoto',['~TPhoto',['../classunit_1_1_t_photo.html#a1c9c83e03a16b4e66a0fc48f734a5b93',1,'unit::TPhoto']]]
 ];

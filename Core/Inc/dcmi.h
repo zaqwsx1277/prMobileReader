@@ -27,6 +27,7 @@
 #include "main.h"
 
 /* USER CODE BEGIN Includes */
+ extern DMA_HandleTypeDef hdma_dcmi;
 
 /* USER CODE END Includes */
 

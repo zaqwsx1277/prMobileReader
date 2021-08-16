@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">СКОП 2.01
-   &#160;<span id="projectnumber">2.0</span>
+   &#160;<span id="projectnumber">A21.07 - 31.07.2021</span>
    </div>
   </td>
  </tr>
@@ -91,6 +91,10 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Открытые члены</h2></td></tr>
+<tr class="memitem:a326d9d807df56ef1a264564c69c350b5"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classunit_1_1_t_audio.html#a326d9d807df56ef1a264564c69c350b5">TAudio</a> (std::shared_ptr&lt; <a class="el" href="classunit_1_1_t_file_system.html">TFileSystem</a> &gt;)</td></tr>
+<tr class="separator:a326d9d807df56ef1a264564c69c350b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab62b7453a3128fd1ab9d2473237ba331"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classunit_1_1_t_audio.html#ab62b7453a3128fd1ab9d2473237ba331">~TAudio</a> ()</td></tr>
+<tr class="separator:ab62b7453a3128fd1ab9d2473237ba331"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a69cc926edc98c59e9ffaad10ceb605f0"><td class="memItemLeft" align="right" valign="top"><a id="a69cc926edc98c59e9ffaad10ceb605f0"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classunit_1_1_t_audio.html#a69cc926edc98c59e9ffaad10ceb605f0">check</a> ()</td></tr>
 <tr class="memdesc:a69cc926edc98c59e9ffaad10ceb605f0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Проверка работоспособности аудио (запись и вопроизведение пищалки) <br /></td></tr>
@@ -107,15 +111,99 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classunit_1_1_t_audio.html#a3cbc7de5ae0d03af42eeed896829d85c">wakeup</a> ()</td></tr>
 <tr class="memdesc:a3cbc7de5ae0d03af42eeed896829d85c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Выход из режима энергосбережения <br /></td></tr>
 <tr class="separator:a3cbc7de5ae0d03af42eeed896829d85c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad547ef4d28534b9cd76d2e7eb539d1e0"><td class="memItemLeft" align="right" valign="top"><a id="ad547ef4d28534b9cd76d2e7eb539d1e0"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classunit_1_1_t_audio.html#ad547ef4d28534b9cd76d2e7eb539d1e0">process</a> ()</td></tr>
-<tr class="memdesc:ad547ef4d28534b9cd76d2e7eb539d1e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Получение данных с микрофона и запись его в файл <br /></td></tr>
+<tr class="memitem:ad547ef4d28534b9cd76d2e7eb539d1e0"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classunit_1_1_t_audio.html#ad547ef4d28534b9cd76d2e7eb539d1e0">process</a> ()</td></tr>
+<tr class="memdesc:ad547ef4d28534b9cd76d2e7eb539d1e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Получение данных с микрофона и запись его в файл  <a href="#ad547ef4d28534b9cd76d2e7eb539d1e0">Подробнее...</a><br /></td></tr>
 <tr class="separator:ad547ef4d28534b9cd76d2e7eb539d1e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Подробное описание</h2>
 <div class="textblock"><hr/>
-<p> Класс для работы со звуком </p>
-</div><hr/>Объявления и описания членов классов находятся в файлах:<ul>
+<p> Класс для работы со звуком Запись звука идёт в буфер по DMA и по срабатываний прерываний выполняется преобразование из PDM в PCM запись результата на SD </p>
+</div><h2 class="groupheader">Конструктор(ы)</h2>
+<a id="a326d9d807df56ef1a264564c69c350b5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a326d9d807df56ef1a264564c69c350b5">&#9670;&nbsp;</a></span>TAudio()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unit::TAudio::TAudio </td>
+          <td>(</td>
+          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="classunit_1_1_t_file_system.html">TFileSystem</a> &gt;&#160;</td>
+          <td class="paramname"><em>inPtrFileSystem</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Конструктор инициализирующий работу для записи аудио. Все данные для PDM -&gt; PCM преобразования задаются в настройках CubeMX </p><dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">inPtrFileSystem</td><td>Указатель на класс работы с файловой системой </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section attention"><dt>Внимание</dt><dd>Я ни коем образом не проверяю указатель на файловую систему!!! sizeof (<a class="el" href="namespacecommon.html#aeca12b629edac6586f4b0fbcf9617769" title="Буфер для записи данных с микрофона. ">common::stAudioBuf</a>)/2 </dd></dl>
+
+</div>
+</div>
+<a id="ab62b7453a3128fd1ab9d2473237ba331"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab62b7453a3128fd1ab9d2473237ba331">&#9670;&nbsp;</a></span>~TAudio()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">unit::TAudio::~TAudio </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<dl class="section attention"><dt>Внимание</dt><dd>По хорошему нужно проверять и дожидаться остановки DMA, т.к. в противном случае контроллер не уйдёт в StandBy </dd></dl>
+
+</div>
+</div>
+<h2 class="groupheader">Методы</h2>
+<a id="ad547ef4d28534b9cd76d2e7eb539d1e0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad547ef4d28534b9cd76d2e7eb539d1e0">&#9670;&nbsp;</a></span>process()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool unit::TAudio::process </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Получение данных с микрофона и запись его в файл </p>
+<hr/>
+<p> Запись буфера полученного с микрофона </p><dl class="section return"><dt>Возвращает</dt><dd>true в случае успешной записи </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000006">Необходимо сделать:</a></b></dt><dd>Переделать на хрен, т.к. написано через жопу кривыми руками. :( </dd></dl>
+
+<p>Замещает <a class="el" href="classunit_1_1_t_unit.html#a108691c8b988d97c65237c83a31db706">unit::TUnit</a>.</p>
+
+</div>
+</div>
+<hr/>Объявления и описания членов классов находятся в файлах:<ul>
 <li>Core/cpp/<a class="el" href="_t_audio_8hpp_source.html">TAudio.hpp</a></li>
 <li>Core/cpp/TAudio.cpp</li>
 </ul>

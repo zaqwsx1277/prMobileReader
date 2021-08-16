@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">СКОП 2.01
-   &#160;<span id="projectnumber">2.0</span>
+   &#160;<span id="projectnumber">A21.07 - 31.07.2021</span>
    </div>
   </td>
  </tr>
@@ -74,9 +74,90 @@ $(function() {
 <tr class="memitem:gabcdf9b59049eccbc87d54042f9235b1a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___callback.html#gabcdf9b59049eccbc87d54042f9235b1a">HAL_UART_TxCpltCallback</a> (UART_HandleTypeDef *huart)</td></tr>
 <tr class="memdesc:gabcdf9b59049eccbc87d54042f9235b1a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Обработчик прерываний UART.  <a href="#gabcdf9b59049eccbc87d54042f9235b1a">Подробнее...</a><br /></td></tr>
 <tr class="separator:gabcdf9b59049eccbc87d54042f9235b1a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga7175c4e8555aa828b9c92cb813c3416a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___callback.html#ga7175c4e8555aa828b9c92cb813c3416a">HAL_DCMI_VsyncEventCallback</a> (DCMI_HandleTypeDef *hdcmi)</td></tr>
+<tr class="memdesc:ga7175c4e8555aa828b9c92cb813c3416a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Обработчик прерываний по Vsync от камеры DCMI.  <a href="#ga7175c4e8555aa828b9c92cb813c3416a">Подробнее...</a><br /></td></tr>
+<tr class="separator:ga7175c4e8555aa828b9c92cb813c3416a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga6c4cd3b18c42c6de0c3f4fe7068a5b12"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___callback.html#ga6c4cd3b18c42c6de0c3f4fe7068a5b12">HAL_I2S_RxHalfCpltCallback</a> (I2S_HandleTypeDef *hi2s)</td></tr>
+<tr class="memdesc:ga6c4cd3b18c42c6de0c3f4fe7068a5b12"><td class="mdescLeft">&#160;</td><td class="mdescRight">Обработчик прерываний по заполнению данными PDM первой половины аудио буфера  <a href="#ga6c4cd3b18c42c6de0c3f4fe7068a5b12">Подробнее...</a><br /></td></tr>
+<tr class="separator:ga6c4cd3b18c42c6de0c3f4fe7068a5b12"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga18c33b2d429b06674ec30e5b2b81862c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___callback.html#ga18c33b2d429b06674ec30e5b2b81862c">HAL_I2S_RxCpltCallback</a> (I2S_HandleTypeDef *hi2s)</td></tr>
+<tr class="memdesc:ga18c33b2d429b06674ec30e5b2b81862c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Обработчик прерываний по заполнению данными PDM второй половины аудио буфера  <a href="#ga18c33b2d429b06674ec30e5b2b81862c">Подробнее...</a><br /></td></tr>
+<tr class="separator:ga18c33b2d429b06674ec30e5b2b81862c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Подробное описание</h2>
 <h2 class="groupheader">Функции</h2>
+<a id="ga7175c4e8555aa828b9c92cb813c3416a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga7175c4e8555aa828b9c92cb813c3416a">&#9670;&nbsp;</a></span>HAL_DCMI_VsyncEventCallback()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void HAL_DCMI_VsyncEventCallback </td>
+          <td>(</td>
+          <td class="paramtype">DCMI_HandleTypeDef *&#160;</td>
+          <td class="paramname"><em>hdcmi</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Обработчик прерываний по Vsync от камеры DCMI. </p>
+<hr/>
+ <dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">hdcmi</td><td>Хендл устройства </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section attention"><dt>Внимание</dt><dd>Нужен исключительно, что бы остановить считывание изображения с камеры. </dd></dl>
+
+</div>
+</div>
+<a id="ga18c33b2d429b06674ec30e5b2b81862c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga18c33b2d429b06674ec30e5b2b81862c">&#9670;&nbsp;</a></span>HAL_I2S_RxCpltCallback()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void HAL_I2S_RxCpltCallback </td>
+          <td>(</td>
+          <td class="paramtype">I2S_HandleTypeDef *&#160;</td>
+          <td class="paramname"><em>hi2s</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Обработчик прерываний по заполнению данными PDM второй половины аудио буфера </p>
+<hr/>
+ <dl class="section attention"><dt>Внимание</dt><dd>Если обработка предыдущего буфера ещё не закончена, то принятый буфер просто теряется </dd></dl>
+
+</div>
+</div>
+<a id="ga6c4cd3b18c42c6de0c3f4fe7068a5b12"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga6c4cd3b18c42c6de0c3f4fe7068a5b12">&#9670;&nbsp;</a></span>HAL_I2S_RxHalfCpltCallback()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void HAL_I2S_RxHalfCpltCallback </td>
+          <td>(</td>
+          <td class="paramtype">I2S_HandleTypeDef *&#160;</td>
+          <td class="paramname"><em>hi2s</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Обработчик прерываний по заполнению данными PDM первой половины аудио буфера </p>
+<hr/>
+ <dl class="section attention"><dt>Внимание</dt><dd>Если обработка предыдущего буфера ещё не закончена, то принятый буфер просто теряется </dd></dl>
+
+</div>
+</div>
 <a id="ga8a3b0ad512a6e6c6157440b68d395eac"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ga8a3b0ad512a6e6c6157440b68d395eac">&#9670;&nbsp;</a></span>HAL_TIM_PeriodElapsedCallback()</h2>
 

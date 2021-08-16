@@ -1,0 +1,74 @@
+\hypertarget{classapp_1_1_t_log}{}\section{Класс app\+:\+:T\+Log}
+\label{classapp_1_1_t_log}\index{app\+::\+T\+Log@{app\+::\+T\+Log}}
+
+
+Класс ведения лога работы  
+
+
+
+
+{\ttfamily \#include $<$T\+Log.\+hpp$>$}
+
+
+
+Граф связей класса app\+:\+:T\+Log\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=152pt]{classapp_1_1_t_log__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Открытые члены}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classapp_1_1_t_log_a9f8a10a82504933ab909b90ea9413b65}{T\+Log} ()
+\item 
+void \hyperlink{classapp_1_1_t_log_a9632f9ff3d14bd24d6587f3509fbe9de}{push\+Item} (const \hyperlink{namespaceapp_a290e8080c661e52c2f685fd4af148acf}{app\+::app\+State} \&)
+\begin{DoxyCompactList}\small\item\em Запись в лог изменения состояния \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classapp_1_1_t_log_aa28e5b94b906fcb2f8fed5f08b92e077}\label{classapp_1_1_t_log_aa28e5b94b906fcb2f8fed5f08b92e077}} 
+bool \hyperlink{classapp_1_1_t_log_aa28e5b94b906fcb2f8fed5f08b92e077}{write\+Log} ()
+\begin{DoxyCompactList}\small\item\em Сохранение лога на флешку и если нужно на S\+D\+IO. Всегда записывается последний банк встроенной флешки \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Подробное описание}
+Класс ведения лога работы 
+
+Все события пишутся в контейнер std\+::deque, т.\+к. std\+::queue кривой и записываются в последний банк флешки при переходе в состояние Stand\+By. При начале активности последнее событие пишется в контейнер и если первое и последнее событие == app\+State\+::app\+Hw\+Err, то запись на флешку не производится. Т.\+о. мы убираем поток ошибок при падении по памяти Что бы не взрывать себе мозги, указатель на пустое место для записи хранится в регистре R\+T\+C\+\_\+\+B\+K\+P\+\_\+\+D\+R1 \begin{DoxyRefDesc}{Необходимо сделать}
+\item[\hyperlink{todo__todo000009}{Необходимо сделать}]Переделать на запись на SD карточку. 
+
+Написать класс для работы с встроенной флешкой \end{DoxyRefDesc}
+
+
+\subsection{Конструктор(ы)}
+\mbox{\Hypertarget{classapp_1_1_t_log_a9f8a10a82504933ab909b90ea9413b65}\label{classapp_1_1_t_log_a9f8a10a82504933ab909b90ea9413b65}} 
+\index{app\+::\+T\+Log@{app\+::\+T\+Log}!T\+Log@{T\+Log}}
+\index{T\+Log@{T\+Log}!app\+::\+T\+Log@{app\+::\+T\+Log}}
+\subsubsection{\texorpdfstring{T\+Log()}{TLog()}}
+{\footnotesize\ttfamily app\+::\+T\+Log\+::\+T\+Log (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+ 
+
+\subsection{Методы}
+\mbox{\Hypertarget{classapp_1_1_t_log_a9632f9ff3d14bd24d6587f3509fbe9de}\label{classapp_1_1_t_log_a9632f9ff3d14bd24d6587f3509fbe9de}} 
+\index{app\+::\+T\+Log@{app\+::\+T\+Log}!push\+Item@{push\+Item}}
+\index{push\+Item@{push\+Item}!app\+::\+T\+Log@{app\+::\+T\+Log}}
+\subsubsection{\texorpdfstring{push\+Item()}{pushItem()}}
+{\footnotesize\ttfamily void app\+::\+T\+Log\+::push\+Item (\begin{DoxyParamCaption}\item[{const \hyperlink{namespaceapp_a290e8080c661e52c2f685fd4af148acf}{app\+::app\+State} \&}]{in\+State }\end{DoxyParamCaption})}
+
+
+
+Запись в лог изменения состояния 
+
+Формирование очереди сообщений которые нужно записывать в лог. Новые сообщения пишутся в конец (push\+\_\+back) По хорошему, можно использовать std\+::vector и писать флешку всё сразу массивом ...data, но хрен его знает, что будет при динамическом выделении памяти. \+:( 
+\begin{DoxyParams}{Аргументы}
+{\em in\+State} & записываемое состояние \\
+\hline
+\end{DoxyParams}
+
+
+Объявления и описания членов классов находятся в файлах\+:\begin{DoxyCompactItemize}
+\item 
+Core/cpp/T\+Log.\+hpp\item 
+Core/cpp/T\+Log.\+cpp\end{DoxyCompactItemize}
