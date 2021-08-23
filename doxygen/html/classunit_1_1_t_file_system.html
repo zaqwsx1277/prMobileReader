@@ -117,9 +117,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classunit_1_1_t_file_system.html#af7969ea11284d9f6f093687f0ba90082">process</a> ()</td></tr>
 <tr class="memdesc:af7969ea11284d9f6f093687f0ba90082"><td class="mdescLeft">&#160;</td><td class="mdescRight">Получение данных <br /></td></tr>
 <tr class="separator:af7969ea11284d9f6f093687f0ba90082"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaf4766a6f4dcd6759e362ffc977615f5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classunit_1_1_t_file_system.html#aaf4766a6f4dcd6759e362ffc977615f5">getTime</a> ()</td></tr>
-<tr class="memdesc:aaf4766a6f4dcd6759e362ffc977615f5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Синхронизация времени  <a href="#aaf4766a6f4dcd6759e362ffc977615f5">Подробнее...</a><br /></td></tr>
-<tr class="separator:aaf4766a6f4dcd6759e362ffc977615f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7a1adfdfb63b2071937f1c87b53a2d7e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classunit_1_1_t_file_system.html#a7a1adfdfb63b2071937f1c87b53a2d7e">getTime</a> (const uint32_t)</td></tr>
+<tr class="memdesc:a7a1adfdfb63b2071937f1c87b53a2d7e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Синхронизация времени  <a href="#a7a1adfdfb63b2071937f1c87b53a2d7e">Подробнее...</a><br /></td></tr>
+<tr class="separator:a7a1adfdfb63b2071937f1c87b53a2d7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a79523b2edca3574ec6254af671f28256"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classunit_1_1_t_file_system.html#a79523b2edca3574ec6254af671f28256">setTag</a> ()</td></tr>
 <tr class="memdesc:a79523b2edca3574ec6254af671f28256"><td class="mdescLeft">&#160;</td><td class="mdescRight">Запись на SD ID сосканированной метки  <a href="#a79523b2edca3574ec6254af671f28256">Подробнее...</a><br /></td></tr>
 <tr class="separator:a79523b2edca3574ec6254af671f28256"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -228,8 +228,8 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
  
 </div>
 </div>
-<a id="aaf4766a6f4dcd6759e362ffc977615f5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aaf4766a6f4dcd6759e362ffc977615f5">&#9670;&nbsp;</a></span>getTime()</h2>
+<a id="a7a1adfdfb63b2071937f1c87b53a2d7e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7a1adfdfb63b2071937f1c87b53a2d7e">&#9670;&nbsp;</a></span>getTime()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -237,13 +237,20 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
         <tr>
           <td class="memname">void unit::TFileSystem::getTime </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">const uint32_t&#160;</td>
+          <td class="paramname"><em>inAddTime</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>Синхронизация времени </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">inAddTime</td><td>Время в секундах добавляемое к времени считанному из файла </td></tr>
+  </table>
+  </dd>
+</dl>
 <dl class="section attention"><dt>Внимание</dt><dd>Инициализацию FatFS нужно проверять до вызова этого метода </dd></dl>
 
 </div>

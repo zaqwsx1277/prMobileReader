@@ -47,7 +47,8 @@ void MX_RTC_Init(void)
   }
 
   /* USER CODE BEGIN Check_RTC_BKUP */
-  if(__HAL_PWR_GET_FLAG(PWR_FLAG_WU)) return ;
+  return ;
+//  if(__HAL_PWR_GET_FLAG(PWR_FLAG_WU)) return ;
   /* USER CODE END Check_RTC_BKUP */
 
   /** Initialize RTC and set the Time and Date 

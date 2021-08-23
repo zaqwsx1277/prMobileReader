@@ -48,7 +48,7 @@ void \hyperlink{classunit_1_1_t_file_system_a99d5e06aee69d3674ea441f140f6a47b}{w
 \mbox{\Hypertarget{classunit_1_1_t_file_system_af7969ea11284d9f6f093687f0ba90082}\label{classunit_1_1_t_file_system_af7969ea11284d9f6f093687f0ba90082}} 
 bool \hyperlink{classunit_1_1_t_file_system_af7969ea11284d9f6f093687f0ba90082}{process} ()
 \begin{DoxyCompactList}\small\item\em Получение данных \end{DoxyCompactList}\item 
-void \hyperlink{classunit_1_1_t_file_system_aaf4766a6f4dcd6759e362ffc977615f5}{get\+Time} ()
+void \hyperlink{classunit_1_1_t_file_system_a7a1adfdfb63b2071937f1c87b53a2d7e}{get\+Time} (const uint32\+\_\+t)
 \begin{DoxyCompactList}\small\item\em Синхронизация времени \end{DoxyCompactList}\item 
 void \hyperlink{classunit_1_1_t_file_system_a79523b2edca3574ec6254af671f28256}{set\+Tag} ()
 \begin{DoxyCompactList}\small\item\em Запись на SD ID сосканированной метки \end{DoxyCompactList}\item 
@@ -123,16 +123,21 @@ true если провека выполнилась
 
 
 
- \mbox{\Hypertarget{classunit_1_1_t_file_system_aaf4766a6f4dcd6759e362ffc977615f5}\label{classunit_1_1_t_file_system_aaf4766a6f4dcd6759e362ffc977615f5}} 
+ \mbox{\Hypertarget{classunit_1_1_t_file_system_a7a1adfdfb63b2071937f1c87b53a2d7e}\label{classunit_1_1_t_file_system_a7a1adfdfb63b2071937f1c87b53a2d7e}} 
 \index{unit\+::\+T\+File\+System@{unit\+::\+T\+File\+System}!get\+Time@{get\+Time}}
 \index{get\+Time@{get\+Time}!unit\+::\+T\+File\+System@{unit\+::\+T\+File\+System}}
 \subsubsection{\texorpdfstring{get\+Time()}{getTime()}}
-{\footnotesize\ttfamily void unit\+::\+T\+File\+System\+::get\+Time (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void unit\+::\+T\+File\+System\+::get\+Time (\begin{DoxyParamCaption}\item[{const uint32\+\_\+t}]{in\+Add\+Time }\end{DoxyParamCaption})}
 
 
 
 Синхронизация времени 
 
+
+\begin{DoxyParams}{Аргументы}
+{\em in\+Add\+Time} & Время в секундах добавляемое к времени считанному из файла \\
+\hline
+\end{DoxyParams}
 \begin{DoxyAttention}{Внимание}
 Инициализацию Fat\+FS нужно проверять до вызова этого метода 
 \end{DoxyAttention}

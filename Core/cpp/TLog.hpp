@@ -15,15 +15,18 @@
 
 namespace app {
 
-constexpr uint32_t stLogSize { 0x20000 } ;	///< Размер лога на внутренней флешке
-
 /*!
  * @brief Описание структуры для хранения одной записи лога.
+ * @attention Т.к. лог хранится во встроенной флешке, то тип данных uint32_t
  */
 typedef struct {
 	uint32_t dateTime ;			///< Дата время события с точностью до двух сек.
 	app::appState state ;		///< Состояние события
 } tdLogItem ;
+
+constexpr uint32_t stLogPtrStart { 0x081E0000 } ;///< Адрес начала лога на флешке. FLASH_SECTOR_23
+constexpr uint32_t stLogSize { 0x20000 } ;		///< Размер лога на внутренней флешке
+constexpr uint32_t stLogPtrEnd { stLogPtrStart + stLogSize } ;///< Адрес конца лога на флешке
 
 /*!
  * @brief Класс ведения лога работы
@@ -35,7 +38,7 @@ typedef struct {
  */
 class TLog {
 	std::deque <tdLogItem> mStateQueue ;			///< Очередь сообщений для записи, первый элемент которой всегда последнее записанное состояние на флешке или appState::appUnknown
-	tdLogItem* mPrtLastItem ;						///< Указатель на место для записи лога
+	tdLogItem* mPrtLastItem ;						///< Указатель на место для записи лога. На хрена я его испольхую, если тоже самое записано в RTC_BKP_DR1!!!
 
 	void writeItemToFlash () ;						///< Запись событий на флешку
 
@@ -45,6 +48,8 @@ public:
 
 	void pushItem (const app::appState&) ;			///< Запись в лог изменения состояния
 	bool writeLog () ;								///< Сохранение лога на флешку и если нужно на SDIO. Всегда записывается последний банк встроенной флешки
+	tdLogItem getLastItem () ;						///< Получение из лога последнего состояния
+//	void clearLog
 };
 
 } /* namespace app */

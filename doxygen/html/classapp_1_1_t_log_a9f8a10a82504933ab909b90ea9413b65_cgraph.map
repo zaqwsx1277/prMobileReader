@@ -1,0 +1,4 @@
+<map id="app::TLog::TLog" name="app::TLog::TLog">
+<area shape="rect" id="node2" href="$classapp_1_1_t_log.html#a281a776bf33d2be787b907265e435683" title="Получение из лога последнего состояния " alt="" coords="171,5,328,32"/>
+<area shape="rect" id="node3" href="$classapp_1_1_t_log.html#aa28e5b94b906fcb2f8fed5f08b92e077" title="Сохранение лога на флешку и если нужно на SDIO. Всегда записывается последний банк встроенной флешки ..." alt="" coords="181,56,318,83"/>
+</map>

@@ -35,9 +35,9 @@ void \hyperlink{classapp_1_1_t_application_a4c4d1d33ea8ab73ba49a59528d200501}{ch
 \mbox{\Hypertarget{classapp_1_1_t_application_ae673484375cccb05d53f9f4cbeeba985}\label{classapp_1_1_t_application_ae673484375cccb05d53f9f4cbeeba985}} 
 void \hyperlink{classapp_1_1_t_application_ae673484375cccb05d53f9f4cbeeba985}{state\+Manager} ()
 \begin{DoxyCompactList}\small\item\em Менеджер обработки состояний \end{DoxyCompactList}\item 
-bool \hyperlink{classapp_1_1_t_application_a3df1835103a3ba338821c27ad05f9f8d}{set\+State} (\hyperlink{namespaceapp_a290e8080c661e52c2f685fd4af148acf}{app\+::app\+State})
+bool \hyperlink{classapp_1_1_t_application_a3df1835103a3ba338821c27ad05f9f8d}{set\+State} (\hyperlink{group___xD0_x9F_xD0_xB5_xD1_x80_xD0_xB5_xD1_x87_xD0_xB8_xD1_x81_xD0_xBB_xD0_xB5_xD0_xBD_xD0_xB8_xD1_x8F_ga290e8080c661e52c2f685fd4af148acf}{app\+::app\+State})
 \begin{DoxyCompactList}\small\item\em Установка состояния приложения \end{DoxyCompactList}\item 
-std\+::pair$<$ \hyperlink{namespaceapp_a290e8080c661e52c2f685fd4af148acf}{app\+::app\+State}, uint32\+\_\+t $>$ \hyperlink{classapp_1_1_t_application_a254728135b699d84f82a334708b1fbda}{get\+State} ()
+std\+::pair$<$ \hyperlink{group___xD0_x9F_xD0_xB5_xD1_x80_xD0_xB5_xD1_x87_xD0_xB8_xD1_x81_xD0_xBB_xD0_xB5_xD0_xBD_xD0_xB8_xD1_x8F_ga290e8080c661e52c2f685fd4af148acf}{app\+::app\+State}, uint32\+\_\+t $>$ \hyperlink{classapp_1_1_t_application_a254728135b699d84f82a334708b1fbda}{get\+State} ()
 \begin{DoxyCompactList}\small\item\em Получение состояния приложения \end{DoxyCompactList}\item 
 std\+::string \hyperlink{classapp_1_1_t_application_aa2cb4a923a937f1a47a28fb5efe3b943}{get\+Message\+Time} ()
 \begin{DoxyCompactList}\small\item\em Получить текстовое сообщение текущего времени \end{DoxyCompactList}\item 
@@ -55,7 +55,7 @@ void \hyperlink{classapp_1_1_t_application_a27c63bfb10aff853d0231c18df229c4c}{de
 \mbox{\Hypertarget{classapp_1_1_t_application_a51545d51e9a81883df7791d8965da74f}\label{classapp_1_1_t_application_a51545d51e9a81883df7791d8965da74f}} 
 void \hyperlink{classapp_1_1_t_application_a51545d51e9a81883df7791d8965da74f}{debug\+Message\+Hex} (const uint8\+\_\+t $\ast$, const std\+::size\+\_\+t)
 \begin{DoxyCompactList}\small\item\em Отправка цифр в десятичном виде \end{DoxyCompactList}\item 
-void \hyperlink{classapp_1_1_t_application_ade46529292a73f5184abb54b135c4a2e}{debug\+Message} (const \hyperlink{namespaceapp_a290e8080c661e52c2f685fd4af148acf}{app\+State})
+void \hyperlink{classapp_1_1_t_application_ade46529292a73f5184abb54b135c4a2e}{debug\+Message} (const \hyperlink{group___xD0_x9F_xD0_xB5_xD1_x80_xD0_xB5_xD1_x87_xD0_xB8_xD1_x81_xD0_xBB_xD0_xB5_xD0_xBD_xD0_xB8_xD1_x8F_ga290e8080c661e52c2f685fd4af148acf}{app\+State})
 \begin{DoxyCompactList}\small\item\em Отправка отладочного сообщения для указанного состояния \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classapp_1_1_t_application_a63da2a3bd444ed62efa0e35ae5f0571d}\label{classapp_1_1_t_application_a63da2a3bd444ed62efa0e35ae5f0571d}} 
 void \hyperlink{classapp_1_1_t_application_a63da2a3bd444ed62efa0e35ae5f0571d}{debug\+Message} ()
@@ -67,7 +67,9 @@ void \hyperlink{classapp_1_1_t_application_a2976114a4d6cb5ae83b28459e7a2aa70}{wr
 void \hyperlink{classapp_1_1_t_application_ab70622395a7d982ea5f5f53f7cce86c6}{write\+Audio} ()
 \begin{DoxyCompactList}\small\item\em Запись звука на SD\textquotesingle{}шку \end{DoxyCompactList}\item 
 void \hyperlink{classapp_1_1_t_application_a8c4bf0b62709ad4abd9c9027f1f58106}{write\+Log} ()
-\begin{DoxyCompactList}\small\item\em Записывем лог на флешку \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Записывем лог на флешку \end{DoxyCompactList}\item 
+void \hyperlink{classapp_1_1_t_application_aaa44a223c18f6087f10eb9bae637b90c}{clear\+Stupid} ()
+\begin{DoxyCompactList}\small\item\em Очистка флага контроля установки/снятия с док станции \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Подробное описание}
@@ -77,9 +79,11 @@ void \hyperlink{classapp_1_1_t_application_a8c4bf0b62709ad4abd9c9027f1f58106}{wr
 Т.\+к. я пока понятия не имею как работать со временем то раз в 50 дней устройство нужно перезапускать (хотя у нас есть режим Stand\+By, а это считай перезапуск) 
 
 Т.\+к. основной режим контроллера Stand\+By, то все указатели всегда освободятся при переходе в этот режим и выключать устройства нужно в деструкторе классов. 
+
+Часы реального времени ни когда не перепрограммируются, ни при выходе из Stand\+By, ни при перезапуске кристала 
 \end{DoxyAttention}
 \begin{DoxyRefDesc}{Необходимо сделать}
-\item[\hyperlink{todo__todo000005}{Необходимо сделать}]Сделать ведения лога работы блока и чтение его сервис-\/инженером 
+\item[\hyperlink{todo__todo000004}{Необходимо сделать}]Сделать ведения лога работы блока и чтение его сервис-\/инженером 
 
 Приделать watchdog \end{DoxyRefDesc}
 
@@ -140,7 +144,19 @@ void \hyperlink{classapp_1_1_t_application_a8c4bf0b62709ad4abd9c9027f1f58106}{wr
 \includegraphics[width=312pt]{classapp_1_1_t_application_acf71a4fe338cbc1e771cc9a60431c3bf_cgraph}
 \end{center}
 \end{figure}
-\mbox{\Hypertarget{classapp_1_1_t_application_abec229b87538c5db318ef57f25f6e84d}\label{classapp_1_1_t_application_abec229b87538c5db318ef57f25f6e84d}} 
+\mbox{\Hypertarget{classapp_1_1_t_application_aaa44a223c18f6087f10eb9bae637b90c}\label{classapp_1_1_t_application_aaa44a223c18f6087f10eb9bae637b90c}} 
+\index{app\+::\+T\+Application@{app\+::\+T\+Application}!clear\+Stupid@{clear\+Stupid}}
+\index{clear\+Stupid@{clear\+Stupid}!app\+::\+T\+Application@{app\+::\+T\+Application}}
+\subsubsection{\texorpdfstring{clear\+Stupid()}{clearStupid()}}
+{\footnotesize\ttfamily void app\+::\+T\+Application\+::clear\+Stupid (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Очистка флага контроля установки/снятия с док станции 
+
+
+
+ Очистка регистра R\+T\+C\+\_\+\+B\+K\+P\+\_\+\+D\+R2. \mbox{\Hypertarget{classapp_1_1_t_application_abec229b87538c5db318ef57f25f6e84d}\label{classapp_1_1_t_application_abec229b87538c5db318ef57f25f6e84d}} 
 \index{app\+::\+T\+Application@{app\+::\+T\+Application}!debug\+Message@{debug\+Message}}
 \index{debug\+Message@{debug\+Message}!app\+::\+T\+Application@{app\+::\+T\+Application}}
 \subsubsection{\texorpdfstring{debug\+Message()}{debugMessage()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
@@ -216,7 +232,7 @@ void \hyperlink{classapp_1_1_t_application_a8c4bf0b62709ad4abd9c9027f1f58106}{wr
 \index{app\+::\+T\+Application@{app\+::\+T\+Application}!debug\+Message@{debug\+Message}}
 \index{debug\+Message@{debug\+Message}!app\+::\+T\+Application@{app\+::\+T\+Application}}
 \subsubsection{\texorpdfstring{debug\+Message()}{debugMessage()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
-{\footnotesize\ttfamily void app\+::\+T\+Application\+::debug\+Message (\begin{DoxyParamCaption}\item[{const \hyperlink{namespaceapp_a290e8080c661e52c2f685fd4af148acf}{app\+State}}]{in\+State }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void app\+::\+T\+Application\+::debug\+Message (\begin{DoxyParamCaption}\item[{const \hyperlink{group___xD0_x9F_xD0_xB5_xD1_x80_xD0_xB5_xD1_x87_xD0_xB8_xD1_x81_xD0_xBB_xD0_xB5_xD0_xBD_xD0_xB8_xD1_x8F_ga290e8080c661e52c2f685fd4af148acf}{app\+State}}]{in\+State }\end{DoxyParamCaption})}
 
 
 
@@ -251,7 +267,7 @@ void \hyperlink{classapp_1_1_t_application_a8c4bf0b62709ad4abd9c9027f1f58106}{wr
 \index{app\+::\+T\+Application@{app\+::\+T\+Application}!get\+State@{get\+State}}
 \index{get\+State@{get\+State}!app\+::\+T\+Application@{app\+::\+T\+Application}}
 \subsubsection{\texorpdfstring{get\+State()}{getState()}}
-{\footnotesize\ttfamily std\+::pair$<$ \hyperlink{namespaceapp_a290e8080c661e52c2f685fd4af148acf}{app\+::app\+State}, uint32\+\_\+t $>$ app\+::\+T\+Application\+::get\+State (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily std\+::pair$<$ \hyperlink{group___xD0_x9F_xD0_xB5_xD1_x80_xD0_xB5_xD1_x87_xD0_xB8_xD1_x81_xD0_xBB_xD0_xB5_xD0_xBD_xD0_xB8_xD1_x8F_ga290e8080c661e52c2f685fd4af148acf}{app\+::app\+State}, uint32\+\_\+t $>$ app\+::\+T\+Application\+::get\+State (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 
 
@@ -281,7 +297,7 @@ void \hyperlink{classapp_1_1_t_application_a8c4bf0b62709ad4abd9c9027f1f58106}{wr
 \index{app\+::\+T\+Application@{app\+::\+T\+Application}!set\+State@{set\+State}}
 \index{set\+State@{set\+State}!app\+::\+T\+Application@{app\+::\+T\+Application}}
 \subsubsection{\texorpdfstring{set\+State()}{setState()}}
-{\footnotesize\ttfamily bool app\+::\+T\+Application\+::set\+State (\begin{DoxyParamCaption}\item[{\hyperlink{namespaceapp_a290e8080c661e52c2f685fd4af148acf}{app\+::app\+State}}]{in\+App\+State }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily bool app\+::\+T\+Application\+::set\+State (\begin{DoxyParamCaption}\item[{\hyperlink{group___xD0_x9F_xD0_xB5_xD1_x80_xD0_xB5_xD1_x87_xD0_xB8_xD1_x81_xD0_xBB_xD0_xB5_xD0_xBD_xD0_xB8_xD1_x8F_ga290e8080c661e52c2f685fd4af148acf}{app\+::app\+State}}]{in\+App\+State }\end{DoxyParamCaption})}
 
 
 

@@ -108,7 +108,7 @@ void HAL_I2S_MspInit(I2S_HandleTypeDef* i2sHandle)
     __HAL_LINKDMA(i2sHandle,hdmarx,hdma_spi3_rx);
 
     /* I2S3 interrupt Init */
-    HAL_NVIC_SetPriority(SPI3_IRQn, 10, 0);
+    HAL_NVIC_SetPriority(SPI3_IRQn, 5, 0);
     HAL_NVIC_EnableIRQ(SPI3_IRQn);
   /* USER CODE BEGIN SPI3_MspInit 1 */
 

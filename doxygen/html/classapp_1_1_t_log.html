@@ -85,17 +85,19 @@ $(function() {
 Открытые члены</h2></td></tr>
 <tr class="memitem:a9f8a10a82504933ab909b90ea9413b65"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classapp_1_1_t_log.html#a9f8a10a82504933ab909b90ea9413b65">TLog</a> ()</td></tr>
 <tr class="separator:a9f8a10a82504933ab909b90ea9413b65"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9632f9ff3d14bd24d6587f3509fbe9de"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classapp_1_1_t_log.html#a9632f9ff3d14bd24d6587f3509fbe9de">pushItem</a> (const <a class="el" href="namespaceapp.html#a290e8080c661e52c2f685fd4af148acf">app::appState</a> &amp;)</td></tr>
+<tr class="memitem:a9632f9ff3d14bd24d6587f3509fbe9de"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classapp_1_1_t_log.html#a9632f9ff3d14bd24d6587f3509fbe9de">pushItem</a> (const <a class="el" href="group___xD0_x9F_xD0_xB5_xD1_x80_xD0_xB5_xD1_x87_xD0_xB8_xD1_x81_xD0_xBB_xD0_xB5_xD0_xBD_xD0_xB8_xD1_x8F.html#ga290e8080c661e52c2f685fd4af148acf">app::appState</a> &amp;)</td></tr>
 <tr class="memdesc:a9632f9ff3d14bd24d6587f3509fbe9de"><td class="mdescLeft">&#160;</td><td class="mdescRight">Запись в лог изменения состояния  <a href="#a9632f9ff3d14bd24d6587f3509fbe9de">Подробнее...</a><br /></td></tr>
 <tr class="separator:a9632f9ff3d14bd24d6587f3509fbe9de"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa28e5b94b906fcb2f8fed5f08b92e077"><td class="memItemLeft" align="right" valign="top"><a id="aa28e5b94b906fcb2f8fed5f08b92e077"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classapp_1_1_t_log.html#aa28e5b94b906fcb2f8fed5f08b92e077">writeLog</a> ()</td></tr>
-<tr class="memdesc:aa28e5b94b906fcb2f8fed5f08b92e077"><td class="mdescLeft">&#160;</td><td class="mdescRight">Сохранение лога на флешку и если нужно на SDIO. Всегда записывается последний банк встроенной флешки <br /></td></tr>
+<tr class="memitem:aa28e5b94b906fcb2f8fed5f08b92e077"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classapp_1_1_t_log.html#aa28e5b94b906fcb2f8fed5f08b92e077">writeLog</a> ()</td></tr>
+<tr class="memdesc:aa28e5b94b906fcb2f8fed5f08b92e077"><td class="mdescLeft">&#160;</td><td class="mdescRight">Сохранение лога на флешку и если нужно на SDIO. Всегда записывается последний банк встроенной флешки  <a href="#aa28e5b94b906fcb2f8fed5f08b92e077">Подробнее...</a><br /></td></tr>
 <tr class="separator:aa28e5b94b906fcb2f8fed5f08b92e077"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a281a776bf33d2be787b907265e435683"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structapp_1_1td_log_item.html">tdLogItem</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classapp_1_1_t_log.html#a281a776bf33d2be787b907265e435683">getLastItem</a> ()</td></tr>
+<tr class="memdesc:a281a776bf33d2be787b907265e435683"><td class="mdescLeft">&#160;</td><td class="mdescRight">Получение из лога последнего состояния  <a href="#a281a776bf33d2be787b907265e435683">Подробнее...</a><br /></td></tr>
+<tr class="separator:a281a776bf33d2be787b907265e435683"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Подробное описание</h2>
 <div class="textblock"><p>Класс ведения лога работы </p>
-<p>Все события пишутся в контейнер std::deque, т.к. std::queue кривой и записываются в последний банк флешки при переходе в состояние StandBy. При начале активности последнее событие пишется в контейнер и если первое и последнее событие == appState::appHwErr, то запись на флешку не производится. Т.о. мы убираем поток ошибок при падении по памяти Что бы не взрывать себе мозги, указатель на пустое место для записи хранится в регистре RTC_BKP_DR1 </p><dl class="todo"><dt><b><a class="el" href="todo.html#_todo000009">Необходимо сделать:</a></b></dt><dd><p class="startdd">Переделать на запись на SD карточку. </p>
+<p>Все события пишутся в контейнер std::deque и записываются в последний банк флешки при переходе в состояние StandBy. При начале активности последнее событие пишется в контейнер и если первое и последнее событие == appState::appHwErr, то запись на флешку не производится. Т.о. мы убираем поток ошибок при падении по памяти Что бы не взрывать себе мозги, указатель на пустое место для записи хранится в регистре RTC_BKP_DR1 </p><dl class="todo"><dt><b><a class="el" href="todo.html#_todo000010">Необходимо сделать:</a></b></dt><dd><p class="startdd">Переделать на запись на SD карточку. </p>
 <p class="enddd">Написать класс для работы с встроенной флешкой </p>
 </dd></dl>
 </div><h2 class="groupheader">Конструктор(ы)</h2>
@@ -114,10 +116,41 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
       </table>
 </div><div class="memdoc">
 <hr/>
- 
+ <dl class="todo"><dt><b><a class="el" href="todo.html#_todo000009">Необходимо сделать:</a></b></dt><dd>Сделать проверку, на полностью заполненную флешку </dd></dl>
+<div class="dynheader">
+Граф вызовов:</div>
+<div class="dyncontent">
+<div class="center"><img src="classapp_1_1_t_log_a9f8a10a82504933ab909b90ea9413b65_cgraph.png" border="0" usemap="#classapp_1_1_t_log_a9f8a10a82504933ab909b90ea9413b65_cgraph" alt=""/></div>
+<map name="classapp_1_1_t_log_a9f8a10a82504933ab909b90ea9413b65_cgraph" id="classapp_1_1_t_log_a9f8a10a82504933ab909b90ea9413b65_cgraph">
+<area shape="rect" id="node2" href="classapp_1_1_t_log.html#a281a776bf33d2be787b907265e435683" title="Получение из лога последнего состояния " alt="" coords="171,5,328,32"/>
+<area shape="rect" id="node3" href="classapp_1_1_t_log.html#aa28e5b94b906fcb2f8fed5f08b92e077" title="Сохранение лога на флешку и если нужно на SDIO. Всегда записывается последний банк встроенной флешки ..." alt="" coords="181,56,318,83"/>
+</map>
+</div>
+
 </div>
 </div>
 <h2 class="groupheader">Методы</h2>
+<a id="a281a776bf33d2be787b907265e435683"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a281a776bf33d2be787b907265e435683">&#9670;&nbsp;</a></span>getLastItem()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structapp_1_1td_log_item.html">tdLogItem</a> app::TLog::getLastItem </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Получение из лога последнего состояния </p>
+<hr/>
+<dl class="section return"><dt>Возвращает</dt><dd>Последнее записанное в лог состояние </dd></dl>
+
+</div>
+</div>
 <a id="a9632f9ff3d14bd24d6587f3509fbe9de"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a9632f9ff3d14bd24d6587f3509fbe9de">&#9670;&nbsp;</a></span>pushItem()</h2>
 
@@ -127,7 +160,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
         <tr>
           <td class="memname">void app::TLog::pushItem </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="namespaceapp.html#a290e8080c661e52c2f685fd4af148acf">app::appState</a> &amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="group___xD0_x9F_xD0_xB5_xD1_x80_xD0_xB5_xD1_x87_xD0_xB8_xD1_x81_xD0_xBB_xD0_xB5_xD0_xBD_xD0_xB8_xD1_x8F.html#ga290e8080c661e52c2f685fd4af148acf">app::appState</a> &amp;&#160;</td>
           <td class="paramname"><em>inState</em></td><td>)</td>
           <td></td>
         </tr>
@@ -141,6 +174,28 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a id="aa28e5b94b906fcb2f8fed5f08b92e077"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa28e5b94b906fcb2f8fed5f08b92e077">&#9670;&nbsp;</a></span>writeLog()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool app::TLog::writeLog </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Сохранение лога на флешку и если нужно на SDIO. Всегда записывается последний банк встроенной флешки </p>
+<hr/>
+ <dl class="section attention"><dt>Внимание</dt><dd>Состояние перехода в StandBy писать не надо, т.к. оно всегда будет последним </dd></dl>
+<dl class="section return"><dt>Возвращает</dt><dd>true если запись на флешку прошла без ошибок </dd></dl>
 
 </div>
 </div>

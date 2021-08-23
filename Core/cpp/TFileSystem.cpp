@@ -8,6 +8,7 @@
 #include <sstream>
 #include <ios>
 #include <iomanip>
+#include <time.h>
 
 #include <fatfs.h>
 #include <rtc.h>
@@ -53,21 +54,25 @@ bool TFileSystem::check () {
 }
 //---------------------------------------------------------
 /*!
+ * @param inAddTime Время в секундах добавляемое к времени считанному из файла
  * \attention Инициализацию FatFS нужно проверять до вызова этого метода
  */
-void TFileSystem::getTime ()
+void TFileSystem::getTime (const uint32_t inAddTime)
 {
 	  FIL file { 0 } ;
+	  FILINFO tempBuf { 0 } ;
 
 	  bool isContinue { false } ;
 
-	  while ((common::app -> getState().second) < unit::stTagWaitSync) {	// ждём 10 сек для синхронизации времени
-		  FILINFO tempBuf { 0 } ;
-		  if (f_stat(common::stSyncTimeFileName.c_str(), &tempBuf) == FR_OK && tempBuf.fsize != 0) {
-			  isContinue = true ;
-			  break ;
-		  }
-	  }
+//	  while ((common::app -> getState().second) < unit::stTagWaitSync) {	// ждём 10 сек для синхронизации времени
+//		  FILINFO tempBuf { 0 } ;
+//		  if (f_stat(common::stSyncTimeFileName.c_str(), &tempBuf) == FR_OK && tempBuf.fsize != 0) {
+//			  isContinue = true ;
+//			  break ;
+//		  }
+//	  }
+
+	  if (f_stat(common::stSyncTimeFileName.c_str(), &tempBuf) == FR_OK && tempBuf.fsize != 0) isContinue = true ;
 
 	  if (isContinue == false) {
 		  common::app -> debugMessage ("File for time synchronization is absent");
@@ -83,12 +88,24 @@ void TFileSystem::getTime ()
 			  f_read(&file, dat, sizeof (dat), &bitesread) ;
 			  f_close(&file);
 
-			  syncTime.Seconds = dat[5];
-			  syncTime.Minutes = dat[4];
-			  syncTime.Hours   = dat[3];
-			  syncDate.Year    = dat[2];
-			  syncDate.Month   = dat[1];
-			  syncDate.Date    = dat[0];
+			  tm timeFromFile, *timeWrite ;
+			  timeFromFile.tm_sec = dat[5];
+			  timeFromFile.tm_min = dat[4];
+			  timeFromFile.tm_hour = dat[3];
+			  timeFromFile.tm_year = dat[2];
+			  timeFromFile.tm_mon = dat[1];
+			  timeFromFile.tm_mday = dat[0];
+
+			  time_t timeFromFileSec = mktime (&timeFromFile) ;
+			  timeFromFileSec += inAddTime ;
+			  timeWrite = localtime (&timeFromFileSec);
+
+			  syncTime.Seconds = timeWrite -> tm_sec ;
+			  syncTime.Minutes = timeWrite -> tm_min ;
+			  syncTime.Hours   = timeWrite -> tm_hour ;
+			  syncDate.Year    = timeWrite -> tm_year ;
+			  syncDate.Month   = timeWrite -> tm_mon ;
+			  syncDate.Date    = timeWrite -> tm_mday ;
 			  syncDate.WeekDay = 1;
 			  syncTime.DayLightSaving = RTC_DAYLIGHTSAVING_NONE;
 			  syncTime.StoreOperation = RTC_STOREOPERATION_SET;
@@ -97,11 +114,10 @@ void TFileSystem::getTime ()
 
 			  f_unlink(common::stSyncTimeFileName.c_str ());				// Т.к. от этого файла мы уже синхронизировались, то удаляем файл
 			  common::app -> debugMessage ("Time synchronization success");
-			  common::app -> makeInfo (app::typeInfo::infoAudioLight, app::typeSound::tsndShort, 1) ;
 		  }
 		    else {
 			  common::app -> debugMessage ("Time synchronization error");
-			  common::app -> makeInfo (app::typeInfo::infoAudioLight, app::typeSound::tsndShort, 3) ;
+			  common::app -> makeInfo (app::typeInfo::infoAudioLight, app::typeSound::tsndShort, 2) ;
 		    }
 	  }
 }

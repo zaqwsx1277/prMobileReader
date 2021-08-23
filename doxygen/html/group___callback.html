@@ -83,6 +83,9 @@ $(function() {
 <tr class="memitem:ga18c33b2d429b06674ec30e5b2b81862c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___callback.html#ga18c33b2d429b06674ec30e5b2b81862c">HAL_I2S_RxCpltCallback</a> (I2S_HandleTypeDef *hi2s)</td></tr>
 <tr class="memdesc:ga18c33b2d429b06674ec30e5b2b81862c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Обработчик прерываний по заполнению данными PDM второй половины аудио буфера  <a href="#ga18c33b2d429b06674ec30e5b2b81862c">Подробнее...</a><br /></td></tr>
 <tr class="separator:ga18c33b2d429b06674ec30e5b2b81862c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf1bc056b786d14a72432705a45dc99f5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___callback.html#gaf1bc056b786d14a72432705a45dc99f5">HAL_GPIO_EXTI_Callback</a> (uint16_t inGpio)</td></tr>
+<tr class="memdesc:gaf1bc056b786d14a72432705a45dc99f5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Обработчик прерываний по GPIO.  <a href="#gaf1bc056b786d14a72432705a45dc99f5">Подробнее...</a><br /></td></tr>
+<tr class="separator:gaf1bc056b786d14a72432705a45dc99f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Подробное описание</h2>
 <h2 class="groupheader">Функции</h2>
@@ -111,6 +114,33 @@ $(function() {
   </dd>
 </dl>
 <dl class="section attention"><dt>Внимание</dt><dd>Нужен исключительно, что бы остановить считывание изображения с камеры. </dd></dl>
+
+</div>
+</div>
+<a id="gaf1bc056b786d14a72432705a45dc99f5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaf1bc056b786d14a72432705a45dc99f5">&#9670;&nbsp;</a></span>HAL_GPIO_EXTI_Callback()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void HAL_GPIO_EXTI_Callback </td>
+          <td>(</td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>inGpio</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Обработчик прерываний по GPIO. </p>
+<hr/>
+<p>При срабатывании прерывания по PA9 значерие регистра DR2 увеличивается на единицу, а раз в 30 сек этот регистр уменьшается на единицу. При превышении определенного числа (проверяется при снятии с докстанции) включается пищалка </p><dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">inGpio</td><td>Номер сработавшего GPIO </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -181,7 +211,7 @@ $(function() {
   </table>
   </dd>
 </dl>
-<p>TIM7 - базовый таймер на 1 мСек. </p>
+<p>TIM7 - базовый таймер на 1 мСек. TIM6 - базовый таймер на 10 сек, для контроля частой установки/снятия на докстанцию </p>
 
 </div>
 </div>

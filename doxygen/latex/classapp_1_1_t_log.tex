@@ -15,7 +15,7 @@
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=152pt]{classapp_1_1_t_log__coll__graph}
+\includegraphics[width=163pt]{classapp_1_1_t_log__coll__graph}
 \end{center}
 \end{figure}
 \subsection*{Открытые члены}
@@ -23,18 +23,19 @@
 \item 
 \hyperlink{classapp_1_1_t_log_a9f8a10a82504933ab909b90ea9413b65}{T\+Log} ()
 \item 
-void \hyperlink{classapp_1_1_t_log_a9632f9ff3d14bd24d6587f3509fbe9de}{push\+Item} (const \hyperlink{namespaceapp_a290e8080c661e52c2f685fd4af148acf}{app\+::app\+State} \&)
+void \hyperlink{classapp_1_1_t_log_a9632f9ff3d14bd24d6587f3509fbe9de}{push\+Item} (const \hyperlink{group___xD0_x9F_xD0_xB5_xD1_x80_xD0_xB5_xD1_x87_xD0_xB8_xD1_x81_xD0_xBB_xD0_xB5_xD0_xBD_xD0_xB8_xD1_x8F_ga290e8080c661e52c2f685fd4af148acf}{app\+::app\+State} \&)
 \begin{DoxyCompactList}\small\item\em Запись в лог изменения состояния \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{classapp_1_1_t_log_aa28e5b94b906fcb2f8fed5f08b92e077}\label{classapp_1_1_t_log_aa28e5b94b906fcb2f8fed5f08b92e077}} 
 bool \hyperlink{classapp_1_1_t_log_aa28e5b94b906fcb2f8fed5f08b92e077}{write\+Log} ()
-\begin{DoxyCompactList}\small\item\em Сохранение лога на флешку и если нужно на S\+D\+IO. Всегда записывается последний банк встроенной флешки \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Сохранение лога на флешку и если нужно на S\+D\+IO. Всегда записывается последний банк встроенной флешки \end{DoxyCompactList}\item 
+\hyperlink{structapp_1_1td_log_item}{td\+Log\+Item} \hyperlink{classapp_1_1_t_log_a281a776bf33d2be787b907265e435683}{get\+Last\+Item} ()
+\begin{DoxyCompactList}\small\item\em Получение из лога последнего состояния \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Подробное описание}
 Класс ведения лога работы 
 
-Все события пишутся в контейнер std\+::deque, т.\+к. std\+::queue кривой и записываются в последний банк флешки при переходе в состояние Stand\+By. При начале активности последнее событие пишется в контейнер и если первое и последнее событие == app\+State\+::app\+Hw\+Err, то запись на флешку не производится. Т.\+о. мы убираем поток ошибок при падении по памяти Что бы не взрывать себе мозги, указатель на пустое место для записи хранится в регистре R\+T\+C\+\_\+\+B\+K\+P\+\_\+\+D\+R1 \begin{DoxyRefDesc}{Необходимо сделать}
-\item[\hyperlink{todo__todo000009}{Необходимо сделать}]Переделать на запись на SD карточку. 
+Все события пишутся в контейнер std\+::deque и записываются в последний банк флешки при переходе в состояние Stand\+By. При начале активности последнее событие пишется в контейнер и если первое и последнее событие == app\+State\+::app\+Hw\+Err, то запись на флешку не производится. Т.\+о. мы убираем поток ошибок при падении по памяти Что бы не взрывать себе мозги, указатель на пустое место для записи хранится в регистре R\+T\+C\+\_\+\+B\+K\+P\+\_\+\+D\+R1 \begin{DoxyRefDesc}{Необходимо сделать}
+\item[\hyperlink{todo__todo000010}{Необходимо сделать}]Переделать на запись на SD карточку. 
 
 Написать класс для работы с встроенной флешкой \end{DoxyRefDesc}
 
@@ -48,14 +49,40 @@ bool \hyperlink{classapp_1_1_t_log_aa28e5b94b906fcb2f8fed5f08b92e077}{write\+Log
 
 
 
- 
+ \begin{DoxyRefDesc}{Необходимо сделать}
+\item[\hyperlink{todo__todo000009}{Необходимо сделать}]Сделать проверку, на полностью заполненную флешку \end{DoxyRefDesc}
+Граф вызовов\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=322pt]{classapp_1_1_t_log_a9f8a10a82504933ab909b90ea9413b65_cgraph}
+\end{center}
+\end{figure}
+
 
 \subsection{Методы}
+\mbox{\Hypertarget{classapp_1_1_t_log_a281a776bf33d2be787b907265e435683}\label{classapp_1_1_t_log_a281a776bf33d2be787b907265e435683}} 
+\index{app\+::\+T\+Log@{app\+::\+T\+Log}!get\+Last\+Item@{get\+Last\+Item}}
+\index{get\+Last\+Item@{get\+Last\+Item}!app\+::\+T\+Log@{app\+::\+T\+Log}}
+\subsubsection{\texorpdfstring{get\+Last\+Item()}{getLastItem()}}
+{\footnotesize\ttfamily \hyperlink{structapp_1_1td_log_item}{td\+Log\+Item} app\+::\+T\+Log\+::get\+Last\+Item (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Получение из лога последнего состояния 
+
+
+
+
+
+\begin{DoxyReturn}{Возвращает}
+Последнее записанное в лог состояние 
+\end{DoxyReturn}
 \mbox{\Hypertarget{classapp_1_1_t_log_a9632f9ff3d14bd24d6587f3509fbe9de}\label{classapp_1_1_t_log_a9632f9ff3d14bd24d6587f3509fbe9de}} 
 \index{app\+::\+T\+Log@{app\+::\+T\+Log}!push\+Item@{push\+Item}}
 \index{push\+Item@{push\+Item}!app\+::\+T\+Log@{app\+::\+T\+Log}}
 \subsubsection{\texorpdfstring{push\+Item()}{pushItem()}}
-{\footnotesize\ttfamily void app\+::\+T\+Log\+::push\+Item (\begin{DoxyParamCaption}\item[{const \hyperlink{namespaceapp_a290e8080c661e52c2f685fd4af148acf}{app\+::app\+State} \&}]{in\+State }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void app\+::\+T\+Log\+::push\+Item (\begin{DoxyParamCaption}\item[{const \hyperlink{group___xD0_x9F_xD0_xB5_xD1_x80_xD0_xB5_xD1_x87_xD0_xB8_xD1_x81_xD0_xBB_xD0_xB5_xD0_xBD_xD0_xB8_xD1_x8F_ga290e8080c661e52c2f685fd4af148acf}{app\+::app\+State} \&}]{in\+State }\end{DoxyParamCaption})}
 
 
 
@@ -66,6 +93,24 @@ bool \hyperlink{classapp_1_1_t_log_aa28e5b94b906fcb2f8fed5f08b92e077}{write\+Log
 {\em in\+State} & записываемое состояние \\
 \hline
 \end{DoxyParams}
+\mbox{\Hypertarget{classapp_1_1_t_log_aa28e5b94b906fcb2f8fed5f08b92e077}\label{classapp_1_1_t_log_aa28e5b94b906fcb2f8fed5f08b92e077}} 
+\index{app\+::\+T\+Log@{app\+::\+T\+Log}!write\+Log@{write\+Log}}
+\index{write\+Log@{write\+Log}!app\+::\+T\+Log@{app\+::\+T\+Log}}
+\subsubsection{\texorpdfstring{write\+Log()}{writeLog()}}
+{\footnotesize\ttfamily bool app\+::\+T\+Log\+::write\+Log (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Сохранение лога на флешку и если нужно на S\+D\+IO. Всегда записывается последний банк встроенной флешки 
+
+
+
+ \begin{DoxyAttention}{Внимание}
+Состояние перехода в Stand\+By писать не надо, т.\+к. оно всегда будет последним 
+\end{DoxyAttention}
+\begin{DoxyReturn}{Возвращает}
+true если запись на флешку прошла без ошибок 
+\end{DoxyReturn}
 
 
 Объявления и описания членов классов находятся в файлах\+:\begin{DoxyCompactItemize}

@@ -21,7 +21,7 @@ namespace app {
  * \todo Реализовать режим восстановления файловой системы
 */
 enum appState {
-	appUnknown = 0,		//!< Пиздец котёнку. :(
+	appUnknown = 0,		//!< Непонятной породы зверь
 	appService,			///< Режим сервисного обслуживания
 	appStarted,			///< Начальный запуск. Приложение
 	appStandBy,			///< Переход в режим StandBy
@@ -38,7 +38,8 @@ enum appState {
 	appTagErr,			///< Ошибка при работе со сканером меток
 	appDoc,				///< Устройство находится на докстанции
 	appDocRemove,		///< Устройство снято с докстанции
-	appDocWaitStop,		///< Режим предотвращения кратковременное снятие с докстанции (пока не реализован т.к. )
+	appDocStupid,		///< Устройство снято и установлено на докстанцию более 10 раз за 30 сек
+	appDocWaitStop,		///< Режим предотвращения кратковременное снятие с докстанции (пока не реализован)
 	appCheckBounce,		///< Устранение дребезга контактов
 	appCheckButton,		///< Проверяем нажатые кнопки
 	appBounceTimeout,	///< За 256 мСек дребезг не устранился.
@@ -87,7 +88,8 @@ const std::unordered_map <appState, std::string> msgAppState {
 	{ appErrFileFS, "File System error" },
 	{ appTagNoId, "No TAG ID" },
 	{ appFsRepair, "File System repair mode" },
-	{ appDocSyncTime, "Time synchronization mode" }
+	{ appDocSyncTime, "Time synchronization mode" },
+	{ appDocStupid, "Protected from Stupid mode" }
 } ;
 
 } /* namespace app */

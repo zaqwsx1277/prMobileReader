@@ -1,6 +1,8 @@
 var searchData=
 [
   ['stappdebugtimeout',['stAppDebugTimeout',['../namespaceapp.html#a5d3e2252ee97a72dc9ab825375962ca1',1,'app']]],
+  ['stappstupidcount',['stAppStupidCount',['../namespaceapp.html#ac66773c5708c0ae2af347be78db699dc',1,'app']]],
+  ['stappstupidtimeout',['stAppStupidTimeout',['../namespaceapp.html#aa22274b71513535446ed3d8d3a7c1986',1,'app']]],
   ['state',['state',['../structapp_1_1td_log_item.html#ade62dcc4582ad2247c47a3e68889d118',1,'app::tdLogItem']]],
   ['staudiobitrate',['stAudioBitrate',['../namespaceunit.html#a7a058e0d07546916ab5dffbec805f5d3',1,'unit']]],
   ['staudiobuf',['stAudioBuf',['../namespacecommon.html#aeca12b629edac6586f4b0fbcf9617769',1,'common']]],
@@ -9,6 +11,8 @@ var searchData=
   ['staudioduration',['stAudioDuration',['../namespaceunit.html#a3a82b0d0086859e1e04e0878fb932db3',1,'unit']]],
   ['staudiowaitstart',['stAudioWaitStart',['../namespaceunit.html#a825ea814e5b3276cd5c1cce83c782c70',1,'unit']]],
   ['stfilebuf',['stFileBuf',['../namespacecommon.html#a07e080fe05fc55b6f3eab1de78a1157a',1,'common']]],
+  ['stlogptrend',['stLogPtrEnd',['../namespaceapp.html#ace31e10d9123ed3cd27682c771b31c3c',1,'app']]],
+  ['stlogptrstart',['stLogPtrStart',['../namespaceapp.html#a3f8e7afc758e38727589ca05d9d0b1d7',1,'app']]],
   ['stlogsize',['stLogSize',['../namespaceapp.html#a51952c8370b735a12cf723ced096ca48',1,'app']]],
   ['stphotobuf',['stPhotoBuf',['../namespacecommon.html#a5603cfb8998012c5d4e0bb217baf8293',1,'common']]],
   ['stphotodcmitimeout',['stPhotoDCMITimeout',['../namespaceunit.html#a40b076ece72209541014f35f94c3b5fa',1,'unit']]],

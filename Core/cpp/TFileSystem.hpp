@@ -62,7 +62,7 @@ public:
 	void wakeup () { ; } 			///< Выход из режима энергосбережения
 	bool process () { return true ; } ///< Получение данных
 
-	void getTime () ;				///< Синхронизация времени
+	void getTime (const uint32_t) ;	///< Синхронизация времени
 	void setTag () ;				///< Запись на SD ID сосканированной метки
 	bool writePhoto () ; 			///< Запись на SD изображения полученного с камеры
 	bool writeAudio (const uint8_t*, const uint32_t) ;	///< Запись аудио блока на SD

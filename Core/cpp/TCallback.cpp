@@ -7,6 +7,8 @@
 
 #include "stm32f4xx_hal.h"
 
+#include "rtc.h"
+
 #include "TCommon.hpp"
 #include "TApplication.hpp"
 
@@ -21,6 +23,7 @@
  * @param htim Сработавший таймер
  *
  * TIM7 - базовый таймер на 1 мСек.
+ * TIM6 - базовый таймер на 10 сек, для контроля частой установки/снятия на докстанцию
  */
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
@@ -33,6 +36,15 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 
 		  default:
 		  break;
+		}
+	}
+
+	if(htim -> Instance == TIM6) {
+//		uint32_t count { 0 } ;
+		tmpCount = HAL_RTCEx_BKUPRead(&hrtc, RTC_BKP_DR2) ;
+		if (tmpCount  > 0) {
+			--tmpCount ;
+			HAL_RTCEx_BKUPWrite(&hrtc, RTC_BKP_DR2, tmpCount) ;
 		}
 	}
 }
@@ -81,23 +93,26 @@ void HAL_I2S_RxCpltCallback (I2S_HandleTypeDef *hi2s)
 		common::stAudioBufId = unit::crAudioBufID::crSecond ;
 	}
 }
-/*!
- * Обработчик прерываний по GPIO
+/*!--------------------------------------------------------------------------------
+ * @brief Обработчик прерываний по GPIO
+ * @details При срабатывании прерывания по PA9 значерие регистра DR2 увеличивается на единицу, а раз в 30 сек  этот регистр уменьшается на единицу. При превышении определенного числа (проверяется при снятии с докстанции) включается пищалка
  * @param inGpio Номер сработавшего GPIO
  */
 void HAL_GPIO_EXTI_Callback(uint16_t inGpio) {
 
 	switch (inGpio) {
-	  case GPIO_PIN_9: 	// Финсируем снятие с докстанции. Нужно для выписывание пи...ы если кто-то будет играться с установкой и снятием на докстанцию.
-//		if (common::app -> getState().first == app::appState::appDoc)
-//			common::app -> setState()
-
+	  case GPIO_PIN_9: { 	// Фиксируем снятие с докстанции. Нужно для выписывание пи...ы если кто-то будет играться с установкой и снятием на докстанцию.
+//		  uint32_t count { 0 } ;
+//		  count = HAL_RTCEx_BKUPRead(&hrtc, RTC_BKP_DR2) ;
+//		  HAL_RTCEx_BKUPWrite(&hrtc, RTC_BKP_DR2, count + 1) ;
+	  }
 	  break;
 
 	  default:
 	  break;
 	}
 }
+//--------------------------------------------------------------------------------
 /*! @} */
 
 

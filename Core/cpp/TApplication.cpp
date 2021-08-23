@@ -14,6 +14,7 @@
 #include <rtc.h>
 #include <usart.h>
 #include <i2c.h>
+#include <tim.h>
 
 #include "TCommon.hpp"
 
@@ -27,9 +28,8 @@ TButton defGpioDoc ( GPIOA, GPIO_PIN_9 ) ;
 //-----------------------------------------------------------
 TApplication::TApplication()
 {
-	HAL_PWR_EnableBkUpAccess() ;			// Чтобы не взрывать себе мозги, доступ к backup регистрам открываем навсегда
 	mAppStateChange = HAL_GetTick() ;
-	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_4, GPIO_PIN_SET) ;	// Светодиод включесктся навсегда
+	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_4, GPIO_PIN_SET) ;// Светодиод включесктся навсегда
 }
 /*!----------------------------------------------------------
  *	Деструктор в принципе не нужен вообще.
@@ -45,8 +45,9 @@ TApplication::~TApplication()
  */
 void TApplication::checkUnits ()
 {
+
 	if (mSdio == nullptr) mSdio = std::make_unique <unit::TSdio> () ;		// Если нужно, то инициализируем все классы, а если не нужно, то значит мы попали сюда из состояния appAudioWaitStop
-	if (mFileSystem == nullptr) mFileSystem = std::make_unique <unit::TFileSystem> () ;
+	if (mFileSystem == nullptr) mFileSystem = std::make_unique <unit::TFileSystem> () ; // Размонтирование файловой системы нужно выполнять раньше отключения SDIO
 //	if (mTag == nullptr) mTag = std::make_unique <app::TTag> () ;
 	if (mPhoto == nullptr) mPhoto = std::make_unique <unit::TPhoto> () ;
 //	if (mAudio == nullptr) mAudio = std::make_unique <app::TAudio> () ;
@@ -70,6 +71,9 @@ void TApplication::stateManager ()
 {
 	switch (mAppState) {
 	  case appState::appStandBy: {
+		HAL_TIM_Base_Stop_IT(&htim6) ;
+		HAL_TIM_Base_Stop_IT(&htim7) ;
+
 		HAL_GPIO_WritePin(GPIOD, GPIO_PIN_13, GPIO_PIN_RESET) ;
 		if (mFileSystem != nullptr) mFileSystem.reset() ;		// Дергаем все деструктры, т.к. в них должен быть перевод устройства в режим Sleep
 		if (mTag != nullptr) mTag.reset() ;
@@ -85,20 +89,23 @@ void TApplication::stateManager ()
 		common::app -> debugMessage ("Time now: " + common::app -> getMessageTime ()) ;
 		common::app -> setState (app::appState::appCheckButton) ;
 #else
-		HAL_PWR_DisableBkUpAccess();
+//		HAL_PWR_DisableBkUpAccess();
 		sleep () ;
 #endif /* DEBUG */
 	  }
 	  break;
+
+	  case appState::appReady:
+		  setState(app::appState::appStartBounce) ;
+	  break ;
 
 	  case appState::appStartBounce:
 		  startBounce () ;
 		  setState(app::appState::appCheckBounce) ;
 	  break ;
 
-	  case appState::appCheckBounce:		// Сам дребезг контактов устраняется при срабанывания прерывания TIM7
-		  if ((HAL_GetTick() - mAppStateChange) > 100)
-			  setState(appState::appBounceTimeout) ;
+	  case appState::appCheckBounce:		// Сам дребезг контактов устраняется при срабатывания прерывания TIM7
+		  if ((HAL_GetTick() - mAppStateChange) > 100) setState(appState::appBounceTimeout) ;
 	  break ;
 
 	  case appState::appCheckButton: {
@@ -110,20 +117,21 @@ void TApplication::stateManager ()
 		  if (bPhoto == GPIO_PIN_RESET && bTag == GPIO_PIN_SET && bAudio == GPIO_PIN_SET && bDoc == GPIO_PIN_RESET) state = appState::appStandBy ;
 		  if (bPhoto == GPIO_PIN_SET && bTag == GPIO_PIN_RESET && bAudio == GPIO_PIN_SET && bDoc == GPIO_PIN_RESET) state = appState::appTag ;
 		  if (bPhoto == GPIO_PIN_SET && bTag == GPIO_PIN_SET && bAudio == GPIO_PIN_RESET && bDoc == GPIO_PIN_RESET) state = appState::appAudio ;
-		  if (bPhoto == GPIO_PIN_SET && bTag == GPIO_PIN_SET && bAudio == GPIO_PIN_SET && bDoc == GPIO_PIN_SET) state = appState::appDocSyncTime ;
+		  if (bPhoto == GPIO_PIN_SET && bTag == GPIO_PIN_SET && bAudio == GPIO_PIN_SET && bDoc == GPIO_PIN_SET) state = appState::appDocStupid ;
 		  if (bPhoto == GPIO_PIN_SET && bTag == GPIO_PIN_SET && bAudio == GPIO_PIN_SET && bDoc == GPIO_PIN_RESET) state = appState::appPhoto ;
 		  setState(state) ;
 	  }
 	  break ;
 
 	  case appState::appAudio : {
+		  clearStupid () ;
 		  makeInfo(typeInfo::infoAudioLight, tsndShort, 1) ;
 		  if (mSdio == nullptr) mSdio = std::make_unique <unit::TSdio> () ;		// Если нужно, то инициализируем все классы, а если не нужно, то значит мы попали сюда из состояния appAudioWaitStop
 		  if (mFileSystem == nullptr && mAppState == appState::appAudio) mFileSystem = std::make_shared <unit::TFileSystem> () ;
 		  if (mAudio == nullptr && mAppState == appState::appAudio) mAudio = std::make_unique <unit::TAudio> (mFileSystem) ;
 
 		  while (getState ().first == appState::appAudio) {
-			  if (mAudio -> process() == false) setState(appState::appAudioErr) ; ;
+			  if (mAudio -> process() == false) setState(appState::appAudioErr) ;
 			  if (getState().second > unit::stAudioDuration) setState(appState::appAudioStop) ;
 			  if (mButton [btnAudio].getState() != GPIO_PIN_RESET) {			// Если прекращается запись звука, то ждём 500 мСек
 				  setState(appState::appAudioWaitStop) ;
@@ -133,8 +141,10 @@ void TApplication::stateManager ()
 	  break ;
 
 	  case appState::appAudioWaitStop: 											// Ждём 500 мСек и проваливаемся в StandBy
-		  if (getState().second > 500) setState(appState::appAudioStop) ;
-		  if (mButton [idButton::btnAudio].getState() == GPIO_PIN_RESET) setState(appState::appAudio) ;
+		  while (getState ().first == appState::appAudioWaitStop) {
+			  if (getState().second > 500) setState(appState::appAudioStop) ;
+			  if (mButton [idButton::btnAudio].getState() == GPIO_PIN_RESET) setState(appState::appAudio) ;
+		  }
 	  break ;
 
 	  case appState::appAudioStop :
@@ -144,6 +154,7 @@ void TApplication::stateManager ()
 	  break ;
 
 	  case appState::appPhoto :
+		  clearStupid () ;
 		  if (mPhoto == nullptr) mPhoto = std::make_unique <unit::TPhoto> () ;
 		  if (mSdio == nullptr) mSdio = std::make_unique <unit::TSdio> () ;				// По хорошему инициализацию FS нужно делать после получения картинки
 		  if (mFileSystem == nullptr) mFileSystem = std::make_unique <unit::TFileSystem> () ;
@@ -158,6 +169,7 @@ void TApplication::stateManager ()
 	  break ;
 
 	  case appState::appTag :
+		  clearStupid () ;
 		  makeInfo(typeInfo::infoAudioLight, tsndShort, 1) ;
 		  if (mTag == nullptr) mTag = std::make_unique <unit::TTag> () ;
 		  if (mTag -> process ()) {
@@ -168,25 +180,43 @@ void TApplication::stateManager ()
 		  }
 	  break ;
 
-	  case appState::appDoc :
+	  case appState::appDoc : {
+		  mStartDocMode = HAL_GetTick() ;
+		  makeInfo(typeInfo::infoAudioLight, tsndShort, 1) ;
+		  mSdio = std::make_unique <unit::TSdio> () ;
 		  while (mButton [idButton::btnDoc].getState() == GPIO_PIN_SET) {
 			  HAL_Delay(1000) ;
 			  common::app -> debugMessage ("Time now: " + common::app -> getMessageTime ()) ;
 		  }
-		  setState(appState::appStandBy) ;
+		  setState(appState::appDocSyncTime) ;
+	  }
 	  break ;
 
-	  case appState::appDocSyncTime:
-		  mSdio = std::make_unique <unit::TSdio> () ;
-HAL_Delay(5000) ;	// Задержка для исключения одновременного доступа к файлу синхронизации времени.
+	  case appState::appDocSyncTime :											// Сделано отдельное состояние, что бы его можно было без проблем перенести в любое место
 		  mFileSystem = std::make_unique <unit::TFileSystem> () ;
 		  if (getState().first != appErrFileFS) {
 			  makeInfo(typeInfo::infoAudioLight, tsndShort, 1) ;
-			  mFileSystem -> getTime () ;
-			  mFileSystem.reset() ;
+//			  mStartDocMode = (HAL_GetTick() - mStartDocMode) / 1000 ;			// Получаем время нахождения на докстанции в секундах
+			  mFileSystem -> getTime ((HAL_GetTick() - mStartDocMode) / 1000) ;
 		  }
-		  setState(appState::appDoc) ;
+		  if (getState ().first == appState::appDocSyncTime) setState(appState::appStandBy) ;
 	  break ;
+
+	  case appState::appDocStupid : {
+		  uint32_t count { 0 } ;
+		  count = HAL_RTCEx_BKUPRead(&hrtc, RTC_BKP_DR2) ;
+		  if (count > stAppStupidCount) {
+			  makeInfo(typeInfo::infoAudio, tsndContinue, 0) ;
+			  HAL_Delay(stAppStupidTimeout) ;
+			  clearStupid () ;
+			  setState(appState::appStandBy) ;
+		  }
+		    else {
+			  HAL_RTCEx_BKUPWrite(&hrtc, RTC_BKP_DR2, count + 2) ;				// Добавляем 2, т.к. при запуске таймера тоже срабатывает прерывание
+			  setState(appState::appDoc) ;
+		    }
+	  }
+	  break;
 
 	  case appState::appErrI2C :
 		  makeInfo(typeInfo::infoAudioLight, tsndLong, 1) ;
@@ -232,9 +262,10 @@ bool TApplication::setState (app::appState inAppState)
 	bool retValue { false } ;
 
 	if (inAppState != mAppState) {
-		debugMessage(msgAppState.at (inAppState)) ;
+		debugMessage(inAppState) ;
 		mAppState = inAppState ;
 		mAppStateChange = HAL_GetTick() ;
+		mLog -> pushItem(mAppState) ;
 		retValue = true ;
 	}
 
@@ -345,9 +376,9 @@ void TApplication::debugMessage (const char *inMesage, const std::size_t inSize)
  */
 void TApplication::debugMessage (const uint8_t *inMesage, const std::size_t inSize)
 {
-//	uint32_t timeStart = HAL_GetTick() ;
+	uint32_t timeStart = HAL_GetTick() ;
 	while(HAL_UART_Transmit_IT(&huart1, (uint8_t *) inMesage, inSize) == HAL_BUSY ) {
-//		if ((HAL_GetTick() - timeStart) > stAppDebugTimeout) break ;	// что бы если что, то выйти из бесконечного цикла
+		if ((HAL_GetTick() - timeStart) > stAppDebugTimeout) break ;	// что бы если что, то выйти из бесконечного цикла
 	}
 }
 //-----------------------------------------------------------
@@ -417,36 +448,54 @@ void TApplication::sleep ()
 {
 	common::app -> debugMessage ("Standby mode") ;
 	makeInfo(typeInfo::infoAudio, tsndShort, 1) ;
-	HAL_PWR_EnableBkUpAccess() ;
 
-		GPIO_InitTypeDef GPIO_InitStruct = {0};
-		GPIO_InitStruct.Pin = GPIO_PIN_All ;
-		GPIO_InitStruct.Mode = GPIO_MODE_ANALOG;
-		GPIO_InitStruct.Pull = GPIO_NOPULL;
-//		HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
-		HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
-//		HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
-		HAL_GPIO_Init(GPIOD, &GPIO_InitStruct);
-		HAL_GPIO_Init(GPIOE, &GPIO_InitStruct);
+	GPIO_InitTypeDef GPIO_InitStruct = {0};
+	GPIO_InitStruct.Pin = GPIO_PIN_All ;
+	GPIO_InitStruct.Mode = GPIO_MODE_ANALOG;
+	GPIO_InitStruct.Pull = GPIO_NOPULL;
+	//		HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+	//		HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+	//		HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
+	HAL_GPIO_Init(GPIOD, &GPIO_InitStruct);
+	//		HAL_GPIO_Init(GPIOE, &GPIO_InitStruct);
 
-		GPIO_InitTypeDef GPIO_InitStructX = {0};
-		GPIO_InitStructX.Pin = GPIO_PIN_2|GPIO_PIN_4|GPIO_PIN_5|GPIO_PIN_6
-                |GPIO_PIN_7|GPIO_PIN_8|GPIO_PIN_9|GPIO_PIN_10
-                |GPIO_PIN_11|GPIO_PIN_12|GPIO_PIN_13
-                |GPIO_PIN_3 |GPIO_PIN_1;
-		GPIO_InitStructX.Mode = GPIO_MODE_ANALOG;
-		GPIO_InitStructX.Pull = GPIO_NOPULL;
-		HAL_GPIO_Init(GPIOC, &GPIO_InitStructX);
+	GPIO_InitTypeDef GPIO_InitStructX = {0};
+	GPIO_InitStructX.Pin = GPIO_PIN_2|GPIO_PIN_4|GPIO_PIN_5|GPIO_PIN_6
+			|GPIO_PIN_7|GPIO_PIN_8|GPIO_PIN_9|GPIO_PIN_10
+			|GPIO_PIN_11|GPIO_PIN_12|GPIO_PIN_13
+			|GPIO_PIN_3 |GPIO_PIN_1;
+	GPIO_InitStructX.Mode = GPIO_MODE_ANALOG;
+	GPIO_InitStructX.Pull = GPIO_NOPULL;
+	HAL_GPIO_Init(GPIOC, &GPIO_InitStructX);
 
-		GPIO_InitTypeDef GPIO_InitStructA = {0};
-		GPIO_InitStructA.Pin = GPIO_PIN_2|GPIO_PIN_4|GPIO_PIN_5|GPIO_PIN_6
-                |GPIO_PIN_7|GPIO_PIN_8|GPIO_PIN_9|GPIO_PIN_10
-                |GPIO_PIN_11|GPIO_PIN_12|GPIO_PIN_13
-                |GPIO_PIN_3 |GPIO_PIN_14 | GPIO_PIN_15 | GPIO_PIN_1 ;
-		GPIO_InitStructA.Mode = GPIO_MODE_ANALOG;
-		GPIO_InitStructA.Pull = GPIO_NOPULL;
-		HAL_GPIO_Init(GPIOA, &GPIO_InitStructA);
+	GPIO_InitTypeDef GPIO_InitStructA = {0};
+	GPIO_InitStructA.Pin = GPIO_PIN_2|GPIO_PIN_4|GPIO_PIN_5|GPIO_PIN_6
+			|GPIO_PIN_7|GPIO_PIN_8|GPIO_PIN_9|GPIO_PIN_10
+			|GPIO_PIN_11|GPIO_PIN_12|GPIO_PIN_13
+			|GPIO_PIN_3 |GPIO_PIN_14 | GPIO_PIN_15 | GPIO_PIN_1 ;
+	GPIO_InitStructA.Mode = GPIO_MODE_ANALOG;
+	GPIO_InitStructA.Pull = GPIO_NOPULL;
+	HAL_GPIO_Init(GPIOA, &GPIO_InitStructA);
 
+	GPIO_InitTypeDef GPIO_InitStructB = {0};
+	GPIO_InitStructB.Pin = GPIO_PIN_2|GPIO_PIN_4|GPIO_PIN_5|GPIO_PIN_6
+			|GPIO_PIN_7|GPIO_PIN_8|GPIO_PIN_9|GPIO_PIN_10
+			|GPIO_PIN_11|GPIO_PIN_0|GPIO_PIN_13
+			|GPIO_PIN_3 |GPIO_PIN_14 | GPIO_PIN_15 | GPIO_PIN_1 ;
+	GPIO_InitStructB.Mode = GPIO_MODE_ANALOG;
+	GPIO_InitStructB.Pull = GPIO_NOPULL;
+	HAL_GPIO_Init(GPIOB, &GPIO_InitStructB);
+
+	GPIO_InitTypeDef GPIO_InitStructE = {0};
+	GPIO_InitStructE.Pin = GPIO_PIN_2|GPIO_PIN_4|GPIO_PIN_5|GPIO_PIN_6
+			|GPIO_PIN_7|GPIO_PIN_8|GPIO_PIN_9|GPIO_PIN_10
+			|GPIO_PIN_11|GPIO_PIN_0|GPIO_PIN_13
+			|GPIO_PIN_12 |GPIO_PIN_14 | GPIO_PIN_15 | GPIO_PIN_1 ;
+	GPIO_InitStructE.Mode = GPIO_MODE_ANALOG;
+	GPIO_InitStructE.Pull = GPIO_NOPULL;
+	HAL_GPIO_Init(GPIOE, &GPIO_InitStructE);
+
+	HAL_PWR_DisableBkUpAccess();
 	__HAL_RCC_PWR_CLK_ENABLE() ;
 	HAL_PWR_EnableWakeUpPin(PWR_WAKEUP_PIN1) ;
 	HAL_PWR_EnterSTANDBYMode() ;
@@ -460,5 +509,11 @@ void TApplication::writeLog ()
 {
 	mLog -> writeLog () ;
 }
-//-------------------------------------------------------
+/*!-----------------------------------------------------------
+ * Очистка регистра RTC_BKP_DR2.
+ */
+void TApplication::clearStupid ()
+{
+	HAL_RTCEx_BKUPWrite(&hrtc, RTC_BKP_DR2, 0x0) ;
+}
 } /* namespace app */

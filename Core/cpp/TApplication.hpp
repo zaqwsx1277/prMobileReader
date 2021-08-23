@@ -30,6 +30,8 @@
 namespace app {
 
 constexpr uint32_t stAppDebugTimeout { 5000 } ; ///< Время ожидания отправки отладочного сообщения
+constexpr uint32_t stAppStupidCount { 5 } ;  	///< Количество установки/снятия устройства на докстанцию для срабатывния предупреждения
+constexpr uint32_t stAppStupidTimeout { 10000 } ;///< Время звучания предупредительного сигнала о частой установке/снятии устройства на докстанцию
 
 /*!
  * \ingroup Перечисления
@@ -75,6 +77,7 @@ enum typeInfo {
  * \brief Класс содержащий данные для обеспечения работы приложения
  * @attention Т.к. я пока понятия не имею как работать со временем то раз в 50 дней устройство нужно перезапускать (хотя у нас есть режим StandBy, а это считай перезапуск)
  * \attention Т.к. основной режим контроллера StandBy, то все указатели всегда освободятся при переходе в этот режим и выключать устройства нужно в деструкторе классов.
+ * \attention Часы реального времени ни когда не перепрограммируются, ни при выходе из StandBy, ни при перезапуске кристала
  * \todo Сделать ведения лога работы блока и чтение его сервис-инженером
  * \todo Приделать watchdog
  */
@@ -97,6 +100,8 @@ private:
 	void makeInfoGpio (const app::typeInfo, const GPIO_PinState) ;	///< Метод включения/выключения пищалка/светодиод
 	void startBounce () ;						///< Запуск устранения дребезга контактов
 
+	uint32_t mStartDocMode ;					///< Время перехода в режим докстанции. Нужно для корректной синхронизации времени при
+
 public:
 	TApplication();								///< Инициализация работы приложения
 	virtual ~TApplication() ;					///< По большому счёту он здесь на хрен не нужен, т.к. он отродясь не будет выполняться
@@ -112,8 +117,8 @@ public:
 	void debugMessage (const std::string &) ;	///< Отправка текстового отладочного сообщения
 	void debugMessage (const char *, const std::size_t) ; ///< Отправка отладочного сообщения
 	void debugMessage (const uint8_t *, const std::size_t) ; ///< Отправка цифр
-	void debugMessageDec (const uint8_t *, const std::size_t) ; ///< Отправка цифр в десятичном виде
-	void debugMessageHex (const uint8_t *, const std::size_t) ; ///< Отправка цифр в десятичном виде
+//	void debugMessageDec (const uint8_t *, const std::size_t) ; ///< Отправка цифр в десятичном виде
+//	void debugMessageHex (const uint8_t *, const std::size_t) ; ///< Отправка цифр в десятичном виде
 	void debugMessage (const appState) ; 		///< Отправка отладочного сообщения для указанного состояния
 	void debugMessage () ;				 		///< Отправка отладочного сообщения для текущего состояния
 
@@ -121,6 +126,8 @@ public:
 	void writeAudio () ;						///< Запись звука на SD'шку
 
 	void writeLog () ;							///< Записывем лог на флешку
+
+	void clearStupid () ;						///< Очистка флага контроля установки/снятия с док станции
 };
 
 

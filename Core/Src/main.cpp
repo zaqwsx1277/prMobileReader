@@ -111,7 +111,15 @@ int main(void)
   MX_PDM2PCM_Init();
   MX_USB_DEVICE_Init();
   MX_DCMI_Init();
+  MX_TIM6_Init();
   /* USER CODE BEGIN 2 */
+
+  HAL_PWR_EnableBkUpAccess() ;						// Чтобы не взрывать себе мозги, доступ к backup регистрам открываем навсегда
+  if(__HAL_PWR_GET_FLAG(PWR_FLAG_WU) == false) {
+	  HAL_RTCEx_BKUPWrite(&hrtc, RTC_BKP_DR1, 0x0) ;	// При первоначальном запуске контроллера всегда чистим RTC_BKP_DR1, для того что бы правильно вести лог
+	  HAL_RTCEx_BKUPWrite(&hrtc, RTC_BKP_DR2, 0x0) ;	//   и RTC_BKP_DR2, что бы не глючила блокировка частой установки/снятия на докстанцию.
+  }
+
   common::app = std::make_unique <app::TApplication> () ;		// Если при запуске были какие-то ошибки по работе периферии, то сразу же тупо проваливаемся в менеджер
 
 //  common::app -> debugMessage ("Time now: " + common::app -> getMessageTime ()) ;  // Перенести эту херню в конструктор TApplication
@@ -121,13 +129,14 @@ int main(void)
 	      __HAL_PWR_CLEAR_FLAG(PWR_FLAG_WU);			  // Очищаем флаг выхода из режима StandBy
 	      HAL_PWR_DisableWakeUpPin(PWR_WAKEUP_PIN1) ;
 //	      common::app -> debugMessage (app::appState::appReady) ;
-	      common::app -> setState (app::appState::appStartBounce) ;
+	      common::app -> setState (app::appState::appReady) ;
+//	      common::app -> setState (app::appState::appStartBounce) ;
       }
         else {
            common::app -> debugMessage (app::appState::appStarted) ;
     	   common::app -> checkUnits () ;					// При первоначальном запуске проверяем оборудование
 #ifdef DEBUG
-    	   common::app -> setState (app::appState::appStartBounce) ;	// Запускаем устрнения дребезга контактов и определения нажатых кнопок
+    	   common::app -> setState (app::appState::appStartBounce) ;	// в режиме отладчика Запускаем устранения дребезга контактов и определения нажатых кнопок
 #else
     	   common::app -> setState (app::appState::appStandBy) ;
 #endif /* DEBUG */
@@ -139,6 +148,7 @@ int main(void)
   /* USER CODE BEGIN WHILE */
 
   HAL_TIM_Base_Start_IT (&htim7) ;
+  HAL_TIM_Base_Start_IT (&htim6) ;
 
   while (1) {
 	  common::app -> stateManager () ;
@@ -156,50 +166,50 @@ int main(void)
   */
 void SystemClock_Config(void)
 {
-  RCC_OscInitTypeDef RCC_OscInitStruct = {0};
-  RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
-  RCC_PeriphCLKInitTypeDef PeriphClkInitStruct = {0};
+	  RCC_OscInitTypeDef RCC_OscInitStruct = {0};
+	  RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
+	  RCC_PeriphCLKInitTypeDef PeriphClkInitStruct = {0};
 
-  /** Configure the main internal regulator output voltage 
-  */
-  __HAL_RCC_PWR_CLK_ENABLE();
-  __HAL_PWR_VOLTAGESCALING_CONFIG(PWR_REGULATOR_VOLTAGE_SCALE3);
-  /** Initializes the CPU, AHB and APB busses clocks 
-  */
-  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSE|RCC_OSCILLATORTYPE_LSE;
-  RCC_OscInitStruct.HSEState = RCC_HSE_ON;
-  RCC_OscInitStruct.LSEState = RCC_LSE_ON;
-  RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
-  RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSE;
-  RCC_OscInitStruct.PLL.PLLM = 4;
-  RCC_OscInitStruct.PLL.PLLN = 72;
-  RCC_OscInitStruct.PLL.PLLP = RCC_PLLP_DIV2;
-  RCC_OscInitStruct.PLL.PLLQ = 3;
-  if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
-  {
-    Error_Handler();
-  }
-  /** Initializes the CPU, AHB and APB busses clocks 
-  */
-  RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
-                              |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
-  RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
-  RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
-  RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV2;
-  RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV2;
+	  /** Configure the main internal regulator output voltage
+	  */
+	  __HAL_RCC_PWR_CLK_ENABLE();
+	  __HAL_PWR_VOLTAGESCALING_CONFIG(PWR_REGULATOR_VOLTAGE_SCALE3);
+	  /** Initializes the CPU, AHB and APB busses clocks
+	  */
+	  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSE|RCC_OSCILLATORTYPE_LSE;
+	  RCC_OscInitStruct.HSEState = RCC_HSE_ON;
+	  RCC_OscInitStruct.LSEState = RCC_LSE_ON;
+	  RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
+	  RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSE;
+	  RCC_OscInitStruct.PLL.PLLM = 4;
+	  RCC_OscInitStruct.PLL.PLLN = 72;
+	  RCC_OscInitStruct.PLL.PLLP = RCC_PLLP_DIV2;
+	  RCC_OscInitStruct.PLL.PLLQ = 3;
+	  if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
+	  {
+	    Error_Handler();
+	  }
+	  /** Initializes the CPU, AHB and APB busses clocks
+	  */
+	  RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
+	                              |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
+	  RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
+	  RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
+	  RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV2;
+	  RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV2;
 
-  if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_2) != HAL_OK)
-  {
-    Error_Handler();
-  }
-  PeriphClkInitStruct.PeriphClockSelection = RCC_PERIPHCLK_I2S|RCC_PERIPHCLK_RTC;
-  PeriphClkInitStruct.PLLI2S.PLLI2SN = 50;
-  PeriphClkInitStruct.PLLI2S.PLLI2SR = 2;
-  PeriphClkInitStruct.RTCClockSelection = RCC_RTCCLKSOURCE_LSE;
-  if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInitStruct) != HAL_OK)
-  {
-    Error_Handler();
-  }
+	  if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_2) != HAL_OK)
+	  {
+	    Error_Handler();
+	  }
+	  PeriphClkInitStruct.PeriphClockSelection = RCC_PERIPHCLK_I2S|RCC_PERIPHCLK_RTC;
+	  PeriphClkInitStruct.PLLI2S.PLLI2SN = 50;
+	  PeriphClkInitStruct.PLLI2S.PLLI2SR = 2;
+	  PeriphClkInitStruct.RTCClockSelection = RCC_RTCCLKSOURCE_LSE;
+	  if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInitStruct) != HAL_OK)
+	  {
+	    Error_Handler();
+	  }
 }
 
 /* USER CODE BEGIN 4 */
@@ -214,9 +224,6 @@ void Error_Handler(void)
 {
   /* USER CODE BEGIN Error_Handler_Debug */
   /* User can add his own implementation to report the HAL error return state */
-
-	common::app -> setState(app::appHwErr) ;	// Если сюда прилетели, то пиздец котенку и в этом случае записываем события минимум на флешку :(
-	common::app -> writeLog () ;
 
   /* USER CODE END Error_Handler_Debug */
 }
