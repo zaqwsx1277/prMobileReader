@@ -69,6 +69,8 @@ void TApplication::checkUnits ()
 //-----------------------------------------------------------
 void TApplication::stateManager ()
 {
+	HAL_IWDG_Refresh(&hiwdg);									// WatchDog настроен на 30 сек. Этого вроде как должно хватить для самого долгого режима.
+
 	switch (mAppState) {
 	  case appState::appStandBy: {
 		HAL_TIM_Base_Stop_IT(&htim6) ;
