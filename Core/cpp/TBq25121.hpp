@@ -26,7 +26,7 @@ constexpr uint8_t defBq25121Cmd_04 [] { 0x04, 0x26 } ;
 constexpr uint8_t defBq25121Cmd_05 [] { 0x05, 0x78 } ;
 constexpr uint8_t defBq25121Cmd_06 [] { 0x06, 0xFE } ;
 constexpr uint8_t defBq25121Cmd_07 [] { 0x07, 0xD0 } ;
-constexpr uint8_t defBq25121Cmd_08 [] { 0x08, 0x48 } ;
+constexpr uint8_t defBq25121Cmd_08 [] { 0x08, 0x40 } ;
 constexpr uint8_t defBq25121Cmd_09 [] { 0x09, 0x3A } ;
 constexpr uint8_t defBq25121Cmd_0B [] { 0x0B, 0x34 } ;
 

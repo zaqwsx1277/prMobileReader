@@ -40,11 +40,11 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 	}
 
 	if(htim -> Instance == TIM6) {
-//		uint32_t count { 0 } ;
-		tmpCount = HAL_RTCEx_BKUPRead(&hrtc, RTC_BKP_DR2) ;
-		if (tmpCount  > 0) {
-			--tmpCount ;
-			HAL_RTCEx_BKUPWrite(&hrtc, RTC_BKP_DR2, tmpCount) ;
+		static uint32_t count { 0 } ;
+		count = HAL_RTCEx_BKUPRead(&hrtc, RTC_BKP_DR2) ;
+		if (count  > 0) {
+			--count ;
+			HAL_RTCEx_BKUPWrite(&hrtc, RTC_BKP_DR2, count) ;
 		}
 	}
 }
@@ -52,12 +52,11 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 /*!
  * @brief Обработчик прерываний UART
  * @param huart Хэнвд сработавшего порта
- * @attention И на хрена он нужен???
  */
 void HAL_UART_TxCpltCallback(UART_HandleTypeDef *huart)
 {
 	if (huart -> Instance == USART1) {
-
+		common::stTimeStartDebugMessage = 0 ;
 	}
 }
 /*!-----------------------------------------------------------------------------
@@ -95,16 +94,16 @@ void HAL_I2S_RxCpltCallback (I2S_HandleTypeDef *hi2s)
 }
 /*!--------------------------------------------------------------------------------
  * @brief Обработчик прерываний по GPIO
- * @details При срабатывании прерывания по PA9 значерие регистра DR2 увеличивается на единицу, а раз в 30 сек  этот регистр уменьшается на единицу. При превышении определенного числа (проверяется при снятии с докстанции) включается пищалка
+ * @details При срабатывании прерывания по PA9 значерие регистра DR2 увеличивается на единицу, а раз в 10 сек  этот регистр уменьшается на единицу. При превышении определенного числа (проверяется при снятии с докстанции) включается пищалка
  * @param inGpio Номер сработавшего GPIO
  */
 void HAL_GPIO_EXTI_Callback(uint16_t inGpio) {
 
 	switch (inGpio) {
 	  case GPIO_PIN_9: { 	// Фиксируем снятие с докстанции. Нужно для выписывание пи...ы если кто-то будет играться с установкой и снятием на докстанцию.
-//		  uint32_t count { 0 } ;
-//		  count = HAL_RTCEx_BKUPRead(&hrtc, RTC_BKP_DR2) ;
-//		  HAL_RTCEx_BKUPWrite(&hrtc, RTC_BKP_DR2, count + 1) ;
+		  uint32_t count { 0 } ;
+		  count = HAL_RTCEx_BKUPRead(&hrtc, RTC_BKP_DR2) ;
+		  HAL_RTCEx_BKUPWrite(&hrtc, RTC_BKP_DR2, count + 1) ;
 	  }
 	  break;
 

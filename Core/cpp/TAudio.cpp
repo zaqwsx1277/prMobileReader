@@ -21,18 +21,20 @@ namespace unit {
  * Конструктор инициализирующий работу для записи аудио.
  * Все данные для PDM -> PCM преобразования задаются в настройках CubeMX
  * @param inPtrFileSystem Указатель на класс работы с файловой системой
- * @attention Я ни коем образом не проверяю указатель на файловую систему!!!  sizeof (common::stAudioBuf)/2
  */
 TAudio::TAudio(std::shared_ptr<TFileSystem> inPtrFileSystem)
 {
-	mPtrFileSystem = inPtrFileSystem ;
-	if (mPtrFileSystem -> openFileName (".wav") == false) common::app -> setState(app::appState::appAudioErr) ;
+	if (inPtrFileSystem == nullptr) common::app -> setState(app::appState::appAudioErr) ;
 	  else {
-		makeHeader () ;
-		if (HAL_I2S_Receive_DMA(&hi2s3, (uint16_t *) common::stAudioBuf, sizeof (common::stAudioBuf)/sizeof(tdAudioFrame) ) != HAL_OK)	common::app -> setState(app::appState::appAudioErr) ;
+		mPtrFileSystem = inPtrFileSystem ;
+		if (mPtrFileSystem -> openFileName (".wav") == false) common::app -> setState(app::appState::appAudioErr) ;
 		  else {
-			mBufToFile.reserve (stAudioBufOutSize) ;
-			common::app -> debugMessage("Write Audio start - OK") ;
+			makeHeader () ;
+			if (HAL_I2S_Receive_DMA(&hi2s3, (uint16_t *) common::stAudioBuf, sizeof (common::stAudioBuf)/sizeof(tdAudioFrame) ) != HAL_OK)	common::app -> setState(app::appState::appAudioErr) ;
+			  else {
+				  mBufToFile.reserve (stAudioBufOutSize) ;
+				  common::app -> debugMessage("Write Audio start - OK") ;
+			  }
 		  }
 	  }
 }

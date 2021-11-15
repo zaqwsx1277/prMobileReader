@@ -49,12 +49,11 @@ TLog::~TLog() {
 bool TLog::writeLog ()
 {
 	bool retVal { true } ;
-									// Если коробочка не ушла в циклический перезапуск по железу, то записывем сожержимое контейнера на флешку
+													// Если коробочка не ушла в циклический перезапуск по железу, то записывем сожержимое контейнера на флешку
 	if (mStateQueue.front().state != app::appState::appHwErr || mStateQueue.back().state != app::appState::appHwErr) {
-		// Здесь нужно проверить место на флешке и если нужно, то скинуть все на SDIO
-
 		if (mStateQueue.size() != 0) {
 			if (HAL_FLASH_Unlock() != HAL_OK) retVal = false ;
+													// Если места мало то чистим флешак
 			if ((stLogPtrEnd - reinterpret_cast <uint32_t> (mPrtLastItem)) < (mStateQueue.size() * sizeof (tdLogItem))) {
 				FLASH_EraseInitTypeDef flashStr { 0 } ;
 				uint32_t sectorError { 0 } ;
@@ -66,7 +65,7 @@ bool TLog::writeLog ()
 				if (HAL_FLASHEx_Erase(&flashStr, &sectorError) != HAL_OK) retVal = false ;
 			}
 
-			for (auto item : mStateQueue) {		// Т.к. нам торопиться некуда, то пишем данные без DMA. И нужно быть внимательным, при изменении структуры tdLogItem
+			for (auto item : mStateQueue) {			// Т.к. нам торопиться некуда, то пишем данные без DMA. И нужно быть внимательным, при изменении структуры tdLogItem
 				if (retVal != true) break ;
 				uint32_t prtDateTime = reinterpret_cast <uint32_t> (mPrtLastItem) ;
 				uint32_t ptrState = prtDateTime + sizeof (item.dateTime) ;

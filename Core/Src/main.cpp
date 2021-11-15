@@ -26,7 +26,7 @@
 #include "fatfs.h"
 #include "i2c.h"
 #include "i2s.h"
-#include "iwdg.h"
+//#include "iwdg.h"
 #include "pdm2pcm.h"
 #include "rtc.h"
 #include "sdio.h"
@@ -113,7 +113,6 @@ int main(void)
   MX_USB_DEVICE_Init();
   MX_DCMI_Init();
   MX_TIM6_Init();
-  MX_IWDG_Init();
   /* USER CODE BEGIN 2 */
 
   HAL_PWR_EnableBkUpAccess() ;						// Чтобы не взрывать себе мозги, доступ к backup регистрам открываем навсегда
@@ -139,6 +138,7 @@ int main(void)
     	   common::app -> checkUnits () ;					// При первоначальном запуске проверяем оборудование
 #ifdef DEBUG
     	   common::app -> setState (app::appState::appStartBounce) ;	// в режиме отладчика Запускаем устранения дребезга контактов и определения нажатых кнопок
+//    	   common::app -> setState (app::appState::appPhoto) ;
 #else
     	   common::app -> setState (app::appState::appStandBy) ;
 #endif /* DEBUG */

@@ -18,7 +18,7 @@ namespace unit {
  */
 TPhoto::TPhoto() {
 	HAL_GPIO_WritePin(GPIOC,GPIO_PIN_5,GPIO_PIN_SET);
-	HAL_Delay(50) ;
+	HAL_Delay(100) ;
 	HAL_GPIO_WritePin(GPIOB,GPIO_PIN_8,GPIO_PIN_RESET);
 
 	init () ;
@@ -27,11 +27,12 @@ TPhoto::TPhoto() {
  *
  */
 TPhoto::~TPhoto() {
-	HAL_GPIO_WritePin(GPIOB,GPIO_PIN_8,GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(GPIOB,GPIO_PIN_8,GPIO_PIN_SET);
 	HAL_DMA_Abort(&hdma_dcmi);
 	HAL_DCMI_Stop(&hdcmi) ;
 	sleep () ;
-	HAL_GPIO_WritePin(GPIOB,GPIO_PIN_8,GPIO_PIN_SET);
+	HAL_GPIO_WritePin(GPIOC,GPIO_PIN_5,GPIO_PIN_RESET);
+	common::app -> debugMessage ("Photo stop");
 }
 /*! -----------------------------------------------------------------
  *
@@ -82,13 +83,13 @@ bool TPhoto::process ()
 	HAL_GPIO_WritePin (GPIOB,GPIO_PIN_8,GPIO_PIN_RESET) ;
 	wakeup () ;
 
-	common::stPhotoBuf [0] = 0 ;			// Очищаем маркер начала jpeg
-	common::stPhotoBuf [1] = 0 ;
+	stPhotoBuf [0] = 0 ;			// Очищаем маркер начала jpeg
+	stPhotoBuf [1] = 0 ;
 
 	common::app -> makeInfo(app::typeInfo::infoAudio, app::typeSound::tsndContinue) ;
 	HAL_Delay(stPhotoPositionTimeout) ;
 	common::app -> makeInfo(app::typeInfo::infoAudio, app::typeSound::tsndNo) ;
-	HAL_DCMI_Start_DMA(&hdcmi, DCMI_MODE_SNAPSHOT, (uint32_t) common::stPhotoBuf, 1600*22) ;
+	HAL_DCMI_Start_DMA(&hdcmi, DCMI_MODE_SNAPSHOT, (uint32_t) stPhotoBuf, 1600*22) ;
 
 	tmpFlag = false ;
 	tmpCount =  10 ;

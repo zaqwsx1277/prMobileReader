@@ -15,6 +15,7 @@
 #include <usart.h>
 #include <i2c.h>
 #include <tim.h>
+//#include <iwdg.h>
 
 #include "TCommon.hpp"
 
@@ -69,7 +70,7 @@ void TApplication::checkUnits ()
 //-----------------------------------------------------------
 void TApplication::stateManager ()
 {
-	HAL_IWDG_Refresh(&hiwdg);									// WatchDog настроен на 30 сек. Этого вроде как должно хватить для самого долгого режима.
+//	HAL_IWDG_Refresh(&hiwdg);									// WatchDog настроен на 30 сек. Этого вроде как должно хватить для самого долгого режима.
 
 	switch (mAppState) {
 	  case appState::appStandBy: {
@@ -91,7 +92,6 @@ void TApplication::stateManager ()
 		common::app -> debugMessage ("Time now: " + common::app -> getMessageTime ()) ;
 		common::app -> setState (app::appState::appCheckButton) ;
 #else
-//		HAL_PWR_DisableBkUpAccess();
 		sleep () ;
 #endif /* DEBUG */
 	  }
@@ -151,13 +151,13 @@ void TApplication::stateManager ()
 
 	  case appState::appAudioStop :
 		  makeInfo(typeInfo::infoAudioLight, tsndShort, 1) ;
-		  if (mAudio == nullptr) mAudio.reset () ;
+		  if (mAudio != nullptr) mAudio.reset () ;
 		  setState(appState::appStandBy) ;
 	  break ;
 
 	  case appState::appPhoto :
 		  clearStupid () ;
-		  if (mPhoto == nullptr) mPhoto = std::make_unique <unit::TPhoto> () ;
+		  if (mPhoto == nullptr) mPhoto = std::make_unique <unit::TPhoto> () ;			// Все указатели будут удалены при переходе в режим SrtandBy
 		  if (mSdio == nullptr) mSdio = std::make_unique <unit::TSdio> () ;				// По хорошему инициализацию FS нужно делать после получения картинки
 		  if (mFileSystem == nullptr) mFileSystem = std::make_unique <unit::TFileSystem> () ;
 		  mPhoto -> process() ;
@@ -374,13 +374,20 @@ void TApplication::debugMessage (const char *inMesage, const std::size_t inSize)
  * @param inMesage Указатель на массив, который нужно вывести в отладочный порт
  * @param inSize Размер выводимого бувера
  * @todo Переделать на хрен на потоковый вывод
- * @attention На хрена я приделал callback я понятия не имею :(
+ * В callback'е для TX сбрасываю время начала отправки сообщения
  */
 void TApplication::debugMessage (const uint8_t *inMesage, const std::size_t inSize)
 {
-	uint32_t timeStart = HAL_GetTick() ;
-	while(HAL_UART_Transmit_IT(&huart1, (uint8_t *) inMesage, inSize) == HAL_BUSY ) {
-		if ((HAL_GetTick() - timeStart) > stAppDebugTimeout) break ;	// что бы если что, то выйти из бесконечного цикла
+	if (common::stTimeStartDebugMessage != 0) {		// Исправление косяка с зависшим UART
+		HAL_UART_AbortTransmit_IT(&huart1) ;
+		common::stTimeStartDebugMessage = 0 ;
+	}
+
+	while(HAL_UART_Transmit_IT(&huart1, (uint8_t *) inMesage, inSize) == HAL_BUSY) {
+		HAL_Delay(1000) ;
+		if ((HAL_GetTick() - common::stTimeStartDebugMessage) > stAppDebugTimeout) {  // если что, то вылетаем по таймауту
+			break ;
+		}
 	}
 }
 //-----------------------------------------------------------
@@ -509,7 +516,7 @@ void TApplication::sleep ()
  */
 void TApplication::writeLog ()
 {
-	mLog -> writeLog () ;
+//	mLog -> writeLog () ;
 }
 /*!-----------------------------------------------------------
  * Очистка регистра RTC_BKP_DR2.

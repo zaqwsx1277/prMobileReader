@@ -14,7 +14,6 @@ var searchData=
   ['stlogptrend',['stLogPtrEnd',['../namespaceapp.html#ace31e10d9123ed3cd27682c771b31c3c',1,'app']]],
   ['stlogptrstart',['stLogPtrStart',['../namespaceapp.html#a3f8e7afc758e38727589ca05d9d0b1d7',1,'app']]],
   ['stlogsize',['stLogSize',['../namespaceapp.html#a51952c8370b735a12cf723ced096ca48',1,'app']]],
-  ['stphotobuf',['stPhotoBuf',['../namespacecommon.html#a5603cfb8998012c5d4e0bb217baf8293',1,'common']]],
   ['stphotodcmitimeout',['stPhotoDCMITimeout',['../namespaceunit.html#a40b076ece72209541014f35f94c3b5fa',1,'unit']]],
   ['stphotofilename',['stPhotoFileName',['../namespacecommon.html#a373798ef1a9c0a94b49bc38455d62d10',1,'common']]],
   ['stphotoi2cread',['stPhotoI2CRead',['../namespaceunit.html#a50f740136690db44e593be6a0e62d429',1,'unit']]],

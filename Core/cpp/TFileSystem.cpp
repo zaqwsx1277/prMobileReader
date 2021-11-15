@@ -180,8 +180,8 @@ bool TFileSystem::writePhoto ()
 
 	if (openFileName (".jpg")) {
 		UINT byteswrite { 0 } ;
-		auto bufLen { sizeof (common::stPhotoBuf) } ;
-		auto result = f_write(&mFile, common::stPhotoBuf, bufLen, &byteswrite) ;
+		auto bufLen { sizeof (stPhotoBuf) } ;
+		auto result = f_write(&mFile, stPhotoBuf, bufLen, &byteswrite) ;
 		if (byteswrite == bufLen && result == FR_OK) {
 			uint32_t size = f_size(&mFile);
 			if (f_close (&mFile) == FR_OK) {
@@ -194,20 +194,36 @@ bool TFileSystem::writePhoto ()
 				common::stFileBuf [4] = mTime.Minutes;
 				common::stFileBuf [5] = mTime.Seconds;
 				*(reinterpret_cast <uint32_t *> (&common::stFileBuf [6])) = 0x0 ;
-				*(reinterpret_cast <uint32_t *> (&common::stFileBuf [10])) = mTag ;
+				common::stFileBuf [10] = static_cast <uint8_t> ((mTag >> 24) & 0xFF) ;
+				common::stFileBuf [11] = static_cast <uint8_t> ((mTag >> 16) & 0xFF) ;
+				common::stFileBuf [12] = static_cast <uint8_t> ((mTag >> 8) & 0xFF) ;
+				common::stFileBuf [13] = static_cast <uint8_t> (mTag & 0xFF) ;
+//				*(reinterpret_cast <uint32_t *> (&common::stFileBuf [10])) = mTag ;
 				*(reinterpret_cast <uint32_t *> (&common::stFileBuf [14])) = size ;
-				if (f_open(&mFile, common::stPhotoFileName.c_str(), FA_OPEN_APPEND|FA_WRITE) == FR_OK)
-					if (f_write(&mFile, common::stFileBuf,20,&byteswrite) == FR_OK)
-						if (f_close(&mFile) == FR_OK) common::app -> debugMessage("List photo files recording - OK") ;
 
-				retValue = true ;
+//				try {
+//					if (f_open(&mFile, common::stPhotoFileName.c_str(), FA_OPEN_APPEND|FA_WRITE) != FR_OK) throw 1 ;
+//				} catch (...) {
+//					retValue = false ;
+//					f_close (&mFile) ;				// Что-то пошло не так
+//					common::app -> setState(app::appState::appErrFileFS) ;
+//				}
+
+				if (f_open(&mFile, common::stPhotoFileName.c_str(), FA_OPEN_APPEND|FA_WRITE) == FR_OK)
+					if (f_write(&mFile, common::stFileBuf,20,&byteswrite) == FR_OK) {
+						if (f_close(&mFile) == FR_OK) {
+							common::app -> debugMessage("List photo files recording - OK") ;
+							retValue = true ;
+						}
+						  else common::app -> debugMessage("List photo files recording - Error") ;
+					}
 			}
 		}
 	}
 
 	if (!retValue) {
 		f_close (&mFile) ;				// Что-то пошло не так
-		common::app ->setState(app::appState::appErrFileFS) ;
+		common::app -> setState(app::appState::appErrFileFS) ;
 	}
 	return retValue ;
 }
@@ -237,6 +253,10 @@ bool TFileSystem::openFileName (const std::string &inFileName)
 												  << std::setw (2) << ((mTag >> 16) & 0xFF)
 												  << std::setw (2) << ((mTag >> 8) & 0xFF)
 												  << std::setw (2) << (mTag & 0xFF) ;
+//	tempFileName << std::hex << std::setfill('0') << std::setw (2) << (mTag & 0xFF)
+//												  << std::setw (2) << ((mTag >> 8) & 0xFF)
+//												  << std::setw (2) << ((mTag >> 16) & 0xFF)
+//												  << std::setw (2) << ((mTag >> 24) & 0xFF) ;
 
 	mFileName = tempFileName.str() + inFileName ;
 	FILINFO tempFileInfo ;
@@ -264,7 +284,7 @@ bool TFileSystem::writeAudio (const uint8_t* inBuf, const uint32_t inBufLen)
 	return retVal ;
 }
 /*!-----------------------------------------------------------
- *
+ * Завершение записи аудио и запись метки в список аудио.
  */
 void TFileSystem::closeAudio ()
 {
@@ -278,6 +298,24 @@ void TFileSystem::closeAudio ()
 	UINT tmp ;
 	f_write(&mFile, (uint8_t *)&tmpHeader, sizeof (tmpHeader), &tmp);
 	f_close(&mFile) ;
+
+	common::stFileBuf [0] = mDate.Date ;
+	common::stFileBuf [1] = mDate.Month;
+	common::stFileBuf [2] = mDate.Year;
+	common::stFileBuf [3] = mTime.Hours;
+	common::stFileBuf [4] = mTime.Minutes;
+	common::stFileBuf [5] = mTime.Seconds;
+	*(reinterpret_cast <uint32_t *> (&common::stFileBuf [6])) = 0x0 ;
+	common::stFileBuf [10] = static_cast <uint8_t> ((mTag >> 24) & 0xFF) ;
+	common::stFileBuf [11] = static_cast <uint8_t> ((mTag >> 16) & 0xFF) ;
+	common::stFileBuf [12] = static_cast <uint8_t> ((mTag >> 8) & 0xFF) ;
+	common::stFileBuf [13] = static_cast <uint8_t> (mTag & 0xFF) ;
+//	*(reinterpret_cast <uint32_t *> (&common::stFileBuf [10])) = mTag ;
+	*(reinterpret_cast <uint32_t *> (&common::stFileBuf [14])) = fileSize + 44 ;
+	if (f_open(&mFile, common::stAudioFileName.c_str(), FA_OPEN_APPEND | FA_WRITE) == FR_OK)
+		if (f_write(&mFile, common::stFileBuf,20,&tmp) == FR_OK)
+			if (f_close(&mFile) == FR_OK) common::app -> debugMessage("List audio files recording - OK") ;
+
 }
 //------------------------------------------------------------
 } /* namespace unit */

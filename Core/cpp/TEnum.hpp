@@ -62,9 +62,9 @@ enum appState {
 const std::unordered_map <appState, std::string> msgAppState {
 	{ appUnknown, "Unknown" },
 	{ appService, "Service mode" },
-	{ appStarted, "Start application ver: A21.08 - 31.08.2021" },
+	{ appStarted, "Start application ver: A21.11 - 02.11.2021" },
 	{ appStandBy, "Move StandBy mode" },
-	{ appReady, "Recovery from mode StandBy. ver: A21.08 - 31.08.2021" },
+	{ appReady, "Recovery from mode StandBy. ver: A21.11 - 02.11.2021" },
 	{ appAudio, "Audio mode" },
 	{ appAudioWaitStop, "Waiting for sound recording stop" },
 	{ appAudioStop, "Stop sound recording" },

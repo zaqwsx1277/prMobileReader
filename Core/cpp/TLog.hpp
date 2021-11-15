@@ -49,7 +49,6 @@ public:
 	void pushItem (const app::appState&) ;			///< Запись в лог изменения состояния
 	bool writeLog () ;								///< Сохранение лога на флешку и если нужно на SDIO. Всегда записывается последний банк встроенной флешки
 	tdLogItem getLastItem () ;						///< Получение из лога последнего состояния
-//	void clearLog
 };
 
 } /* namespace app */

@@ -25,6 +25,7 @@ extern DMA_HandleTypeDef hdma_dcmi;
 
 extern bool tmpFlag ;
 extern  uint32_t tmpCount ;
+extern uint8_t stPhotoBuf [1600*80] ;				///< Буфер для сканирования изображения
 
 /// Различные общие для всего приложения определения
 namespace common {
@@ -32,17 +33,21 @@ namespace common {
 
 	extern std::string stTempStr ;						///< Временная строка для корректной отсылки сообщений по UART
 	extern std::string stSyncTimeFileName ;				///< Имя файла для синхронизации времени
-	extern std::string stTagFileName ;					///< Имя файла для хранения меток
-	extern std::string stPhotoFileName ;				///< Имя файла для хранения фоток
+	extern std::string stTagFileName ;					///< Имя файла для хранения списка отсканированных меток
+	extern std::string stPhotoFileName ;				///< Имя файла для хранения списка фоток
+	extern std::string stAudioFileName ;				///< Имя файла для хранения списка аудио
 
 	extern uint8_t stTagBufId [25] ;					///< Буфер для чтения метки
 	extern uint8_t stFileBuf [512] ;					///< Буфер для записи данных в файл. Он здесь, т.к. SDIO работает по DMA
-	extern uint8_t stPhotoBuf [1600*40] ;				///< Буфер для сканирования изображения
+//	extern uint8_t stPhotoBuf [1600*40] ;				///< Буфер для сканирования изображения
 
 	extern tdAudioFrame stAudioBuf [2][unit::stAudioBufSize] ; ///< Буфер для записи данных с микрофона.
 	extern unit::crAudioBufID stAudioBufId ;			///< Индекс обрабатываемого буфера
+	extern uint32_t stTimeStartDebugMessage ;			///< Вычисление таймаута при отправке отладочного сообщения по UART
+
 
 	const extern uint32_t *stPrtSN ;					///< Адрес серийного номера кристала
+
 
 } /* namespace common */
 

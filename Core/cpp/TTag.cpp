@@ -49,7 +49,7 @@ void TTag::wakeup ()
 }
 //--------------------------------------------------------
 /*!
- * Метод сканирует метку и записывает ее в регистр
+ * Метод сканирует метку и записывает ее в регистр RTC_BKP_DR0
  * @return При успешном сканировании возвращает true
  */
 bool TTag::process ()
@@ -61,7 +61,7 @@ bool TTag::process ()
 	  else {
 		  if (HAL_UART_Receive (&huart2, common::stTagBufId, sizeof (common::stTagBufId), stTagUsartWaitID) != HAL_OK) common::app -> setState(app::appState::appTagNoId) ;
 		  else {
-			uint32_t temp = (common::stTagBufId [20] << 24) | (common::stTagBufId [21] << 16) | (common::stTagBufId [22] << 16) | common::stTagBufId [23]  ;
+			uint32_t temp = (common::stTagBufId [20] << 24) | (common::stTagBufId [21] << 16) | (common::stTagBufId [22] << 8) | common::stTagBufId [23]  ;
 			HAL_RTCEx_BKUPWrite (&hrtc, RTC_BKP_DR0, temp) ;
 
 			std::stringstream tempTag ;
